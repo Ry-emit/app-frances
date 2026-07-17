@@ -13,4 +13,8 @@ Arrancar Francés.command
 .DS_Store
 **/.DS_Store
 
+# Solo para pruebas locales (no se publican)
+samples/
+compare.html
+
 # La web publicada = index.html + audio/ + icons/ + manifest.webmanifest + sw.js + LEEME.md

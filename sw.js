@@ -4,7 +4,7 @@
    - HTML: network-first (para recibir actualizaciones); cae a caché sin conexión.
    - Audio/iconos/fuentes: cache-first (instantáneo y offline).
    Sube el número de versión para forzar recarga de caché al publicar cambios. */
-const CACHE = 'fr-b1-camino-v1';
+const CACHE = 'fr-b1-camino-v2';
 const SHELL = [
   './',
   './index.html',

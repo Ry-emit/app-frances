@@ -439,11 +439,11 @@ main{flex:1;width:100%;max-width:920px;margin:0 auto;padding:1.4rem 1.1rem 4rem}
     <div class="brand"><b>fr<span>B1</span></b><em>affaires</em></div>
     <nav class="tabs" id="tabs">
       <button class="tab active" data-tab="levels"><span class="em">🛤️</span><span class="lbl">Camino</span></button>
-      <button class="tab" data-tab="flash"><span class="em">🃏</span><span class="lbl">Tarjetas</span></button>
-      <button class="tab" data-tab="challenge"><span class="em">⚔️</span><span class="lbl">Desafío</span></button>
-      <button class="tab" data-tab="train"><span class="em">🏋️</span><span class="lbl">Entrenar</span></button>
       <button class="tab" data-tab="progress"><span class="em">📊</span><span class="lbl">Progreso</span></button>
-      <!-- Ocultadas en la versión móvil (necesitan IA/servidor): Diálogo, Llamada, Examen -->
+      <!-- Versión "solo Camino": ocultas el resto de modos -->
+      <button class="tab" data-tab="flash" hidden><span class="em">🃏</span><span class="lbl">Tarjetas</span></button>
+      <button class="tab" data-tab="challenge" hidden><span class="em">⚔️</span><span class="lbl">Desafío</span></button>
+      <button class="tab" data-tab="train" hidden><span class="em">🏋️</span><span class="lbl">Entrenar</span></button>
       <button class="tab" data-tab="dialogue" hidden><span class="em">💬</span><span class="lbl">Diálogo</span></button>
       <button class="tab" data-tab="call" hidden><span class="em">📞</span><span class="lbl">Llamada</span></button>
       <button class="tab" data-tab="exam" hidden><span class="em">🎓</span><span class="lbl">Examen</span></button>
@@ -1091,7 +1091,7 @@ async function speak(text,onEnd){ // onEnd: se llama cuando termina el audio (pa
       try{
         curAudio=new Audio('audio/'+f);
         curAudio.preservesPitch=true; curAudio.mozPreservesPitch=true; curAudio.webkitPreservesPitch=true;
-        curAudio.playbackRate=Math.max(.5,Math.min(1.5,S.voiceRate||0.9)); // el slider de velocidad
+        curAudio.playbackRate=Math.max(.5,Math.min(1.5,(S.voiceRate||0.9)/0.9)); // audio ya horneado a -10%: 0.9 suena limpio (×1); el slider sigue ajustando
         if(onEnd)curAudio.onended=onEnd;
         curAudio.play().catch(()=>{speakSys(text,onEnd);});
         return; // voz neuronal OK (desde archivo, sin servidor)
