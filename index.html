@@ -1,0 +1,2646 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Français B1 — Negocios</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🇫🇷%3C/text%3E%3C/svg%3E">
+<!-- PWA: instalable en iPhone (pantalla de inicio) + offline -->
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#f4f1ea">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Français B1">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<style>
+:root{
+  --font-ui:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --font-display:'Fraunces',Georgia,serif;
+  /* light theme (paper) */
+  --bg:#f4f1ea; --bg2:#efeae0; --surface:#ffffff; --surface2:#faf8f3;
+  --border:#e4ddd0; --border2:#d6cdbb;
+  --text:#22201c; --text2:#6b655a; --text3:#9a9385;
+  --blue:#2b4de0; --blue-soft:#eaeeff; --blue-border:#c9d3ff;
+  --green:#1f9d5b; --green-soft:#e7f6ec; --green-border:#bfe6cd;
+  --red:#d64545; --red-soft:#fceceb; --red-border:#f3cfcd;
+  --amber:#c78a12; --amber-soft:#fbf1d9; --amber-border:#eeddb0;
+  --gold:#c9a84c;
+  --shadow:0 1px 2px rgba(40,35,25,.05),0 8px 24px rgba(40,35,25,.06);
+  --shadow-lg:0 4px 12px rgba(40,35,25,.08),0 24px 60px rgba(40,35,25,.12);
+  --radius:14px; --radius-lg:20px; --radius-sm:9px;
+}
+html[data-theme="dark"]{
+  --bg:#131414; --bg2:#181a1a; --surface:#1e2020; --surface2:#252828;
+  --border:#313434; --border2:#3d4141;
+  --text:#eef0ee; --text2:#a2a8a4; --text3:#6f7570;
+  --blue:#6f8bff; --blue-soft:#1a2244; --blue-border:#2c3969;
+  --green:#43d98a; --green-soft:#12281c; --green-border:#1f4a31;
+  --red:#ff7a7a; --red-soft:#2c1414; --red-border:#4d2222;
+  --amber:#e6b53f; --amber-soft:#2a2110; --amber-border:#4a3a16;
+  --gold:#d8bd6a;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+  --shadow-lg:0 4px 12px rgba(0,0,0,.4),0 24px 60px rgba(0,0,0,.5);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+html,body{height:100%}
+body{
+  background:
+    radial-gradient(1200px 600px at 100% -10%, color-mix(in srgb,var(--blue) 6%,transparent), transparent 60%),
+    var(--bg);
+  color:var(--text);
+  font-family:var(--font-ui);
+  min-height:100vh; display:flex; flex-direction:column;
+  -webkit-font-smoothing:antialiased;
+  transition:background .35s,color .35s;
+}
+::selection{background:color-mix(in srgb,var(--blue) 25%,transparent)}
+
+/* ---------- top bar ---------- */
+header{
+  position:sticky; top:0; z-index:30;
+  background:color-mix(in srgb,var(--surface) 82%,transparent);
+  backdrop-filter:saturate(1.4) blur(14px);
+  border-bottom:1px solid var(--border);
+}
+.tricolore{height:3px;display:flex}
+.tricolore i{flex:1}
+.tricolore i:nth-child(1){background:#2b4de0}
+.tricolore i:nth-child(2){background:#f4f1ea}
+.tricolore i:nth-child(3){background:#d64545}
+.bar{max-width:920px;margin:0 auto;padding:.6rem 1.1rem;display:flex;align-items:center;gap:.6rem}
+.brand{display:flex;align-items:baseline;gap:.5rem;margin-right:.4rem;cursor:default}
+.brand b{font-family:var(--font-display);font-weight:600;font-size:1.15rem;letter-spacing:-.02em}
+.brand b span{color:var(--blue)}
+.brand em{font-style:italic;color:var(--text3);font-size:.72rem;font-family:var(--font-display)}
+.tabs{display:flex;gap:2px;background:var(--bg2);padding:3px;border-radius:11px;border:1px solid var(--border)}
+.tab{
+  appearance:none;border:none;background:none;cursor:pointer;
+  font:inherit;font-size:.83rem;font-weight:500;color:var(--text2);
+  padding:.4rem .7rem;border-radius:8px;transition:.16s;white-space:nowrap;
+  display:flex;align-items:center;gap:.35rem;
+}
+.tab:hover{color:var(--text)}
+.tab.active{background:var(--surface);color:var(--text);box-shadow:var(--shadow)}
+.tab .em{font-size:.9rem}
+.spacer{flex:1}
+.hud{display:flex;gap:.5rem;align-items:center}
+.pill{
+  display:flex;align-items:center;gap:.32rem;font-size:.78rem;color:var(--text2);
+  background:var(--surface);border:1px solid var(--border);border-radius:999px;
+  padding:.3rem .6rem;font-variant-numeric:tabular-nums;
+}
+.pill b{color:var(--text);font-weight:600}
+button.pill{cursor:pointer;font-family:var(--font-ui);transition:.15s}
+button.pill:hover{border-color:var(--blue);color:var(--text)}
+.pill.flame b{color:var(--amber)}
+.iconbtn{
+  appearance:none;border:1px solid var(--border);background:var(--surface);color:var(--text2);
+  width:34px;height:34px;border-radius:10px;cursor:pointer;font-size:1rem;
+  display:grid;place-items:center;transition:.16s;
+}
+.iconbtn:hover{color:var(--text);border-color:var(--border2)}
+
+/* ---------- layout ---------- */
+main{flex:1;width:100%;max-width:920px;margin:0 auto;padding:1.4rem 1.1rem 4rem}
+.panel{display:none;animation:rise .3s ease}
+.panel.active{display:block}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.head{margin-bottom:1.1rem}
+.head h1{font-family:var(--font-display);font-weight:600;font-size:1.5rem;letter-spacing:-.02em}
+.head h1 i{font-style:italic;color:var(--blue)}
+.head p{color:var(--text2);font-size:.9rem;margin-top:.15rem}
+
+.chips{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1rem}
+.chip{
+  appearance:none;border:1px solid var(--border);background:var(--surface);color:var(--text2);
+  font:inherit;font-size:.8rem;font-weight:500;padding:.4rem .75rem;border-radius:999px;cursor:pointer;transition:.16s;
+}
+.chip:hover{border-color:var(--border2);color:var(--text)}
+.chip.active{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 4px 14px color-mix(in srgb,var(--blue) 35%,transparent)}
+.chip small{opacity:.7;font-weight:500}
+
+/* ---------- selector de sentido ---------- */
+.dir-seg{display:flex;align-items:center;gap:.4rem;margin-bottom:1rem;flex-wrap:wrap}
+.dir-seg .dir-label{font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);margin-right:.2rem}
+.dir-seg button{
+  appearance:none;border:1px solid var(--border);background:var(--surface);color:var(--text2);
+  font:inherit;font-size:.82rem;font-weight:600;padding:.42rem .8rem;border-radius:999px;cursor:pointer;transition:.15s;
+}
+.dir-seg button:hover{border-color:var(--border2);color:var(--text)}
+.dir-seg button.active{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 4px 14px color-mix(in srgb,var(--blue) 35%,transparent)}
+
+/* ---------- flashcards ---------- */
+.trackline{display:flex;align-items:center;gap:.8rem;margin-bottom:1rem}
+.progress{flex:1;height:7px;background:var(--bg2);border:1px solid var(--border);border-radius:999px;overflow:hidden}
+.progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),color-mix(in srgb,var(--blue) 60%,var(--green)));border-radius:999px;transition:width .35s}
+.counter{font-size:.78rem;color:var(--text3);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+.stage{perspective:1600px;margin-bottom:1rem}
+.fcard{
+  position:relative;width:100%;min-height:290px;cursor:pointer;
+  transform-style:preserve-3d;transition:transform .5s cubic-bezier(.2,.7,.2,1);
+}
+.fcard.flip{transform:rotateY(180deg)}
+.face{
+  position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);
+  box-shadow:var(--shadow);padding:1.6rem;display:flex;flex-direction:column;
+}
+.face.back{transform:rotateY(180deg);background:var(--surface2)}
+.face-top{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+.tag{
+  font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-border);
+  padding:.28rem .6rem;border-radius:999px;
+}
+.tag.f{color:var(--red);background:var(--red-soft);border-color:var(--red-border)}
+.tag.m{color:var(--blue);background:var(--blue-soft);border-color:var(--blue-border)}
+.tag.v{color:var(--amber);background:var(--amber-soft);border-color:var(--amber-border)}
+.tag.g{color:var(--green);background:var(--green-soft);border-color:var(--green-border)}
+.num{font-size:.72rem;color:var(--text3);font-variant-numeric:tabular-nums}
+.fcenter{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:.5rem;padding:.6rem 0}
+.word{font-family:var(--font-display);font-weight:600;font-size:clamp(1.7rem,5.5vw,2.6rem);line-height:1.1;letter-spacing:-.02em}
+.article{color:var(--text3);font-size:.95rem;font-style:italic;font-family:var(--font-display)}
+.speak{
+  appearance:none;border:1px solid var(--border);background:var(--surface2);color:var(--blue);
+  border-radius:999px;padding:.4rem .85rem;font:inherit;font-size:.82rem;font-weight:600;cursor:pointer;
+  display:inline-flex;align-items:center;gap:.4rem;transition:.16s;
+}
+.speak:hover{border-color:var(--blue);background:var(--blue-soft)}
+.speak.big{padding:.5rem 1rem;font-size:.9rem}
+.say-row{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin-top:.2rem}
+.speak.mic.rec,.iconbtn.rec{border-color:var(--red);color:var(--red);background:var(--red-soft);animation:pulsemic 1.1s infinite}
+@keyframes pulsemic{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--red) 40%,transparent)}70%{box-shadow:0 0 0 9px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.pron{display:none}
+.pron.show{display:block;margin-top:1rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:1rem 1.1rem;animation:rise .25s ease}
+.score{display:flex;align-items:center;gap:.85rem;margin-bottom:.5rem}
+.ring{width:56px;height:56px;flex:none;border-radius:50%;display:grid;place-items:center}
+.ring span{width:44px;height:44px;border-radius:50%;background:var(--surface);display:grid;place-items:center;font-weight:700;font-size:.85rem;font-variant-numeric:tabular-nums;text-align:center}
+.pron .words{font-size:1.05rem;line-height:1.7;font-family:var(--font-display)}
+.pron .words .hit{color:var(--green);font-weight:600}
+.pron .words .miss{color:var(--red);font-weight:600;text-decoration:underline wavy}
+.pron .heard{font-size:.85rem;color:var(--text2);margin-top:.45rem;line-height:1.5}
+.pron .tip{margin-top:.6rem;font-size:.9rem;color:var(--text);background:var(--blue-soft);border:1px solid var(--blue-border);border-radius:10px;padding:.65rem .8rem;line-height:1.55}
+.trans{font-family:var(--font-display);font-size:1.35rem;font-weight:600}
+.example{color:var(--text2);font-size:1rem;line-height:1.6;max-width:34ch}
+.example b{color:var(--text);font-weight:600;background:color-mix(in srgb,var(--amber) 22%,transparent);border-radius:4px;padding:0 3px}
+.hint{text-align:center;color:var(--text3);font-size:.8rem;margin:-.3rem 0 1rem}
+.hint kbd{font-family:var(--font-ui);font-size:.72rem;background:var(--surface);border:1px solid var(--border);border-bottom-width:2px;border-radius:6px;padding:.05rem .4rem;color:var(--text2)}
+
+.rate{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
+.rate.hidden{display:none}
+.rbtn{
+  appearance:none;border:1px solid var(--border);background:var(--surface);color:var(--text);
+  font:inherit;font-size:.9rem;font-weight:600;padding:.85rem;border-radius:var(--radius);cursor:pointer;
+  transition:.14s;display:flex;flex-direction:column;align-items:center;gap:.2rem;
+}
+.rbtn small{font-weight:500;font-size:.68rem;color:var(--text3)}
+.rbtn:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.rbtn.hard:hover{border-color:var(--red);color:var(--red)}
+.rbtn.ok:hover{border-color:var(--amber);color:var(--amber)}
+.rbtn.easy:hover{border-color:var(--green);color:var(--green)}
+
+/* ---------- comprobar traducción ---------- */
+.check{display:flex;gap:.5rem;margin-bottom:.6rem;flex-wrap:wrap}
+.check input{flex:1 1 55%;min-width:0;font:inherit;font-size:1rem;padding:.7rem .85rem;border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:var(--radius);outline:none}
+.check input:focus{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-soft)}
+.check .btn{white-space:nowrap}
+.check-result{display:none;margin-bottom:1rem;border-radius:var(--radius);padding:.75rem .9rem;font-size:.95rem;line-height:1.5;border:1px solid transparent}
+.check-result.show{display:block;animation:rise .2s ease}
+.check-result.good{background:var(--green-soft);border-color:var(--green-border)}
+.check-result.bad{background:var(--red-soft);border-color:var(--red-border)}
+.rbtn.suggest{animation:pulseSug 1.1s infinite;border-color:var(--blue)}
+@keyframes pulseSug{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--blue) 40%,transparent)}60%{box-shadow:0 0 0 7px transparent}}
+
+/* ---------- generic card ---------- */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow);padding:1.4rem}
+.badge{display:inline-block;font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);background:var(--blue-soft);border:1px solid var(--blue-border);padding:.28rem .6rem;border-radius:999px;margin-bottom:.9rem}
+.q{font-family:var(--font-display);font-size:1.3rem;font-weight:500;line-height:1.4;margin-bottom:1.1rem}
+.q .blank{color:var(--blue);border-bottom:2px dashed var(--blue);padding:0 .3rem;font-style:italic}
+.opts{display:grid;gap:.55rem}
+.opt{
+  appearance:none;text-align:left;border:1px solid var(--border);background:var(--surface2);color:var(--text);
+  font:inherit;font-size:.98rem;padding:.85rem 1rem;border-radius:var(--radius);cursor:pointer;transition:.14s;
+  display:flex;align-items:center;gap:.7rem;
+}
+.opt .key{width:22px;height:22px;flex:none;display:grid;place-items:center;border-radius:6px;background:var(--bg2);border:1px solid var(--border);font-size:.72rem;font-weight:600;color:var(--text3)}
+.opt:hover:not(:disabled){border-color:var(--blue);background:var(--blue-soft)}
+.opt:disabled{cursor:default}
+.opt.correct{border-color:var(--green);background:var(--green-soft);color:var(--text)}
+.opt.correct .key{background:var(--green);border-color:var(--green);color:#fff}
+.opt.wrong{border-color:var(--red);background:var(--red-soft)}
+.opt.wrong .key{background:var(--red);border-color:var(--red);color:#fff}
+
+.fb{margin-top:1rem;border-radius:var(--radius);padding:.9rem 1rem;font-size:.92rem;line-height:1.55;display:none;border:1px solid transparent}
+.fb.show{display:block;animation:rise .25s ease}
+.fb.good{background:var(--green-soft);border-color:var(--green-border)}
+.fb.bad{background:var(--red-soft);border-color:var(--red-border)}
+.fb strong{font-weight:700}
+.fb .detail{color:var(--text2);margin-top:.35rem}
+.fb .tip{margin-top:.5rem;color:var(--amber);font-weight:500;font-size:.86rem}
+.nextbtn{
+  margin-top:1rem;appearance:none;border:none;background:var(--blue);color:#fff;font:inherit;font-weight:600;font-size:.95rem;
+  padding:.8rem 1.2rem;border-radius:var(--radius);cursor:pointer;width:100%;transition:.15s;display:none;
+  box-shadow:0 6px 18px color-mix(in srgb,var(--blue) 35%,transparent);
+}
+.nextbtn.show{display:block}
+.nextbtn:hover{filter:brightness(1.06)}
+
+/* ---------- dialogue ---------- */
+.scene{background:var(--blue-soft);border:1px solid var(--blue-border);border-radius:var(--radius);padding:.9rem 1.1rem;font-size:.9rem;line-height:1.55;color:var(--text2);margin-bottom:1rem}
+.scene strong{color:var(--text);font-family:var(--font-display)}
+.msgs{display:flex;flex-direction:column;gap:.7rem;margin-bottom:1rem}
+.msg{display:flex;flex-direction:column;max-width:82%}
+.msg.ai{align-self:flex-start}
+.msg.user{align-self:flex-end;align-items:flex-end}
+.msg .name{font-size:.7rem;color:var(--text3);margin:0 .4rem .2rem;font-weight:600}
+.bubble{padding:.7rem .95rem;border-radius:16px;font-size:.96rem;line-height:1.5;position:relative}
+.msg.ai .bubble{background:var(--surface);border:1px solid var(--border);border-bottom-left-radius:5px}
+.msg.user .bubble{background:var(--blue);color:#fff;border-bottom-right-radius:5px}
+.bubble .say{position:absolute;top:6px;right:6px;opacity:.5;cursor:pointer;font-size:.8rem}
+.msg.ai .bubble{padding-right:1.8rem}
+.bubble .say:hover{opacity:1}
+.dopts{display:grid;gap:.55rem}
+.dopt{appearance:none;text-align:left;border:1px solid var(--border);background:var(--surface2);color:var(--text);font:inherit;font-size:.95rem;padding:.8rem .95rem;border-radius:var(--radius);cursor:pointer;transition:.14s;line-height:1.4}
+.dopt:hover:not(:disabled){border-color:var(--blue);background:var(--blue-soft)}
+.dopt:disabled{opacity:.55;cursor:default}
+.dopt.picked{opacity:1;border-color:var(--border2)}
+
+/* ---------- camino ---------- */
+.path-tier{font-family:var(--font-display);font-weight:600;font-size:.95rem;color:var(--text2);margin:1.2rem 0 .55rem;padding-left:.15rem}
+.path-node{
+  display:flex;align-items:center;gap:.85rem;width:100%;text-align:left;font:inherit;color:var(--text);
+  border:1px solid var(--border);background:var(--surface);border-radius:var(--radius);
+  padding:.75rem .95rem;margin-bottom:.5rem;cursor:pointer;transition:.15s;box-shadow:var(--shadow);
+}
+.path-node:hover:not(:disabled){border-color:var(--blue);transform:translateX(3px)}
+.path-node:disabled{opacity:.5;cursor:not-allowed;box-shadow:none}
+.path-node.done{border-color:var(--green-border);background:var(--green-soft)}
+.path-node.next{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-soft)}
+.path-node .pico{font-size:1.4rem;width:2rem;text-align:center;flex:none}
+.path-node .pmain{flex:1;min-width:0}
+.path-node .pt{display:block;font-weight:600;font-size:.93rem}
+.path-node .psub{display:block;font-size:.74rem;color:var(--text3);margin-top:.1rem}
+.path-node .pst{font-size:.85rem;color:var(--amber);white-space:nowrap;font-weight:600}
+.path-block-h{
+  display:flex;align-items:center;gap:.6rem;margin:.7rem 0 .35rem;padding:.15rem .2rem;
+  font-family:var(--font-display);font-weight:600;font-size:.98rem;
+}
+.path-block-h .pico{font-size:1.15rem}
+.path-block-h .pbt{flex:1}
+.path-block-h .pbst{font-size:.78rem;color:var(--text3);font-family:var(--font-ui);font-weight:600}
+.path-node.sub{margin-left:1.6rem;padding:.55rem .85rem;margin-bottom:.4rem}
+.path-node.sub .pico{font-size:1.05rem;width:1.6rem}
+.path-node.sub .pt{font-size:.87rem}
+.tdots{display:inline-flex;gap:3px;margin-top:.35rem;flex-wrap:wrap}
+.tdots i{width:16px;height:6px;border-radius:3px;background:var(--bg2);border:1px solid var(--border)}
+.tdots i.half{background:color-mix(in srgb,var(--blue) 45%,var(--bg2));border-color:var(--blue-border)}
+.tdots i.on{background:var(--blue);border-color:var(--blue)}
+.path-node.done .tdots i.on{background:var(--green);border-color:var(--green)}
+
+/* ---------- niveles ---------- */
+.lv-unit{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow);padding:1.1rem 1.3rem;margin-bottom:.9rem}
+.lv-unit-top{display:flex;align-items:baseline;justify-content:space-between;gap:.6rem;margin-bottom:.8rem}
+.lv-unit-top h3{font-family:var(--font-display);font-weight:600;font-size:1.1rem}
+.lv-unit-top .sub{font-size:.78rem;color:var(--text3)}
+.lv-steps{display:flex;gap:.5rem;flex-wrap:wrap}
+.lv-step{
+  appearance:none;font:inherit;cursor:pointer;flex:1;min-width:96px;
+  border:1px solid var(--border);background:var(--surface2);color:var(--text);
+  border-radius:var(--radius);padding:.6rem .5rem;text-align:center;transition:.15s;
+}
+.lv-step:hover:not(:disabled){transform:translateY(-2px);border-color:var(--blue);box-shadow:var(--shadow)}
+.lv-step:disabled{opacity:.45;cursor:not-allowed}
+.lv-step .ico{font-size:1.15rem}
+.lv-step .nm{font-size:.7rem;font-weight:600;margin-top:.15rem}
+.lv-step .st{font-size:.66rem;color:var(--amber);letter-spacing:.1em;min-height:.9em;margin-top:.1rem}
+.lv-step.done{border-color:var(--green-border);background:var(--green-soft)}
+/* construir frase */
+.build-target{font-family:var(--font-display);font-size:1.15rem;color:var(--text2);margin-bottom:1rem}
+.build-line{min-height:56px;border-bottom:2px dashed var(--border2);display:flex;flex-wrap:wrap;gap:.45rem;align-items:flex-start;padding:.4rem 0;margin-bottom:1.1rem}
+.build-pool{display:flex;flex-wrap:wrap;gap:.45rem}
+.wchip{
+  appearance:none;font:inherit;font-size:.95rem;cursor:pointer;
+  padding:.5rem .75rem;border:1px solid var(--border);border-bottom-width:2.5px;
+  border-radius:10px;background:var(--surface);color:var(--text);transition:.12s;
+}
+.wchip:hover{border-color:var(--blue)}
+.wchip:active{transform:translateY(1px)}
+.wchip.ghost{opacity:.25;pointer-events:none}
+
+/* ---------- llamada ---------- */
+.callmic{
+  appearance:none;border:none;cursor:pointer;width:74px;height:74px;border-radius:50%;
+  background:var(--blue);color:#fff;font-size:1.9rem;box-shadow:0 8px 24px color-mix(in srgb,var(--blue) 40%,transparent);
+  transition:.18s;
+}
+.callmic:hover{transform:scale(1.06)}
+.callmic.listening{background:var(--red);animation:pulsemic 1.1s infinite}
+.callmic.speaking{background:var(--green)}
+.callmic.thinking{background:var(--amber);animation:none}
+.corr{
+  background:var(--amber-soft);border:1px solid var(--amber-border);border-radius:var(--radius);
+  padding:.6rem .85rem;font-size:.85rem;line-height:1.5;align-self:flex-start;max-width:88%;
+}
+.corr b{color:var(--amber)}
+
+/* ---------- exam ---------- */
+.starters{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.starter{appearance:none;text-align:left;border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:var(--radius-lg);padding:1.1rem;cursor:pointer;transition:.16s;box-shadow:var(--shadow)}
+.starter:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--blue-border)}
+.starter .st-em{font-size:1.5rem}
+.starter .st-t{font-family:var(--font-display);font-weight:600;font-size:1.05rem;margin:.5rem 0 .25rem}
+.starter .st-d{font-size:.83rem;color:var(--text2);line-height:1.45}
+.exam-note{margin-top:1rem;font-size:.82rem;color:var(--text3);text-align:center;line-height:1.5}
+.exam-note a{color:var(--blue);cursor:pointer}
+.chat{display:none;flex-direction:column;gap:.7rem;min-height:40vh;margin-bottom:.8rem}
+.chat.on{display:flex}
+.cmsg{max-width:88%;padding:.8rem 1rem;border-radius:16px;font-size:.95rem;line-height:1.6;white-space:pre-wrap}
+.cmsg.ai{align-self:flex-start;background:var(--surface);border:1px solid var(--border);border-bottom-left-radius:5px}
+.cmsg.user{align-self:flex-end;background:var(--blue);color:#fff;border-bottom-right-radius:5px}
+.cmsg .who{font-size:.68rem;opacity:.7;font-weight:600;margin-bottom:.3rem}
+.typing{align-self:flex-start;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:.9rem 1.1rem;display:flex;gap:5px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--text3);animation:bounce 1.2s infinite}
+.dot:nth-child(2){animation-delay:.15s}.dot:nth-child(3){animation-delay:.3s}
+@keyframes bounce{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-5px);opacity:1}}
+.inrow{display:none;gap:.5rem;align-items:flex-end;position:sticky;bottom:.6rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.5rem;box-shadow:var(--shadow-lg)}
+.inrow.on{display:flex}
+.inrow textarea{flex:1;resize:none;border:none;background:none;color:var(--text);font:inherit;font-size:.95rem;padding:.45rem;max-height:140px;outline:none}
+.send{appearance:none;border:none;background:var(--blue);color:#fff;font:inherit;font-weight:600;padding:.55rem 1rem;border-radius:10px;cursor:pointer}
+.send:disabled{opacity:.5}
+.timerbar{display:none;align-items:center;gap:.7rem;margin-bottom:.8rem;font-variant-numeric:tabular-nums}
+.timerbar.on{display:flex}
+.timerbar .t{font-family:var(--font-display);font-weight:600;font-size:1.3rem}
+.timerbar.warn .t{color:var(--red)}
+.ghostbtn{appearance:none;border:1px solid var(--border);background:var(--surface);color:var(--text2);font:inherit;font-size:.8rem;font-weight:500;padding:.35rem .7rem;border-radius:8px;cursor:pointer}
+.ghostbtn:hover{color:var(--text);border-color:var(--border2)}
+
+/* ---------- progress ---------- */
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin-bottom:1.2rem}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;box-shadow:var(--shadow)}
+.stat .v{font-family:var(--font-display);font-weight:600;font-size:1.7rem;line-height:1;letter-spacing:-.02em}
+.stat .l{font-size:.75rem;color:var(--text3);margin-top:.35rem}
+.stat.blue .v{color:var(--blue)} .stat.green .v{color:var(--green)} .stat.amber .v{color:var(--amber)} .stat.red .v{color:var(--red)}
+.section-t{font-family:var(--font-display);font-weight:600;font-size:1.05rem;margin:1.3rem 0 .7rem}
+.mastery{display:flex;flex-direction:column;gap:.7rem}
+.mrow{display:grid;grid-template-columns:110px 1fr 48px;align-items:center;gap:.7rem;font-size:.85rem}
+.mrow .mlabel{color:var(--text2)}
+.mrow .mbar{height:9px;background:var(--bg2);border:1px solid var(--border);border-radius:999px;overflow:hidden}
+.mrow .mbar > i{display:block;height:100%;background:linear-gradient(90deg,var(--green),color-mix(in srgb,var(--green) 55%,var(--blue)));border-radius:999px;transition:width .5s}
+.mrow .mval{text-align:right;color:var(--text3);font-variant-numeric:tabular-nums}
+.week{display:flex;gap:.4rem;align-items:flex-end;height:90px;margin-top:.4rem}
+.week .day{flex:1;display:flex;flex-direction:column;align-items:center;gap:.35rem}
+.week .day .bar{width:100%;background:var(--blue-soft);border:1px solid var(--blue-border);border-radius:6px 6px 3px 3px;min-height:4px;transition:height .5s}
+.week .day .bar.has{background:var(--blue)}
+.week .day .dl{font-size:.66rem;color:var(--text3)}
+.dangerbtn{appearance:none;border:1px solid var(--red-border);background:var(--red-soft);color:var(--red);font:inherit;font-size:.82rem;font-weight:600;padding:.55rem .9rem;border-radius:10px;cursor:pointer}
+
+/* ---------- settings / modal ---------- */
+.overlay{position:fixed;inset:0;background:rgba(10,10,10,.5);backdrop-filter:blur(3px);z-index:60;display:none;align-items:center;justify-content:center;padding:1rem}
+.overlay.on{display:flex;animation:rise .2s ease}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);width:100%;max-width:440px;padding:1.4rem}
+.modal h3{font-family:var(--font-display);font-weight:600;font-size:1.25rem;margin-bottom:.3rem}
+.modal p{color:var(--text2);font-size:.86rem;line-height:1.55;margin-bottom:1rem}
+.field{margin-bottom:1rem}
+.field label{display:block;font-size:.78rem;font-weight:600;color:var(--text2);margin-bottom:.35rem}
+.field input,.field select{width:100%;font:inherit;font-size:.9rem;padding:.6rem .7rem;border:1px solid var(--border);background:var(--surface2);color:var(--text);border-radius:10px;outline:none}
+.field input:focus,.field select:focus{border-color:var(--blue)}
+.field .help{font-size:.75rem;color:var(--text3);margin-top:.35rem;line-height:1.4}
+.modal-actions{display:flex;gap:.5rem;justify-content:flex-end;margin-top:.4rem}
+.btn{appearance:none;border:1px solid var(--border);background:var(--surface);color:var(--text);font:inherit;font-weight:600;font-size:.88rem;padding:.6rem 1.1rem;border-radius:10px;cursor:pointer}
+.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+.btn:hover{filter:brightness(1.04)}
+
+/* toast */
+.toast{position:fixed;left:50%;bottom:1.4rem;transform:translateX(-50%) translateY(140%);background:var(--text);color:var(--bg);font-size:.86rem;font-weight:500;padding:.65rem 1.1rem;border-radius:999px;z-index:70;transition:transform .3s cubic-bezier(.2,.8,.2,1);box-shadow:var(--shadow-lg)}
+.toast.on{transform:translateX(-50%) translateY(0)}
+
+@media(max-width:560px){
+  .brand em{display:none}
+  .tab span.lbl{display:none}
+  .tab{padding:.45rem .55rem}
+  .hud .pill.acc{display:none}
+  .starters{grid-template-columns:1fr}
+  .grid4{grid-template-columns:1fr 1fr}
+  .mrow{grid-template-columns:88px 1fr 40px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="tricolore"><i></i><i></i><i></i></div>
+  <div class="bar">
+    <div class="brand"><b>fr<span>B1</span></b><em>affaires</em></div>
+    <nav class="tabs" id="tabs">
+      <button class="tab active" data-tab="levels"><span class="em">🛤️</span><span class="lbl">Camino</span></button>
+      <button class="tab" data-tab="flash"><span class="em">🃏</span><span class="lbl">Tarjetas</span></button>
+      <button class="tab" data-tab="challenge"><span class="em">⚔️</span><span class="lbl">Desafío</span></button>
+      <button class="tab" data-tab="train"><span class="em">🏋️</span><span class="lbl">Entrenar</span></button>
+      <button class="tab" data-tab="progress"><span class="em">📊</span><span class="lbl">Progreso</span></button>
+      <!-- Ocultadas en la versión móvil (necesitan IA/servidor): Diálogo, Llamada, Examen -->
+      <button class="tab" data-tab="dialogue" hidden><span class="em">💬</span><span class="lbl">Diálogo</span></button>
+      <button class="tab" data-tab="call" hidden><span class="em">📞</span><span class="lbl">Llamada</span></button>
+      <button class="tab" data-tab="exam" hidden><span class="em">🎓</span><span class="lbl">Examen</span></button>
+    </nav>
+    <div class="spacer"></div>
+    <div class="hud">
+      <button class="pill" id="speed-pill" title="Velocidad de la voz — clic para cambiar">🔊<b id="speed-val">0.9×</b></button>
+      <div class="pill flame" title="Racha actual">🔥<b id="hud-streak">0</b></div>
+      <div class="pill acc" title="Precisión">🎯<b id="hud-acc">—</b></div>
+      <button class="iconbtn" id="theme-btn" title="Tema claro/oscuro">🌙</button>
+      <button class="iconbtn" id="settings-btn" title="Ajustes">⚙️</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ FLASH ============ -->
+<section class="panel active" id="panel-flash">
+  <div class="head">
+    <h1>Tarjetas de <i>vocabulario</i></h1>
+    <p>Toca la tarjeta para girarla. Puntúa tu recuerdo — las difíciles vuelven antes.</p>
+  </div>
+  <div class="chips" id="flash-chips">
+    <button class="chip active" data-f="due">🔁 Repaso <small id="due-count"></small></button>
+    <button class="chip" data-f="all">Todas <small id="all-count"></small></button>
+    <button class="chip" data-f="hard">😰 Difíciles</button>
+    <button class="chip" data-f="1-50">1–50</button>
+    <button class="chip" data-f="51-100">51–100</button>
+    <button class="chip" data-f="101-145">Verbos+</button>
+    <button class="chip" data-f="146-175">Expresiones</button>
+    <button class="chip" data-f="grammar">Gramática</button>
+  </div>
+  <div class="dir-seg" id="dir-seg">
+    <span class="dir-label">Sentido</span>
+    <button data-dir="fr">🇫🇷→🇪🇸 Francés</button>
+    <button data-dir="es">🇪🇸→🇫🇷 Español</button>
+    <button data-dir="mix">🔀 Mixto</button>
+  </div>
+  <div class="trackline">
+    <div class="progress"><i id="flash-prog"></i></div>
+    <div class="counter" id="flash-counter">—</div>
+  </div>
+  <div class="stage">
+    <div class="fcard" id="fcard">
+      <div class="face front">
+        <div class="face-top"><span class="tag" id="fc-tag">vocab</span><span class="num" id="fc-num"></span></div>
+        <div class="fcenter">
+          <div class="word" id="fc-word">—</div>
+          <div class="article" id="fc-article"></div>
+          <button class="speak big" id="fc-speak" onclick="event.stopPropagation();speakCard()">🔊 Escuchar</button>
+        </div>
+        <div class="hint" style="margin:0">Toca para ver la respuesta</div>
+      </div>
+      <div class="face back">
+        <div class="face-top"><span class="tag g" id="fc-tag2">respuesta</span><span class="num" id="fc-num2"></span></div>
+        <div class="fcenter">
+          <div class="trans" id="fc-trans"></div>
+          <div class="example" id="fc-ex"></div>
+          <div class="say-row">
+            <button class="speak" onclick="event.stopPropagation();speakPhrase()">🔊 Frase</button>
+            <button class="speak mic" id="mic-btn" onclick="event.stopPropagation();practiceCard()">🎤 Practicar mi voz</button>
+          </div>
+        </div>
+        <div class="hint" style="margin:0">Puntúa abajo ↓</div>
+      </div>
+    </div>
+  </div>
+  <div class="check" id="check">
+    <input type="text" id="check-input" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Escribe la traducción en español…">
+    <button class="btn primary" id="check-btn">Comprobar</button>
+    <button class="btn" id="check-skip">No lo sé</button>
+  </div>
+  <div class="check-result" id="check-result"></div>
+  <div class="hint" id="flash-kbd">Escribe y pulsa <kbd>Enter</kbd> · o <kbd>Espacio</kbd> gira · <kbd>1</kbd>/<kbd>2</kbd>/<kbd>3</kbd> puntúa · <kbd>S</kbd> sonido</div>
+  <div class="rate hidden" id="rate">
+    <button class="rbtn hard" onclick="rateCard('hard')">😰 Difícil<small>vuelve pronto</small></button>
+    <button class="rbtn ok" onclick="rateCard('ok')">🤔 Regular<small>en 1 día</small></button>
+    <button class="rbtn easy" onclick="rateCard('easy')">✅ Fácil<small>la sé</small></button>
+  </div>
+  <div class="pron" id="pron"></div>
+  <div id="flash-done" style="display:none"></div>
+</section>
+
+<!-- ============ CHALLENGE ============ -->
+<section class="panel" id="panel-challenge">
+  <div class="head">
+    <h1>Modo <i>desafío</i></h1>
+    <p>Preguntas tipo examen. Cadena de aciertos = racha. Un fallo la reinicia.</p>
+  </div>
+  <div class="card">
+    <span class="badge" id="c-badge">…</span>
+    <div class="q" id="c-q">Cargando…</div>
+    <div class="opts" id="c-opts"></div>
+    <div class="fb" id="c-fb"></div>
+    <button class="nextbtn" id="c-next" onclick="nextChallenge()">Siguiente ejercicio →</button>
+  </div>
+</section>
+
+<!-- ============ DIALOGUE ============ -->
+<section class="panel" id="panel-dialogue">
+  <div class="head">
+    <h1>Juego de <i>rol</i></h1>
+    <p>Eres Phil. Elige la respuesta más profesional. Escucha cada frase con 🔊.</p>
+  </div>
+  <div class="chips" id="d-chips">
+    <button class="chip active" data-s="0">Accueil client</button>
+    <button class="chip" data-s="1">Réservation hôtel</button>
+    <button class="chip" data-s="2">Compte-rendu</button>
+  </div>
+  <div class="scene" id="d-scene"></div>
+  <div class="msgs" id="d-msgs"></div>
+  <div class="fb" id="d-fb"></div>
+  <div class="dopts" id="d-opts"></div>
+  <button class="nextbtn" id="d-next" onclick="advanceDialogue()">Continuar →</button>
+</section>
+
+<!-- ============ NIVELES ============ -->
+<section class="panel" id="panel-levels">
+  <div class="head">
+    <h1>El <i>camino</i></h1>
+    <p>De las bases a frases completas, paso a paso. Cada tema: primero ves francés y lo traduces, luego lo produces en francés, y lo pronuncias. Supera un nivel para desbloquear el siguiente — y repítelo cuando quieras.</p>
+  </div>
+  <div id="lv-map"></div>
+  <div id="lv-play" style="display:none">
+    <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:.9rem">
+      <button class="ghostbtn" onclick="quitLevel()">← Mapa</button>
+      <div class="progress" style="flex:1"><i id="lv-prog"></i></div>
+      <div class="counter" id="lv-counter">—</div>
+      <button class="ghostbtn" id="lv-skip" onclick="lvSkip()" title="Salta esta si no puedes hacerla (cuenta para acabar; volverá en los repasos)">Saltar ⏭</button>
+    </div>
+    <div id="lv-area"></div>
+  </div>
+</section>
+
+<!-- ============ TRAIN ============ -->
+<section class="panel" id="panel-train">
+  <div class="head">
+    <h1>Entrenamiento <i>para ti</i></h1>
+    <p>Sesión automática hecha con tus fallos: tarjetas difíciles, errores de quiz y frases que pronuncias flojo. Lo que falles vuelve a salir.</p>
+  </div>
+  <div class="trackline">
+    <div class="progress"><i id="t-prog"></i></div>
+    <div class="counter" id="t-counter">—</div>
+  </div>
+  <div id="t-area"></div>
+</section>
+
+<!-- ============ LLAMADA (conversación libre) ============ -->
+<section class="panel" id="panel-call">
+  <div class="head">
+    <h1>Llamada <i>en francés</i></h1>
+    <p>Hablamos de lo que quieras, como una llamada de teléfono. Te respondo con voz y te corrijo sin cortar la conversación.</p>
+  </div>
+  <div id="call-start">
+    <div class="card" style="text-align:center">
+      <div style="font-size:3rem">📞</div>
+      <div class="q" style="margin:.4rem 0 .2rem">¿Hablamos un rato?</div>
+      <div class="heard" style="color:var(--text2)">Yo empiezo y tú respondes hablando. Cuando termino de hablar, el micro se abre solo — como una llamada de verdad. Cada error que hagas te lo apunto abajo en español, y seguimos charlando.</div>
+      <button class="nextbtn show" id="call-begin" style="margin-top:1.2rem">📞 Empezar la llamada</button>
+      <div class="heard" style="color:var(--text3);margin-top:.6rem;font-size:.78rem">Necesita el servidor activo (voz + IA) y micrófono (Chrome/Edge).</div>
+    </div>
+  </div>
+  <div class="chat" id="call-chat"></div>
+  <div id="call-controls" style="display:none;text-align:center;position:sticky;bottom:.6rem">
+    <button class="callmic" id="call-mic" title="Pulsa para hablar / parar">🎤</button>
+    <div class="heard" id="call-state" style="margin-top:.45rem;color:var(--text2)">—</div>
+    <button class="ghostbtn" id="call-end" style="margin-top:.5rem">📴 Colgar</button>
+  </div>
+</section>
+
+<!-- ============ EXAM ============ -->
+<section class="panel" id="panel-exam">
+  <div class="head">
+    <h1>Simulacro de <i>examen</i></h1>
+    <p>Un examinador con IA te pone a prueba. Necesita conexión con Claude (mira Ajustes).</p>
+  </div>
+  <div class="starters" id="starters">
+    <button class="starter" data-ex="diagnostic"><div class="st-em">🎯</div><div class="st-t">Diagnóstico completo</div><div class="st-d">15 preguntas. Detecta tus puntos débiles exactos y te da nota /100.</div></button>
+    <button class="starter" data-ex="oral"><div class="st-em">🎙️</div><div class="st-t">Simulacro oral</div><div class="st-d">El examinador te hace preguntas. Respondes en francés (60% del examen).</div></button>
+    <button class="starter" data-ex="written"><div class="st-em">✍️</div><div class="st-t">Simulacro escrito</div><div class="st-d">Emails, huecos y transformaciones. La parte escrita (40%).</div></button>
+    <button class="starter" data-ex="vocab_blitz"><div class="st-em">⚡</div><div class="st-t">Blitz vocabulario</div><div class="st-d">20 palabras en 5 minutos. Con cronómetro real.</div></button>
+  </div>
+  <div class="exam-note" id="exam-note">Para usar el examen con IA, arranca el servidor con tu <code>ANTHROPIC_API_KEY</code> o pega tu clave en <a onclick="openSettings()">Ajustes ⚙️</a>.</div>
+
+  <div class="timerbar" id="timerbar"><span>⏱️</span><span class="t" id="timer">5:00</span><span style="color:var(--text3);font-size:.82rem">restantes</span><div class="spacer"></div><button class="ghostbtn" onclick="quitExam()">Salir</button></div>
+  <div class="chat" id="chat"></div>
+  <div class="inrow" id="inrow">
+    <button class="iconbtn" id="exam-mic" title="Responder hablando (dictado fr-FR)" style="flex:none">🎤</button>
+    <textarea id="exam-input" rows="1" placeholder="Réponds en français… (o pulsa 🎤 y habla)"></textarea>
+    <button class="send" id="exam-send" onclick="sendExam()">Envoyer</button>
+  </div>
+</section>
+
+<!-- ============ PROGRESS ============ -->
+<section class="panel" id="panel-progress">
+  <div class="head">
+    <h1>Tu <i>progreso</i></h1>
+    <p>Todo se guarda en tu navegador. Constancia > intensidad.</p>
+  </div>
+  <div class="grid4">
+    <div class="stat blue"><div class="v" id="p-xp">0</div><div class="l">XP total</div></div>
+    <div class="stat amber"><div class="v" id="p-streak">0</div><div class="l">Racha (récord <span id="p-best">0</span>)</div></div>
+    <div class="stat green"><div class="v" id="p-acc">—</div><div class="l">Precisión</div></div>
+    <div class="stat red"><div class="v" id="p-mastered">0</div><div class="l">Dominadas</div></div>
+  </div>
+
+  <div class="section-t">Dominio por bloque</div>
+  <div class="card"><div class="mastery" id="mastery"></div></div>
+
+  <div class="section-t">Autoevaluación escrita (¿lo sabes de memoria?)</div>
+  <div class="card" id="typed-card"></div>
+
+  <div class="section-t">Actividad (últimos 7 días)</div>
+  <div class="card"><div class="week" id="week"></div></div>
+
+  <div style="margin-top:1.3rem;display:flex;justify-content:flex-end">
+    <button class="dangerbtn" onclick="resetAll()">Reiniciar todo el progreso</button>
+  </div>
+</section>
+
+</main>
+
+<!-- settings modal -->
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <h3>Ajustes</h3>
+    <p>El modo Examen usa Claude. Si arrancaste <code>server.py</code> con tu <code>ANTHROPIC_API_KEY</code>, ya funciona. Si no, pega aquí tu clave (se guarda solo en este navegador).</p>
+    <div class="field">
+      <label>Clave API de Anthropic (opcional)</label>
+      <input type="password" id="set-key" placeholder="sk-ant-…" autocomplete="off">
+      <div class="help">Se envía directamente a Anthropic desde tu navegador. Nunca sale a ningún otro sitio.</div>
+    </div>
+    <div class="field">
+      <label>Modelo</label>
+      <select id="set-model">
+        <option value="claude-sonnet-5">Claude Sonnet 5 (recomendado)</option>
+        <option value="claude-opus-4-8">Claude Opus 4.8 (más exigente)</option>
+        <option value="claude-haiku-4-5-20251001">Claude Haiku 4.5 (rápido)</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Voz francesa 🔊</label>
+      <select id="set-voice"></select>
+      <div class="help">Las <b>neuronales</b> suenan como una persona real (se generan en tu servidor local, gratis). Las "del sistema" son el plan B si el servidor no está. ⚠️ Las <b>multilingües</b> (Vivienne, Rémy) detectan palabras tipo "Marketing" o "Budget" y las leen en inglés — para el examen usa una <b>francesa pura</b> (Denise, Eloise…), que pronuncia todo a la francesa.</div>
+    </div>
+    <div class="field">
+      <label>Velocidad — <b id="rate-val">0.90×</b></label>
+      <input type="range" id="set-rate" min="0.5" max="1.2" step="0.05" value="0.9" oninput="document.getElementById('rate-val').textContent=(+this.value).toFixed(2)+'×'">
+    </div>
+    <div class="field">
+      <label>Claridad / tono — <b id="pitch-val">1.00</b></label>
+      <input type="range" id="set-pitch" min="0.7" max="1.4" step="0.05" value="1" oninput="document.getElementById('pitch-val').textContent=(+this.value).toFixed(2)">
+      <div class="help">Baja un poco la velocidad y sube el tono para máxima claridad.</div>
+      <button class="btn" style="margin-top:.6rem" onclick="testVoice()">▶︎ Probar voz</button>
+    </div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeSettings()">Cancelar</button>
+      <button class="btn primary" onclick="saveSettings()">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* =========================================================
+   DATOS — 139 palabras + 15 gramática  (idénticos a tu base)
+   ========================================================= */
+const VOCAB = [
+  {n:1,w:"Affaires",g:"F",en:"Business / Negocios",ex:"M. Durand est un homme d'affaires.",cat:"1-50"},
+  {n:2,w:"Entreprise",g:"F",en:"Company / Empresa",ex:"Notre entreprise opère dans le secteur du commerce international.",cat:"1-50"},
+  {n:3,w:"Commerce",g:"M",en:"Trade / Comercio",ex:"Le commerce électronique connaît une croissance rapide.",cat:"1-50"},
+  {n:4,w:"Client",g:"M",en:"Client / Cliente",ex:"Nous avons de nombreux clients satisfaits de nos produits.",cat:"1-50"},
+  {n:5,w:"Fournisseur",g:"M",en:"Supplier / Proveedor",ex:"Nous travaillons en étroite collaboration avec nos fournisseurs.",cat:"1-50"},
+  {n:6,w:"Marché",g:"M",en:"Market / Mercado",ex:"Notre entreprise vise à conquérir de nouveaux marchés.",cat:"1-50"},
+  {n:7,w:"Produit",g:"M",en:"Product / Producto",ex:"Notre nouveau produit a été bien accueilli sur le marché.",cat:"1-50"},
+  {n:8,w:"Service",g:"M",en:"Service / Servicio",ex:"Nous offrons des services de haute qualité à nos clients.",cat:"1-50"},
+  {n:9,w:"Vente",g:"F",en:"Sale / Venta",ex:"La vente de ce produit a augmenté de manière significative.",cat:"1-50"},
+  {n:10,w:"Achat",g:"M",en:"Purchase / Compra",ex:"Nous devons effectuer un achat important pour notre projet.",cat:"1-50"},
+  {n:11,w:"Stratégie",g:"F",en:"Strategy / Estrategia",ex:"Nous élaborons une nouvelle stratégie pour notre expansion.",cat:"1-50"},
+  {n:12,w:"Marketing",g:"M",en:"Marketing / Marketing",ex:"Le marketing numérique est essentiel pour atteindre nos objectifs.",cat:"1-50"},
+  {n:13,w:"Publicité",g:"F",en:"Advertising / Publicidad",ex:"Notre campagne publicitaire a été un succès.",cat:"1-50"},
+  {n:14,w:"Budget",g:"M",en:"Budget / Presupuesto",ex:"Nous devons gérer efficacement notre budget pour assurer la rentabilité.",cat:"1-50"},
+  {n:15,w:"Rentabilité",g:"F",en:"Profitability / Rentabilidad",ex:"Nous devons gérer efficacement notre budget pour assurer la rentabilité.",cat:"1-50"},
+  {n:16,w:"Concurrence",g:"F",en:"Competition / Competencia",ex:"La concurrence dans notre secteur est féroce.",cat:"1-50"},
+  {n:17,w:"Partenaire",g:"M",en:"Partner / Socio",ex:"Nous recherchons des partenaires commerciaux fiables.",cat:"1-50"},
+  {n:18,w:"Gestion",g:"F",en:"Management / Gestión",ex:"La gestion efficace de notre équipe est cruciale pour notre succès.",cat:"1-50"},
+  {n:19,w:"Négociation",g:"F",en:"Negotiation / Negociación",ex:"Nous sommes en pleine négociation d'un nouveau contrat.",cat:"1-50"},
+  {n:20,w:"Contrat",g:"M",en:"Contract / Contrato",ex:"Nous sommes en pleine négociation d'un nouveau contrat.",cat:"1-50"},
+  {n:21,w:"Réunion",g:"F",en:"Meeting / Reunión",ex:"La réunion d'aujourd'hui est reportée à demain.",cat:"1-50"},
+  {n:22,w:"Présentation",g:"F",en:"Presentation / Presentación",ex:"Je vais préparer une présentation pour notre prochain événement.",cat:"1-50"},
+  {n:23,w:"Équipe",g:"F",en:"Team / Equipo",ex:"Notre équipe travaille en étroite collaboration pour atteindre nos objectifs.",cat:"1-50"},
+  {n:24,w:"Ressources humaines",g:"F",en:"Human Resources / RRHH",ex:"Le département des ressources humaines gère les processus de recrutement et de formation.",cat:"1-50"},
+  {n:25,w:"Logistique",g:"F",en:"Logistics / Logística",ex:"La logistique est essentielle pour assurer une livraison efficace de nos produits.",cat:"1-50"},
+  {n:26,w:"Finances",g:"F",en:"Finance / Finanzas",ex:"Notre directeur financier s'occupe de la gestion des finances de l'entreprise.",cat:"1-50"},
+  {n:27,w:"Facture",g:"F",en:"Invoice / Factura",ex:"Veuillez envoyer la facture à notre service comptable pour paiement.",cat:"1-50"},
+  {n:28,w:"Paiement",g:"M",en:"Payment / Pago",ex:"Nous acceptons les paiements par carte de crédit et par virement bancaire.",cat:"1-50"},
+  {n:29,w:"Crédit",g:"M",en:"Credit / Crédito",ex:"Nous offrons des options de crédit flexibles à nos clients.",cat:"1-50"},
+  {n:30,w:"Solde",g:"M",en:"Balance / Saldo",ex:"Veuillez vérifier le solde de votre compte avant de passer une nouvelle commande.",cat:"1-50"},
+  {n:31,w:"Investissement",g:"M",en:"Investment / Inversión",ex:"Nous avons effectué un investissement important dans l'expansion de nos activités.",cat:"1-50"},
+  {n:32,w:"Rentabilité",g:"F",en:"Return on Investment / Rentabilidad (ROI)",ex:"La rentabilité de notre entreprise est en augmentation constante.",cat:"1-50"},
+  {n:33,w:"Actionnaire",g:"M",en:"Shareholder / Accionista",ex:"Les actionnaires jouent un rôle clé dans la prise de décision de l'entreprise.",cat:"1-50"},
+  {n:34,w:"Économie",g:"F",en:"Economy / Economía",ex:"L'économie mondiale est soumise à de nombreux facteurs externes.",cat:"1-50"},
+  {n:35,w:"Croissance",g:"F",en:"Growth / Crecimiento",ex:"Nous sommes ravis de constater une croissance significative de nos ventes.",cat:"1-50"},
+  {n:36,w:"Développement",g:"M",en:"Development / Desarrollo",ex:"Nous investissons dans le développement de nouveaux produits et services.",cat:"1-50"},
+  {n:37,w:"Planification",g:"F",en:"Planning / Planificación",ex:"La planification stratégique est cruciale pour la réussite à long terme de notre entreprise.",cat:"1-50"},
+  {n:38,w:"Objectif",g:"M",en:"Objective / Objetivo",ex:"Notre objectif est d'augmenter notre part de marché de 10% cette année.",cat:"1-50"},
+  {n:39,w:"Analyse",g:"F",en:"Analysis / Análisis",ex:"Nous avons effectué une analyse approfondie du marché avant de lancer notre nouveau produit.",cat:"1-50"},
+  {n:40,w:"Rapport",g:"M",en:"Report / Informe",ex:"Veuillez préparer un rapport détaillé sur les résultats du projet.",cat:"1-50"},
+  {n:41,w:"Projet",g:"M",en:"Project / Proyecto",ex:"Notre équipe travaille sur un nouveau projet de recherche et développement.",cat:"1-50"},
+  {n:42,w:"Évaluation",g:"F",en:"Evaluation / Evaluación",ex:"L'évaluation des performances des employés est effectuée régulièrement pour favoriser l'amélioration continue.",cat:"1-50"},
+  {n:43,w:"Réussite",g:"F",en:"Success / Éxito",ex:"La réussite de notre projet est le fruit d'un travail d'équipe exceptionnel.",cat:"1-50"},
+  {n:44,w:"Échec",g:"M",en:"Failure / Fracaso",ex:"Malgré notre meilleur effort, le projet s'est soldé par un échec.",cat:"1-50"},
+  {n:45,w:"Département",g:"M",en:"Department / Departamento",ex:"Le département des ventes est chargé d'atteindre les objectifs de chiffre d'affaires.",cat:"1-50"},
+  {n:46,w:"Logiciel",g:"M",en:"Software / Programa",ex:"Nous utilisons un logiciel de gestion pour optimiser nos opérations.",cat:"1-50"},
+  {n:47,w:"Matériel",g:"M",en:"Hardware / Material",ex:"Notre entreprise fabrique du matériel informatique de haute qualité.",cat:"1-50"},
+  {n:48,w:"Stock",g:"M",en:"Inventory / Stock",ex:"Nous devons vérifier notre stock avant de passer de nouvelles commandes.",cat:"1-50"},
+  {n:49,w:"Promotion",g:"F",en:"Promotion / Promoción",ex:"Le responsable du marketing a lancé une promotion spéciale pour attirer de nouveaux clients.",cat:"1-50"},
+  {n:50,w:"Réseau",g:"M",en:"Network / Red",ex:"Nous avons établi un réseau de distribution à l'échelle nationale.",cat:"1-50"},
+  {n:51,w:"Exportation",g:"F",en:"Export / Exportación",ex:"Nous sommes spécialisés dans l'exportation de produits alimentaires.",cat:"51-100"},
+  {n:52,w:"Importation",g:"F",en:"Import / Importación",ex:"Nous importons des matériaux de haute qualité pour notre production.",cat:"51-100"},
+  {n:53,w:"Douane",g:"F",en:"Customs / Aduana",ex:"Le dédouanement des marchandises nécessite des procédures spécifiques.",cat:"51-100"},
+  {n:54,w:"Tarif",g:"M",en:"Tariff / Tarifa",ex:"Les tarifs douaniers peuvent varier en fonction des pays et des produits.",cat:"51-100"},
+  {n:55,w:"Incoterms",g:"M",en:"Incoterms / Incoterms",ex:"Les Incoterms définissent les responsabilités entre l'acheteur et le vendeur dans le commerce international.",cat:"51-100"},
+  {n:56,w:"Logistique internationale",g:"F",en:"International Logistics / Logística internacional",ex:"La logistique internationale implique la coordination de multiples opérations et acteurs.",cat:"51-100"},
+  {n:57,w:"Chaîne d'approvisionnement",g:"F",en:"Supply Chain / Cadena de suministro",ex:"La chaîne d'approvisionnement doit être optimisée pour assurer une livraison rapide.",cat:"51-100"},
+  {n:58,w:"Transport",g:"M",en:"Transportation / Transporte",ex:"Nous collaborons avec une entreprise de transport pour expédier nos produits.",cat:"51-100"},
+  {n:59,w:"Assurance",g:"F",en:"Insurance / Seguro",ex:"Nous souscrivons une assurance pour protéger nos marchandises pendant le transport.",cat:"51-100"},
+  {n:60,w:"Dédouanement",g:"M",en:"Clearance / Despacho de aduana",ex:"Le dédouanement des marchandises est une étape clé dans le processus d'importation.",cat:"51-100"},
+  {n:61,w:"Normes",g:"F",en:"Standards / Normas",ex:"Nous respectons les normes de qualité internationales dans notre production.",cat:"51-100"},
+  {n:62,w:"Licence",g:"F",en:"License / Licencia",ex:"Nous avons obtenu une licence pour exploiter notre logiciel.",cat:"51-100"},
+  {n:63,w:"Brevet",g:"M",en:"Patent / Patente",ex:"Nous avons déposé un brevet pour protéger notre nouvelle invention.",cat:"51-100"},
+  {n:64,w:"Marque",g:"F",en:"Brand / Marca",ex:"Notre marque est largement reconnue sur le marché.",cat:"51-100"},
+  {n:65,w:"Réputation",g:"F",en:"Reputation / Reputación",ex:"La réputation de notre entreprise repose sur notre engagement envers la satisfaction client.",cat:"51-100"},
+  {n:66,w:"Responsabilité sociale des entreprises",g:"F",en:"Corporate Social Responsibility / Responsabilidad social corporativa",ex:"La responsabilité sociale des entreprises est un élément essentiel de notre stratégie d'entreprise.",cat:"51-100"},
+  {n:67,w:"Secteur",g:"M",en:"Sector / Sector",ex:"Notre entreprise opère dans le secteur des technologies de l'information.",cat:"51-100"},
+  {n:68,w:"Distribution",g:"F",en:"Distribution / Distribución",ex:"La distribution de nos produits se fait à travers un réseau de revendeurs agréés.",cat:"51-100"},
+  {n:69,w:"E-commerce",g:"M",en:"E-commerce / Comercio electrónico",ex:"Nous avons développé une plateforme d'e-commerce pour faciliter les ventes en ligne.",cat:"51-100"},
+  {n:70,w:"Commerce de détail",g:"M",en:"Retail / Comercio al por menor",ex:"Notre entreprise se spécialise dans le commerce de détail de vêtements de luxe.",cat:"51-100"},
+  {n:71,w:"Commerce de gros",g:"M",en:"Wholesale / Comercio al por mayor",ex:"Nous fournissons des produits en gros aux détaillants de la région.",cat:"51-100"},
+  {n:72,w:"Commerce électronique",g:"M",en:"Electronic Commerce / Comercio electrónico",ex:"Le commerce électronique est devenu un canal de vente majeur dans notre industrie.",cat:"51-100"},
+  {n:73,w:"Marketing numérique",g:"M",en:"Digital Marketing / Marketing digital",ex:"Nous investissons dans le marketing numérique pour atteindre notre public cible.",cat:"51-100"},
+  {n:74,w:"Campagne publicitaire",g:"F",en:"Advertising Campaign / Campaña publicitaria",ex:"Notre campagne publicitaire a généré une augmentation significative des ventes.",cat:"51-100"},
+  {n:75,w:"Analyse de marché",g:"F",en:"Market Analysis / Análisis de mercado",ex:"Nous effectuons régulièrement des analyses de marché pour identifier les tendances émergentes.",cat:"51-100"},
+  {n:76,w:"Segment de marché",g:"M",en:"Market Segment / Segmento de mercado",ex:"Nous avons identifié un nouveau segment de marché avec un fort potentiel de croissance.",cat:"51-100"},
+  {n:77,w:"Positionnement",g:"M",en:"Positioning / Posicionamiento",ex:"Le positionnement de notre produit est axé sur la qualité et l'innovation.",cat:"51-100"},
+  {n:78,w:"Plan marketing",g:"M",en:"Marketing Plan / Plan de marketing",ex:"Notre plan marketing comprend des actions promotionnelles et publicitaires ciblées.",cat:"51-100"},
+  {n:79,w:"Étude de marché",g:"F",en:"Market Research / Estudio de mercado",ex:"Proximus a réalisé une étude de marché approfondie avant de lancer notre nouveau produit.",cat:"51-100"},
+  {n:80,w:"Marque de fabrique",g:"F",en:"Trademark / Marca registrada",ex:"Notre marque de fabrique est reconnue pour son design unique et sa durabilité.",cat:"51-100"},
+  {n:81,w:"Revenu",g:"M",en:"Revenue / Ingresos",ex:"Nous avons enregistré une augmentation significative de notre revenu au cours de l'année dernière.",cat:"51-100"},
+  {n:82,w:"Coût",g:"M",en:"Cost / Coste",ex:"Nous cherchons à réduire les coûts de production pour améliorer notre rentabilité.",cat:"51-100"},
+  {n:83,w:"Taux de change",g:"M",en:"Exchange Rate / Tipo de cambio",ex:"Les fluctuations des taux de change peuvent avoir un impact sur nos résultats financiers.",cat:"51-100"},
+  {n:84,w:"Bilan",g:"M",en:"Balance Sheet / Balance",ex:"Nous établissons régulièrement un bilan pour évaluer notre situation financière.",cat:"51-100"},
+  {n:85,w:"Comptabilité",g:"F",en:"Accounting / Contabilidad",ex:"Notre service de comptabilité veille à la précision et à la conformité de nos données financières.",cat:"51-100"},
+  {n:86,w:"Audit",g:"M",en:"Audit / Auditoría",ex:"Nous effectuons un audit annuel pour garantir la transparence de nos opérations.",cat:"51-100"},
+  {n:87,w:"Plan d'affaires",g:"M",en:"Business Plan / Plan de negocios",ex:"Notre plan d'affaires détaille nos objectifs, nos stratégies et nos projections financières.",cat:"51-100"},
+  {n:88,w:"Capital",g:"M",en:"Capital / Capital",ex:"Nous recherchons des investisseurs pour soutenir notre croissance et notre expansion.",cat:"51-100"},
+  {n:89,w:"Actif",g:"M",en:"Asset / Activo",ex:"Les actifs de notre entreprise comprennent des propriétés, des équipements et des brevets.",cat:"51-100"},
+  {n:90,w:"Passif",g:"M",en:"Liability / Pasivo",ex:"Nous avons identifié les passifs de l'entreprise et nous prenons des mesures pour les gérer efficacement.",cat:"51-100"},
+  {n:91,w:"Prêt",g:"M",en:"Loan / Préstamo",ex:"Nous avons obtenu un prêt bancaire pour financer notre projet de développement.",cat:"51-100"},
+  {n:92,w:"Ressources financières",g:"F",en:"Financial Resources / Recursos financieros",ex:"Nous disposons de ressources financières suffisantes pour mener à bien notre expansion.",cat:"51-100"},
+  {n:93,w:"Budget prévisionnel",g:"M",en:"Budget Forecast / Presupuesto previsional",ex:"Notre budget prévisionnel pour l'année prochaine est basé sur nos objectifs de croissance.",cat:"51-100"},
+  {n:94,w:"Impôt",g:"M",en:"Tax / Impuesto",ex:"Nous devons tenir compte des impôts dans notre planification financière.",cat:"51-100"},
+  {n:95,w:"Subvention",g:"F",en:"Grant / Subvención",ex:"Cet entreprise a reçu une subvention gouvernementale pour soutenir notre projet de recherche.",cat:"51-100"},
+  {n:96,w:"Banque",g:"F",en:"Bank / Banco",ex:"Nous avons un compte bancaire auprès d'une institution financière réputée.",cat:"51-100"},
+  {n:97,w:"Crédit commercial",g:"M",en:"Trade Credit / Crédito comercial",ex:"Nous proposons des solutions de crédit commercial à nos clients pour faciliter leurs achats.",cat:"51-100"},
+  {n:98,w:"Marché financier",g:"M",en:"Financial Market / Mercado financiero",ex:"Le marché financier offre divers instruments d'investissement, tels que les actions et les obligations.",cat:"51-100"},
+  {n:99,w:"Investisseur",g:"M",en:"Investor / Inversor",ex:"Nous recherchons des investisseurs potentiels pour soutenir notre expansion internationale.",cat:"51-100"},
+  {n:100,w:"Opération financière",g:"F",en:"Financial Transaction / Operación financiera",ex:"Nous effectuons régulièrement des opérations financières pour gérer nos flux de trésorerie.",cat:"51-100"},
+  {n:101,w:"Coopération",g:"F",en:"Cooperation / Cooperación",ex:"La coopération entre les différents départements est essentielle pour atteindre nos objectifs.",cat:"101-145"},
+  {n:102,w:"Fusion",g:"F",en:"Merger / Fusión",ex:"Nous envisageons une fusion avec une autre entreprise pour renforcer notre position sur le marché.",cat:"101-145"},
+  {n:103,w:"Acquisition",g:"F",en:"Acquisition / Adquisición",ex:"Nous avons réalisé une acquisition stratégique pour étendre notre présence géographique.",cat:"101-145"},
+  {n:104,w:"Joint-venture",g:"F",en:"Joint Venture / Joint venture",ex:"Nous avons formé une joint-venture avec une entreprise locale pour pénétrer un nouveau marché.",cat:"101-145"},
+  {n:105,w:"Partenariat",g:"M",en:"Partnership / Asociación",ex:"Nous cherchons des partenariats stratégiques pour développer de nouveaux produits.",cat:"101-145"},
+  {n:106,w:"Contrat de travail",g:"M",en:"Employment Contract / Contrato laboral",ex:"Tous les employés doivent signer un contrat de travail avant de rejoindre l'entreprise.",cat:"101-145"},
+  {n:107,w:"Salaire",g:"M",en:"Salary / Salario",ex:"Le salaire est versé mensuellement à tous les employés de l'entreprise.",cat:"101-145"},
+  {n:108,w:"Recrutement",g:"M",en:"Recruitment / Reclutamiento",ex:"Nous avons lancé un processus de recrutement pour pourvoir de nouveaux postes vacants.",cat:"101-145"},
+  {n:109,w:"Formation",g:"F",en:"Training / Formación",ex:"Nous accordons une grande importance à la formation continue de nos employés.",cat:"101-145"},
+  {n:110,w:"Évaluation des performances",g:"F",en:"Performance Evaluation / Evaluación del desempeño",ex:"L'évaluation des performances est un outil clé pour identifier les forces et les faiblesses de notre équipe.",cat:"101-145"},
+  {n:111,w:"Avantage social",g:"M",en:"Employee Benefit / Beneficio social",ex:"Nous offrons des avantages sociaux attractifs pour attirer et fidéliser nos employés.",cat:"101-145"},
+  {n:112,w:"Réduction des coûts",g:"F",en:"Cost Reduction / Reducción de costes",ex:"Nous avons mis en place des mesures de réduction des coûts pour améliorer notre rentabilité.",cat:"101-145"},
+  {n:113,w:"Productivité",g:"F",en:"Productivity / Productividad",ex:"Nous visons à augmenter notre productivité grâce à l'automatisation des processus.",cat:"101-145"},
+  {n:114,w:"Gestion du temps",g:"F",en:"Time Management / Gestión del tiempo",ex:"La gestion du temps efficace est cruciale pour respecter les délais de livraison.",cat:"101-145"},
+  {n:115,w:"Motivation",g:"F",en:"Motivation / Motivación",ex:"Nous cherchons à maintenir la motivation de nos employés en offrant des opportunités de développement.",cat:"101-145"},
+  {n:116,w:"Gérer",g:null,en:"To manage / Gestionar",ex:"Nous gérons efficacement nos opérations pour assurer le bon fonctionnement de l'entreprise.",cat:"101-145"},
+  {n:117,w:"Acheter",g:null,en:"To buy / Comprar",ex:"Nous devons acheter de nouveaux équipements pour améliorer notre production.",cat:"101-145"},
+  {n:118,w:"Vendre",g:null,en:"To sell / Vender",ex:"Notre équipe de vente se concentre sur la vente de nos produits aux clients.",cat:"101-145"},
+  {n:119,w:"Négocier",g:null,en:"To negotiate / Negociar",ex:"Nous négocions avec nos fournisseurs pour obtenir les meilleures conditions.",cat:"101-145"},
+  {n:120,w:"Établir",g:null,en:"To establish / Establecer",ex:"Vous avez établi des partenariats solides avec des entreprises du secteur.",cat:"101-145"},
+  {n:121,w:"Développer",g:null,en:"To develop / Desarrollar",ex:"Nous développons de nouveaux produits pour répondre aux besoins du marché.",cat:"101-145"},
+  {n:122,w:"Mettre en œuvre",g:null,en:"To implement / Poner en marcha",ex:"Nous mettons en œuvre des stratégies de marketing pour promouvoir nos produits.",cat:"101-145"},
+  {n:123,w:"Coordonner",g:null,en:"To coordinate / Coordinar",ex:"Nous coordonnons les efforts de différentes équipes pour atteindre nos objectifs.",cat:"101-145"},
+  {n:124,w:"Promouvoir",g:null,en:"To promote / Promover",ex:"Nous promouvons notre marque à travers des campagnes publicitaires.",cat:"101-145"},
+  {n:125,w:"Lancer",g:null,en:"To launch / Lanzar",ex:"Nous lançons un nouveau produit sur le marché dans les prochaines semaines.",cat:"101-145"},
+  {n:126,w:"Analyser",g:null,en:"To analyze / Analizar",ex:"Nous analysons les données du marché pour prendre des décisions éclairées.",cat:"101-145"},
+  {n:127,w:"Évaluer",g:null,en:"To evaluate / Evaluar",ex:"Nous évaluons régulièrement nos performances pour identifier les domaines d'amélioration.",cat:"101-145"},
+  {n:128,w:"Planifier",g:null,en:"To plan / Planificar",ex:"Nous planifions nos activités pour optimiser notre efficacité opérationnelle.",cat:"101-145"},
+  {n:129,w:"Réviser",g:null,en:"To revise / Revisar",ex:"Nous révisons constamment nos processus pour les améliorer en continu.",cat:"101-145"},
+  {n:130,w:"Communiquer",g:null,en:"To communicate / Comunicar",ex:"Nous communiquons avec nos clients pour répondre à leurs besoins et à leurs préoccupations.",cat:"101-145"},
+  {n:131,w:"Rédiger",g:null,en:"To draft / Redactar",ex:"On rédige des rapports détaillés sur nos activités et nos résultats.",cat:"101-145"},
+  {n:132,w:"Présenter",g:null,en:"To present / Presentar",ex:"Nous présentons nos projets lors de réunions avec les parties prenantes.",cat:"101-145"},
+  {n:133,w:"Convaincre",g:null,en:"To convince / Convencer",ex:"Nous cherchons à convaincre nos clients des avantages de nos produits.",cat:"101-145"},
+  {n:134,w:"Rencontrer",g:null,en:"To meet / Reunirse con",ex:"Nous rencontrons régulièrement nos partenaires pour discuter de nos collaborations.",cat:"101-145"},
+  {n:135,w:"Suivre",g:null,en:"To follow / Seguir",ex:"Ils suivent de près les tendances du marché pour rester compétitifs.",cat:"101-145"},
+  {n:136,w:"Collaborer",g:null,en:"To collaborate / Colaborar",ex:"Nous avons collaboré avec une entreprise concurrente pour développer un nouveau produit.",cat:"101-145"},
+  {n:137,w:"Diriger",g:null,en:"To lead / Dirigir",ex:"Elle a dirigé avec succès l'équipe pendant toute la durée du projet.",cat:"101-145"},
+  {n:138,w:"Innover",g:null,en:"To innovate / Innovar",ex:"L'entreprise a innové en lançant une nouvelle gamme de produits révolutionnaires.",cat:"101-145"},
+  {n:139,w:"Adapter",g:null,en:"To adapt / Adaptar",ex:"Nous avons adapté nos stratégies pour répondre aux changements du marché.",cat:"101-145"},
+  {n:140,w:"Investir",g:null,en:"To invest / Invertir",ex:"Ils ont investi dans de nouvelles technologies pour améliorer leur production.",cat:"101-145"},
+  {n:141,w:"Recruter",g:null,en:"To recruit / Reclutar",ex:"Nous avons recruté de nouveaux talents pour renforcer notre équipe.",cat:"101-145"},
+  {n:142,w:"Former",g:null,en:"To train / Formar",ex:"L'entreprise a formé ses employés pour qu'ils puissent maîtriser les nouvelles compétences.",cat:"101-145"},
+  {n:143,w:"Établir des partenariats",g:null,en:"To establish partnerships / Establecer alianzas",ex:"Nous avons établi des partenariats stratégiques avec des leaders de l'industrie.",cat:"101-145"},
+  {n:144,w:"Satisfaire",g:null,en:"To satisfy / Satisfacer",ex:"Notre priorité est de satisfaire pleinement nos clients avec des produits de qualité.",cat:"101-145"},
+  {n:145,w:"Fidéliser",g:null,en:"To retain / Fidelizar",ex:"Nous avons mis en place des programmes de fidélisation pour récompenser nos clients fidèles.",cat:"101-145"},
+  {n:146,w:"Être à la tête de",g:null,en:"To be at the head of / Estar al frente de",ex:"Il a été à la tête de l'entreprise pendant plus de dix ans.",cat:"146-175"},
+  {n:147,w:"Atteindre les objectifs",g:null,en:"To achieve the objectives / Alcanzar los objetivos",ex:"Nous avons atteint les objectifs fixés pour ce trimestre.",cat:"146-175"},
+  {n:148,w:"Établir des relations d'affaires",g:null,en:"To establish business relationships / Establecer relaciones de negocio",ex:"Nous avons établi des relations d'affaires solides avec des partenaires internationaux.",cat:"146-175"},
+  {n:149,w:"Faire des affaires",g:null,en:"To do business / Hacer negocios",ex:"Notre entreprise fait des affaires dans le secteur de la technologie.",cat:"146-175"},
+  {n:150,w:"Prendre des décisions stratégiques",g:null,en:"To make strategic decisions / Tomar decisiones estratégicas",ex:"Nous prenons des décisions stratégiques pour orienter notre croissance.",cat:"146-175"},
+  {n:151,w:"Élaborer un plan d'action",g:null,en:"To develop an action plan / Elaborar un plan de acción",ex:"Nous avons élaboré un plan d'action détaillé pour atteindre nos objectifs.",cat:"146-175"},
+  {n:152,w:"Conclure un accord",g:null,en:"To reach an agreement / Cerrar un acuerdo",ex:"Nous avons conclu un accord de partenariat avec une entreprise concurrente.",cat:"146-175"},
+  {n:153,w:"Assurer le suivi des clients",g:null,en:"To follow up with clients / Hacer el seguimiento de los clientes",ex:"Le service après-vente assure le suivi de nos clients pour garantir leur satisfaction.",cat:"146-175"},
+  {n:154,w:"Assurer la rentabilité",g:null,en:"To ensure profitability / Garantizar la rentabilidad",ex:"Notre priorité est d'assurer la rentabilité de nos opérations.",cat:"146-175"},
+  {n:155,w:"Mettre en place des mesures préventives",g:null,en:"To implement preventive measures / Implantar medidas preventivas",ex:"Nous avons mis en place des mesures préventives pour éviter les problèmes futurs.",cat:"146-175"},
+  {n:156,w:"Faire face à la concurrence",g:null,en:"To face competition / Hacer frente a la competencia",ex:"Nous devons faire face à une concurrence féroce sur le marché.",cat:"146-175"},
+  {n:157,w:"Établir des normes de qualité",g:null,en:"To establish quality standards / Establecer normas de calidad",ex:"Nous avons établi des normes de qualité strictes pour nos produits.",cat:"146-175"},
+  {n:158,w:"Augmenter la part de marché",g:null,en:"To increase market share / Aumentar la cuota de mercado",ex:"Notre objectif est d'augmenter notre part de marché dans la région.",cat:"146-175"},
+  {n:159,w:"Optimiser les processus",g:null,en:"To optimize processes / Optimizar los procesos",ex:"Nous optimisons nos processus pour améliorer notre efficacité opérationnelle.",cat:"146-175"},
+  {n:160,w:"Assurer la conformité réglementaire",g:null,en:"To ensure regulatory compliance / Garantizar el cumplimiento normativo",ex:"Nous nous assurons de respecter la conformité réglementaire dans toutes nos activités.",cat:"146-175"},
+  {n:161,w:"Saisir les opportunités",g:null,en:"To seize opportunities / Aprovechar las oportunidades",ex:"Nous saisissons les opportunités qui se présentent sur le marché.",cat:"146-175"},
+  {n:162,w:"Élargir la gamme de produits",g:null,en:"To expand the product range / Ampliar la gama",ex:"Nos  magasins élargissent constamment leur gamme de produits pour répondre aux besoins des clients.",cat:"146-175"},
+  {n:163,w:"Réduire les coûts opérationnels",g:null,en:"To reduce operational costs / Reducir los costes operativos",ex:"Nous cherchons à réduire les coûts opérationnels pour améliorer notre rentabilité.",cat:"146-175"},
+  {n:164,w:"Accroître la visibilité de la marque",g:null,en:"To enhance brand visibility / Aumentar la visibilidad de la marca",ex:"Nous travaillons à accroître la visibilité de notre marque à l'échelle nationale.",cat:"146-175"},
+  {n:165,w:"Adapter la stratégie aux besoins du marché",g:null,en:"To adapt the strategy to market needs / Adaptar la estrategia al mercado",ex:"Nous adaptons notre stratégie en fonction des besoins changeants du marché.",cat:"146-175"},
+  {n:166,w:"Suivre les tendances du marché",g:null,en:"To follow market trends / Seguir las tendencias",ex:"Notre équipe suit de près les tendances du marché pour rester compétitifs.",cat:"146-175"},
+  {n:167,w:"Trouver des solutions innovantes",g:null,en:"To find innovative solutions / Encontrar soluciones innovadoras",ex:"Nous recherchons constamment des solutions innovantes pour nos clients.",cat:"146-175"},
+  {n:168,w:"Mettre en œuvre des campagnes publicitaires",g:null,en:"To implement advertising campaigns / Ejecutar campañas publicitarias",ex:"Nous mettons en œuvre des campagnes publicitaires pour promouvoir nos produits.",cat:"146-175"},
+  {n:169,w:"Assurer un service clientèle de qualité",g:null,en:"To provide quality customer service / Garantizar un servicio al cliente de calidad",ex:"Nous nous engageons à assurer un service clientèle de qualité supérieure.",cat:"146-175"},
+  {n:170,w:"Faire face aux défis économiques",g:null,en:"To tackle economic challenges / Afrontar los retos económicos",ex:"La société fait face aux défis économiques actuels avec résilience.",cat:"146-175"},
+  {n:171,w:"Identifier de nouvelles opportunités d'affaires",g:null,en:"To identify new business opportunities / Identificar nuevas oportunidades de negocio",ex:"Nous sommes constamment à la recherche de nouvelles opportunités d'affaires.",cat:"146-175"},
+  {n:172,w:"Assurer la satisfaction des clients",g:null,en:"To ensure customer satisfaction / Garantizar la satisfacción",ex:"Nous nous efforçons d'assurer la satisfaction totale de nos clients.",cat:"146-175"},
+  {n:173,w:"Établir des objectifs SMART",g:null,en:"Specific, Measurable, Achievable, Relevant, Time-bound / Fijar objetivos SMART",ex:"Le responsable a établi des objectifs SMART pour mesurer notre progression.",cat:"146-175"},
+  {n:174,w:"Respecter les délais",g:null,en:"To meet deadlines / Cumplir los plazos",ex:"Nous nous efforçons de respecter les délais convenus avec nos clients.",cat:"146-175"},
+  {n:175,w:"Maintenir des relations durables avec les clients",g:null,en:"To maintain long-term relationships with clients / Mantener relaciones duraderas con los clientes",ex:"Nous entretenons des relations durables avec nos clients pour favoriser la fidélité.",cat:"146-175"},
+];
+
+const GRAMMAR = [
+  {w:"plus … que",g:null,en:"more … than (comparatif +)",ex:"Elle est plus grande que lui.",cat:"grammar"},
+  {w:"moins … que",g:null,en:"less … than (comparatif −)",ex:"Il est moins grand qu'elle.",cat:"grammar"},
+  {w:"aussi … que",g:null,en:"as … as (comparatif =)",ex:"Ils sont aussi grands que leurs amis.",cat:"grammar"},
+  {w:"autant de … que",g:null,en:"as much/many … as (quantité =)",ex:"Nous avons autant de travail qu'eux.",cat:"grammar"},
+  {w:"meilleur(e) que",g:null,en:"better than — adjectif BON irregular",ex:"Ce produit est meilleur que l'autre.",cat:"grammar"},
+  {w:"mieux que",g:null,en:"better than — adverbe BIEN irregular",ex:"Il parle mieux que moi.",cat:"grammar"},
+  {w:"pire que",g:null,en:"worse than — MAUVAIS irregular",ex:"Ce résultat est pire que prévu.",cat:"grammar"},
+  {w:"le/la plus … (de)",g:null,en:"the most … (superlatif +)",ex:"Elle est la plus grande de la ville.",cat:"grammar"},
+  {w:"le/la moins … (de)",g:null,en:"the least … (superlatif −)",ex:"Ce sont les cours les moins intéressants.",cat:"grammar"},
+  {w:"le meilleur / la meilleure",g:null,en:"the best — superlatif de BON",ex:"C'est le meilleur produit du marché.",cat:"grammar"},
+  {w:"le mieux",g:null,en:"the best — superlatif de BIEN",ex:"C'est lui qui travaille le mieux.",cat:"grammar"},
+  {w:"COI → lui (sing.)",g:null,en:"à lui / à elle → lui (pronom COI singular)",ex:"Je parle à Marie → Je lui parle.",cat:"grammar"},
+  {w:"COI → leur (plur.)",g:null,en:"à eux / à elles → leur (pronom COI plural)",ex:"Je parle à mes collègues → Je leur parle.",cat:"grammar"},
+  {w:"Impératif affirmatif + COI",g:null,en:"tras el imperativo afirmativo: Parle-lui !",ex:"Donne les clés à Jean → Donne-lui les clés.",cat:"grammar"},
+  {w:"adjectif → adverbe (-ment)",g:null,en:"adjetivo femenino + -ment = adverbio",ex:"rapide → rapidement / lent → lentement / évident → évidemment",cat:"grammar"},
+];
+
+const HARDCODED_CHALLENGES = [
+  {type:"Rellena el hueco",q:"Notre _____ doit faire face à une concurrence féroce sur le marché.",opts:["entreprise","contrat","facture","marché"],ans:0,exp:"'Entreprise' (empresa, fem.) es el sujeto. 'Marché' sería lógico pero no encaja gramaticalmente aquí.",tip:"entreprise = siempre femenino. 'Notre entreprise'."},
+  {type:"Comparatif irregular",q:"Ce résultat est _____ que prévu. (mauvais →)",opts:["plus mauvais","pire","moins bon","aussi mauvais"],ans:1,exp:"MAUVAIS es irregular en comparativo: 'pire'. 'Plus mauvais' existe pero es mucho menos idiomático.",tip:"Irregulares: bon→meilleur, bien→mieux, mauvais→pire."},
+  {type:"Pronom COI",q:"Nous devons présenter ce projet à nos directeurs. → Nous _____ devons présenter ce projet.",opts:["les","lui","leur","nous"],ans:2,exp:"'à nos directeurs' = varios → pronom COI LEUR. 'Lui' sería solo para una persona.",tip:"¿Uno o varios? lui (sing.) / leur (plur.)."},
+  {type:"Vocabulario inverso",q:"¿Cómo se dice 'patente' en francés?",opts:["la licence","le brevet","la marque","la norme"],ans:1,exp:"Un brevet protège une invention. La licence = la licencia. La marque = la marca.",tip:"Brevet — un documento oficial que protege un invento."},
+  {type:"Rellena el hueco",q:"L'entreprise a déposé un _____ pour protéger son invention.",opts:["marque","norme","brevet","licence"],ans:2,exp:"Déposer un brevet = registrar una patente. Expresión fija del examen.",tip:"'Déposer' + brevet/marque = registrar."},
+  {type:"Superlatif",q:"Elle est _____ grande de la ville. (superlatif)",opts:["la plus","le plus","plus","la meilleure"],ans:0,exp:"Superlatif féminin: LA plus + adjectif. 'La meilleure' solo con BON/BIEN.",tip:"Acuerdo de género: la plus grande / le plus grand."},
+  {type:"Expresión profesional",q:"Notre société cherche à _____ en Asie.",opts:["augmenter la part de marché","faire face à la concurrence","assurer le suivi","conclure un audit"],ans:0,exp:"'Augmenter la part de marché' = aumentar la cuota de mercado. Expresión clave del examen.",tip:"Part de marché = cuota de mercado (fém.)."},
+  {type:"COI — Impératif",q:"Donne les clés à Jean ! → _____",opts:["Donne-le !","Donne-lui !","Lui donne !","Donne-leur !"],ans:1,exp:"Impératif affirmatif: pronom DESPUÉS con guion. À Jean (sing.) → lui.",tip:"Solo en imperativo afirmativo va DESPUÉS. En el resto, ANTES."},
+  {type:"Vocabulario — género",q:"¿Cuál es el artículo correcto?  _____ négociation",opts:["le","la","un","du"],ans:1,exp:"Négociation es FEMENINO: la négociation. Los sustantivos en -tion son femeninos.",tip:"Todo lo que acaba en -tion/-sion es femenino: la promotion, la présentation."},
+  {type:"Rellena el hueco",q:"Le responsable a _____ des objectifs SMART pour mesurer notre progression.",opts:["lancé","établi","géré","suivi"],ans:1,exp:"'Établir des objectifs SMART' es la expresión del examen. Établir = establecer.",tip:"Établir des normes, des objectifs, des relations."},
+  {type:"Adjectif → adverbe",q:"L'entreprise a réagi _____ (rapide) à la crise.",opts:["rapidement","rapidment","rapide","rapidemment"],ans:0,exp:"rapide → rapidement. Si el adjetivo ya acaba en -e, solo añades -ment.",tip:"rapide → rapidement ✓ (nada de -mment aquí)."},
+  {type:"Vocabulario — contexto",q:"Phil doit faire le _____ à la directrice après la visite du client.",opts:["bilan","compte-rendu","rapport","audit"],ans:1,exp:"Le compte-rendu es el informe de lo sucedido, típico en contexto profesional. Diálogo 5 del examen.",tip:"'Je rends compte' → compte-rendu."},
+];
+
+const SCENES = [
+  {title:"Accueil client",scene:"Situación: Eres Phil. La directrice te llama a su despacho. Responde de forma profesional en francés.",steps:[
+    {speaker:"La Directrice",line:"Phil, vous pouvez passer dans mon bureau, s'il vous plaît ?",opts:[
+      {text:"J'arrive tout de suite.",correct:true,fb:"Parfait — respuesta natural e inmediata. Exactamente lo que dice Phil en el diálogo original."},
+      {text:"Oui, bien sûr, je viendrai dans un instant.",correct:true,fb:"Correcto y educado, aunque 'J'arrive tout de suite' es más natural aquí."},
+      {text:"Pourquoi ? Je suis occupé en ce moment.",correct:false,fb:"Inadecuado en contexto profesional. Nunca cuestionas así a tu superiora. Mejor: 'J'arrive tout de suite !'"}]},
+    {speaker:"La Directrice",line:"J'ai une mission importante à vous confier. Vous savez que notre client japonais nous rend visite la semaine prochaine ?",opts:[
+      {text:"Oui, le directeur de Suzuki Corporation.",correct:true,fb:"Bien — demuestras que estás al corriente. Fórmula natural."},
+      {text:"Non, je ne savais pas.",correct:false,fb:"Funciona pero pierdes la ocasión de mostrar profesionalidad. Phil dice 'Oui, le directeur de Suzuki Corporation.'"},
+      {text:"Entendu. Que dois-je faire exactement ?",correct:true,fb:"Muy profesional. 'Entendu' = entendido, y preguntas con 'que dois-je faire', perfecto B1."}]},
+    {speaker:"La Directrice",line:"Vous allez vous occuper de l'organisation de son séjour. Il arrive le 15 et repart le 18.",opts:[
+      {text:"Entendu. Je vous envoie le programme dès qu'il est prêt.",correct:true,fb:"PERFECTO — frase literal del examen. 'Dès que' (tan pronto como) es B1 muy valorado."},
+      {text:"D'accord, mais je ne suis pas sûr de pouvoir tout organiser.",correct:false,fb:"Dudas sin necesidad. Acepta con confianza y luego pide aclaraciones si hace falta."},
+      {text:"Bien, je m'en occupe. Pour combien de nuits exactement ?",correct:true,fb:"Bien — aceptas y pides confirmación. 'Je m'en occupe' es muy francés."}]}
+  ]},
+  {title:"Réservation hôtel",scene:"Situación: Eres Phil y llamas al hotel para reservar una habitación para el Sr. Suzuki, cliente japonés de la empresa.",steps:[
+    {speaker:"Réceptionniste",line:"Hôtel Meurice, bonjour, que puis-je faire pour vous ?",opts:[
+      {text:"Bonjour, je voudrais faire une réservation pour un client, s'il vous plaît.",correct:true,fb:"Perfecto — 'je voudrais' (condicional) es más educado que 'je veux'."},
+      {text:"Bonjour, j'ai besoin d'une chambre.",correct:false,fb:"Funciona pero muy directo. En francés formal, 'je voudrais' es la norma."},
+      {text:"Bonjour Madame, je vous appelle pour effectuer une réservation au nom de la société Suzuki Corporation.",correct:true,fb:"Excelente — muy profesional. 'Je vous appelle pour' + infinitif es B1 perfecto."}]},
+    {speaker:"Réceptionniste",line:"Bien sûr. Pour combien de nuits et quel type de chambre souhaitez-vous ?",opts:[
+      {text:"Pour 2 nuits. Mon client aimerait une chambre supérieure avec bain.",correct:true,fb:"Correcto — especificas todo: duración, tipo, extras. 'Aimerait' (condicional) es educado."},
+      {text:"2 nuits, la meilleure chambre disponible.",correct:false,fb:"'La meilleure chambre' es vago. Debes especificar: standard / supérieure / suite."},
+      {text:"Le client séjournera deux nuits et préfère une chambre supérieure avec salle de bain.",correct:true,fb:"Muy bien — 'séjournera' (futur simple) y 'préfère' son B1 perfecto."}]},
+    {speaker:"Réceptionniste",line:"Très bien. Le petit-déjeuner est-il inclus et le client a-t-il besoin de services supplémentaires ?",opts:[
+      {text:"Oui, le petit-déjeuner sera inclus. Et il aura besoin d'un service taxi pour l'aéroport.",correct:true,fb:"Parfait — futur simple bien usado. Petit-déjeuner y taxi, justo los servicios del diálogo."},
+      {text:"Oui pour le petit-déjeuner. Pour le taxi, vous pouvez arranger ça ?",correct:false,fb:"'Vous pouvez arranger ça' es demasiado informal. Mejor: 'Pourrait-on prévoir un service taxi ?'"},
+      {text:"Oui, le petit-déjeuner doit être compris. Par ailleurs, pourriez-vous prévoir un service de navette pour l'aéroport ?",correct:true,fb:"Excelente nivel. 'Par ailleurs' = además. 'Pourriez-vous' = conditionnel de politesse."}]}
+  ]},
+  {title:"Compte-rendu",scene:"Situación: Phil hace el compte-rendu a la directrice tras la visita del Sr. Suzuki. Responde profesionalmente.",steps:[
+    {speaker:"La Directrice",line:"Vous avez raccompagné M. Suzuki à l'aéroport hier ? Tout s'est bien passé ?",opts:[
+      {text:"Oui, je suis passé le chercher à 17h30. Son avion était prévu à 19h10.",correct:true,fb:"Perfecto — passé composé + imparfait bien usados para describir la situación."},
+      {text:"Oui, ça s'est bien passé globalement.",correct:false,fb:"Demasiado vago para un compte-rendu profesional. Da detalles: horas, resultado."},
+      {text:"Oui, j'ai essayé de faire de mon mieux. Il y a eu du retard mais tout s'est bien terminé.",correct:true,fb:"Bien — 'j'ai essayé de faire de mon mieux' (frase real del diálogo). Profesional."}]},
+    {speaker:"La Directrice",line:"M. Suzuki était satisfait de son séjour ?",opts:[
+      {text:"Oui, il était absolument ravi de l'accueil et de votre gentillesse.",correct:true,fb:"Parfait — 'ravi' = encantado, 'accueil' = bienvenida. Frases del diálogo real."},
+      {text:"Je pense que oui, il n'a pas dit le contraire.",correct:false,fb:"Muy indirecto. Sé preciso: 'Il m'a dit qu'il était très satisfait.'"},
+      {text:"D'après ce qu'il m'a dit, il était très satisfait de son séjour et de l'organisation.",correct:true,fb:"Excelente — 'D'après ce qu'il m'a dit' es B1 perfecto. Citas la fuente."}]},
+    {speaker:"La Directrice",line:"Très bien. Dorénavant, c'est vous qui accueillerez tous nos clients étrangers.",opts:[
+      {text:"Je suis très flatté. Je ferai de mon mieux pour représenter l'entreprise dignement.",correct:true,fb:"Parfait — 'flatté' = halagado. 'Je ferai de mon mieux' del diálogo real. Muy B1."},
+      {text:"D'accord, pas de problème.",correct:false,fb:"'Pas de problème' es demasiado informal ante tal responsabilidad."},
+      {text:"C'est un honneur. Serait-il possible de prévoir une formation pour améliorer mes compétences ?",correct:true,fb:"Muy pro — 'serait-il possible de' es conditionnel de politesse. Propones mejora activa."}]}
+  ]}
+];
+
+const EXAM_PROMPTS = {
+  diagnostic:`Eres el examinador. Conduce un diagnóstico de nivel B1 completo de 15 preguntas. Mezcla: vocabulario (5), gramática (5), comprensión/producción (5). Varía los tipos: rellena hueco, traduce al francés, corrige el error, forma el comparatif/superlatif, usa el pronom COI correcto. Al final da una nota /100 con análisis detallado: puntos fuertes, puntos débiles y plan de ataque para las 4 semanas. Empieza AHORA con la pregunta 1 de 15. Instrucciones en español, ejercicios en francés.`,
+  oral:`Eres un examinador oral de francés B1 profesional. Simula la parte oral (60% de la nota). Haz preguntas como un examinador real. El estudiante responde en texto simulando hablar. Evalúa: fluidez, gramática, registro (formal vs informal), coherencia. Empieza con: "Bonjour, je suis votre examinateur pour aujourd'hui. Pour commencer, pouvez-vous vous présenter et parler de votre expérience professionnelle ?" Luego sigue con preguntas sobre comercio, trabajo y opiniones.`,
+  written:`Eres el profesor. Propón una prueba escrita completa B1: 1) Completar un email profesional con los datos dados, 2) Rellena huecos con el vocabulario correcto, 3) Transforma frases usando comparatif o COI, 4) Reordena frases. Evalúa cada parte. Empieza presentando el examen con todos los ejercicios a la vez.`,
+  vocab_blitz:`Modo BLITZ: 20 palabras en 5 minutos. Da una palabra en español/inglés y el estudiante escribe en francés con el artículo correcto (le/la). Puntuación: +5 correcta, −2 incorrecta, 0 si no sabe. Ritmo rápido. Empieza: "¡BLITZ! 20 palabras, 5 minutos. Escribe la traducción en francés CON el artículo (le/la). ¡Empezamos!" y da la primera palabra.`
+};
+
+const SYSTEM = `Eres un profesor de francés de negocios B1 experto y exigente. Tu estudiante se llama Alex: muy competitivo, aprende por uso real y conversación. Tiene base previa y está reactivando francés para un examen en ~1 mes (60% oral, 40% escrito). Es fuerte en oral y más débil en escrito (gramática formal, géneros, acuerdos).
+
+VOCABULARIO DEL EXAMEN: 175 palabras/expresiones de negocios (lista oficial del curso): sustantivos (affaires, entreprise, fournisseur, marché, contrat, facture, brevet, douane, tarif, incoterms, fusion, acquisition, salaire, recrutement, productivité…), verbos (gérer, négocier, promouvoir, lancer, analyser, fidéliser, rédiger…) y expresiones (faire face à la concurrence, augmenter la part de marché, optimiser les processus, saisir les opportunités, respecter les délais…).
+
+GRAMÁTICA: comparatif (plus/moins/aussi + adjectif/adverbe + que; irregulares: meilleur, mieux, pire), superlatif (le/la plus/moins; irregulares: le meilleur, le mieux, le pire), pronoms COI (me/te/lui/nous/vous/leur; posición antes del verbo conjugado; excepción imperativo afirmativo: Parle-lui!), adjectif→adverbe (-ment).
+
+DIÁLOGOS DEL EXAMEN: accueil client, réservation hôtel por teléfono, confirmation par mail, compte-rendu profesional.
+
+REGLAS:
+- Sé exigente: nivel B1 real, no bajes la dificultad.
+- Corrige los errores gramaticales aunque no sean el foco.
+- Feedback concreto y accionable, nunca genérico.
+- Para diálogo/oral: actúa como el personaje de forma natural y profesional.
+- Usa formato claro y legible (listas, negritas con **). Responde de forma compacta.`;
+
+/* =========================================================
+   ESTADO + PERSISTENCIA
+   ========================================================= */
+const STORE='frB1_v2';
+const ALL=[...VOCAB.map(v=>({...v,id:'v'+v.n})),...GRAMMAR.map((g,i)=>({...g,id:'g'+i,type:'grammar'}))];
+const byId=Object.fromEntries(ALL.map(c=>[c.id,c]));
+const INTERVALS=[0,1,2,4,8,16,32]; // días por caja (Leitner)
+
+let S=loadState();
+function defaultState(){return{cards:{},weak:{phrases:{},ch:{}},levels:{},covered:{},lvSize:10,flashDir:'fr',stats:{streak:0,best:0,correct:0,total:0,xp:0,days:{},typed:{total:0,correct:0}},theme:'light',apiKey:'',model:'claude-sonnet-5',voiceRate:0.9,voicePitch:1,voiceURI:'',voice:'denise'};}
+function loadState(){try{const s=JSON.parse(localStorage.getItem(STORE));return s?{...defaultState(),...s,weak:{phrases:{},ch:{},...(s.weak||{})},levels:s.levels||{},covered:s.covered||{},stats:{...defaultState().stats,...(s.stats||{})}}:defaultState();}catch{return defaultState();}}
+// registro persistente en el servidor (carpeta progreso/) — silencioso si no hay servidor
+function logEvent(type,data){
+  try{fetch('/api/log',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({type,data:{...data,ts:new Date().toISOString()}})}).catch(()=>{});}catch{}
+}
+function weakPhrase(text,hint,fail){ // registra frase floja (o la limpia si ya sale bien)
+  const w=S.weak.phrases;
+  if(fail){const e=w[text]||{fails:0,hint:hint||''};e.fails++;e.hint=hint||e.hint;w[text]=e;}
+  else if(w[text]){delete w[text];}
+}
+function weakChallenge(c,fail){
+  const i=HARDCODED_CHALLENGES.indexOf(c);if(i<0)return;
+  if(fail)S.weak.ch[i]=(S.weak.ch[i]||0)+1;else delete S.weak.ch[i];
+}
+function save(){localStorage.setItem(STORE,JSON.stringify(S));}
+function cardState(id){if(!S.cards[id])S.cards[id]={box:0,due:0,hard:false,seen:false,ok:0,ko:0};return S.cards[id];}
+function today(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+function logDay(){const t=today();S.stats.days[t]=(S.stats.days[t]||0)+1;}
+function addXP(n){S.stats.xp+=n;}
+
+/* =========================================================
+   UTILIDADES
+   ========================================================= */
+const $=s=>document.querySelector(s);
+const $$=s=>document.querySelectorAll(s);
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('on');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('on'),1800);}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+// pequeño markdown para el chat del examen
+function mdLite(s){
+  return esc(s)
+    .replace(/\*\*(.+?)\*\*/g,'<b>$1</b>')
+    .replace(/^### (.+)$/gm,'<b>$1</b>')
+    .replace(/^\s*[-*] (.+)$/gm,'• $1');
+}
+
+/* =========================================================
+   VOZ (fr-FR) — neuronal (servidor) con fallback al sistema
+   ========================================================= */
+const NEURAL_VOICES=[
+  ['denise','♀ Denise — francesa pura (recomendada)'],
+  ['eloise','♀ Eloise — joven'],
+  ['josephine','♀ Josephine'],
+  ['yvette','♀ Yvette'],
+  ['henri','♂ Henri'],
+  ['vivienne','♀ Vivienne — multilingüe ⚠️ puede leer palabras en inglés'],
+  ['remy','♂ Rémy — multilingüe ⚠️ puede leer palabras en inglés'],
+];
+const FEMALE=/am[ée]lie|audrey|aur[ée]lie|marie|julie|virginie|chlo[ée]|charlotte|c[ée]line|sophie|l[ée]a|female|femme|flo/i;
+let frVoices=[],neuralOK=true; // optimista; si falla una vez, cae al sistema
+function loadVoices(){
+  frVoices=speechSynthesis.getVoices().filter(v=>/^fr/i.test(v.lang));
+  populateVoiceSelect();
+}
+function currentVoice(){
+  if(S.voiceURI){const v=frVoices.find(v=>v.voiceURI===S.voiceURI);if(v)return v;}
+  return frVoices.find(v=>FEMALE.test(v.name)&&/fr-FR/i.test(v.lang))||frVoices.find(v=>/fr-FR/i.test(v.lang))||frVoices[0]||null;
+}
+if('speechSynthesis'in window){loadVoices();speechSynthesis.onvoiceschanged=loadVoices;}
+
+const audioCache=new Map(); // url → blob URL
+let curAudio=null;
+function stopSpeak(){
+  if(curAudio){curAudio.pause();curAudio=null;}
+  if('speechSynthesis'in window)speechSynthesis.cancel();
+}
+// limpia símbolos que la voz leería mal (…, →, /, paréntesis…)
+function ttsClean(s){
+  return String(s)
+    .replace(/…/g,' ').replace(/\.\.\./g,' ')
+    .replace(/[→↔⇒➜►]/g,' ')
+    .replace(/\s*\/\s*/g,' ou ')
+    .replace(/[()]/g,' ')
+    .replace(/\s+/g,' ').trim();
+}
+async function speak(text,onEnd){ // onEnd: se llama cuando termina el audio (para el modo llamada)
+  stopSpeak();
+  text=ttsClean(text);
+  if(!text){if(onEnd)onEnd();return;}
+  // Voz neuronal HORNEADA: busca el MP3 pre-generado (offline, instantáneo).
+  // Si el usuario forzó voz del sistema (sys:) o el texto es dinámico (no está
+  // en el manifest, p. ej. respuestas de IA), cae a la voz del sistema del móvil.
+  const forceSys=String(S.voice||'').startsWith('sys:');
+  if(!forceSys && typeof AUDIO_MAP!=='undefined' && AUDIO_MAP){
+    const f=AUDIO_MAP[text];
+    if(f){
+      try{
+        curAudio=new Audio('audio/'+f);
+        curAudio.preservesPitch=true; curAudio.mozPreservesPitch=true; curAudio.webkitPreservesPitch=true;
+        curAudio.playbackRate=Math.max(.5,Math.min(1.5,S.voiceRate||0.9)); // el slider de velocidad
+        if(onEnd)curAudio.onended=onEnd;
+        curAudio.play().catch(()=>{speakSys(text,onEnd);});
+        return; // voz neuronal OK (desde archivo, sin servidor)
+      }catch(e){/* cae a la voz del sistema */}
+    }
+  }
+  speakSys(text,onEnd);
+}
+function speakSys(text,onEnd){
+  if(!('speechSynthesis'in window)){toast('Tu navegador no soporta voz');if(onEnd)onEnd();return;}
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang='fr-FR';u.rate=S.voiceRate||0.9;u.pitch=S.voicePitch||1;
+  const v=currentVoice();if(v)u.voice=v;
+  if(onEnd)u.onend=onEnd;
+  speechSynthesis.speak(u);
+}
+function populateVoiceSelect(){
+  const sel=document.getElementById('set-voice');if(!sel)return;
+  const sys=frVoices.map(v=>`<option value="sys:${esc(v.voiceURI)}">${FEMALE.test(v.name)?'♀ ':''}${esc(v.name)} — sistema</option>`).join('');
+  sel.innerHTML='<optgroup label="Neuronales (naturales, vía servidor)">'+
+    NEURAL_VOICES.map(([k,l])=>`<option value="${k}">${l}</option>`).join('')+
+    '</optgroup>'+(sys?'<optgroup label="Del sistema (sin servidor)">'+sys+'</optgroup>':'');
+  sel.value=S.voice||'denise';
+  if(sel.selectedIndex<0)sel.value='denise';
+}
+
+/* =========================================================
+   NAV
+   ========================================================= */
+function switchTab(tab){
+  // si sales de la Llamada, pausa voz y micro (la conversación se conserva)
+  if(tab!=='call'&&typeof callOn!=='undefined'&&callOn){stopSpeak();if(recing&&rec){try{rec.stop();}catch{}}}
+  $$('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));
+  $$('.panel').forEach(p=>p.classList.remove('active'));
+  $('#panel-'+tab).classList.add('active');
+  if(tab==='challenge')initChallenge();
+  if(tab==='dialogue')loadScene(0);
+  if(tab==='levels')renderLevelMap();
+  if(tab==='train')initTraining();
+  if(tab==='progress')renderProgress();
+}
+$('#tabs').addEventListener('click',e=>{const b=e.target.closest('.tab');if(b)switchTab(b.dataset.tab);});
+
+function updateHUD(){
+  $('#hud-streak').textContent=S.stats.streak;
+  $('#hud-acc').textContent=S.stats.total?Math.round(S.stats.correct/S.stats.total*100)+'%':'—';
+  const due=ALL.filter(c=>{const st=S.cards[c.id];return st&&st.due&&st.due<=Date.now();}).length;
+  $('#due-count').textContent=due?'('+due+')':'';
+}
+
+/* =========================================================
+   FLASHCARDS
+   ========================================================= */
+let deck=[],idx=0,flipped=false,curFilter='due';
+let flashPool=[],roundNum=0;
+let roundTarget=0,roundMastered=0,roundFails=0; // ronda de maestría: hasta dominar las 10
+let effDir='fr',mixLastId=null,mixDir='fr'; // dirección efectiva de la tarjeta actual (para modo Mixto)
+// decide el sentido de la tarjeta actual: fijo (fr/es) o alterna en Mixto (estable por tarjeta)
+function computeDir(c){
+  if(c.cat==='grammar')return 'fr'; // gramática no tiene traducción ES→FR
+  if(S.flashDir==='mix'){
+    if(c.id!==mixLastId){mixLastId=c.id;mixDir=Math.random()<0.5?'fr':'es';}
+    return mixDir;
+  }
+  return S.flashDir==='es'?'es':'fr';
+}
+const ROUND=10; // tarjetas por tanda
+// dificultad: 1-50 < 51-100 < verbos < expresiones < gramática (usa el nº de palabra)
+function diffScore(c){return (c.cat==='grammar'?2000:0)+(c.n||1000);}
+// ordena básico→avanzado; con desempate aleatorio (las de gramática, todas iguales, se barajan)
+function orderByDifficulty(list){return [...list].map(c=>[c,diffScore(c)+Math.random()*0.4]).sort((a,b)=>a[1]-b[1]).map(x=>x[0]);}
+function buildDeck(f){
+  let d;
+  if(f==='all')d=[...ALL];
+  else if(f==='hard')d=ALL.filter(c=>cardState(c.id).hard);
+  else if(f==='grammar')d=ALL.filter(c=>c.cat==='grammar');
+  else if(f==='due'){
+    d=ALL.filter(c=>{const st=S.cards[c.id];return !st||!st.seen||(st.due&&st.due<=Date.now());});
+    if(d.length===0)d=[...ALL]; // nada pendiente → repasa todo
+  }
+  else d=ALL.filter(c=>c.cat===f);
+  if(d.length===0)d=[...ALL];
+  return orderByDifficulty(d); // de lo más básico a lo más avanzado (sin barajar)
+}
+function setFilter(f){
+  curFilter=f;
+  $$('#flash-chips .chip').forEach(b=>b.classList.toggle('active',b.dataset.f===f));
+  flashPool=buildDeck(f);
+  loadRound(0);
+}
+function loadRound(r){
+  const rounds=Math.max(1,Math.ceil(flashPool.length/ROUND));
+  roundNum=Math.min(Math.max(0,r),rounds-1);
+  deck=flashPool.slice(roundNum*ROUND,roundNum*ROUND+ROUND).slice(); // cola de trabajo
+  roundTarget=deck.length;roundMastered=0;roundFails=0;idx=0;
+  flashStudyView(true);
+  showCard();
+}
+function flashStudyView(show){
+  ['.stage','#check','#check-result','#flash-kbd','#rate','#pron'].forEach(s=>{const el=$(s);if(el)el.style.display=show?'':'none';});
+  const d=$('#flash-done');if(d)d.style.display=show?'none':'block';
+}
+function showRoundComplete(){
+  flashStudyView(false);
+  const rounds=Math.max(1,Math.ceil(flashPool.length/ROUND));
+  const hasNext=(roundNum+1)*ROUND<flashPool.length;
+  addXP(15);logDay();save();updateHUD();
+  $('#flash-done').innerHTML=`<div class="card" style="text-align:center">
+    <div style="font-size:2.4rem">🏆</div>
+    <div class="q" style="margin:.4rem 0 .2rem">¡Tanda ${roundNum+1} de ${rounds} dominada!</div>
+    <div class="heard" style="color:var(--text2)">Las ${roundTarget} puestas como <b>Fácil</b> ✅${roundFails?` · ${roundFails} repeticiones para lograrlo`:' · ¡a la primera! 🔥'} &nbsp;·&nbsp; +15 XP</div>
+    <div style="display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;margin-top:1.3rem">
+      <button class="btn" onclick="loadRound(${roundNum})">Repetir tanda ↺</button>
+      ${hasNext
+        ? `<button class="btn primary" onclick="loadRound(${roundNum+1})">Siguiente tanda →</button>`
+        : `<button class="btn primary" onclick="setFilter(curFilter)">🏁 Terminaste — reiniciar</button>`}
+    </div>
+  </div>`;
+}
+$('#flash-chips').addEventListener('click',e=>{
+  const b=e.target.closest('.chip');if(!b)return;
+  setFilter(b.dataset.f);
+});
+// selector de sentido: FR→ES · ES→FR · Mixto (alterna dentro de la tanda)
+$('#dir-seg').addEventListener('click',e=>{
+  const b=e.target.closest('button[data-dir]');if(!b)return;
+  S.flashDir=b.dataset.dir;mixLastId=null;save();renderDir();showCard();
+});
+function renderDir(){
+  $$('#dir-seg button[data-dir]').forEach(b=>b.classList.toggle('active',b.dataset.dir===(S.flashDir||'fr')));
+}
+
+function showCard(){
+  if(deck.length===0){showRoundComplete();return;}
+  idx=0;
+  const c=deck[idx];flipped=false;
+  if(recing&&rec){try{rec.stop();}catch{}}
+  setMic(false);
+  const pb=$('#pron');if(pb){pb.className='pron';pb.innerHTML='';}
+  $('#fcard').classList.remove('flip');
+  $('#rate').classList.add('hidden');
+  const g=c.cat==='grammar';
+  effDir=computeDir(c); // sentido de esta tarjeta (fijo o Mixto)
+  const chk=$('#check');if(chk)chk.style.display=g?'none':'flex';
+  const ci=$('#check-input');if(ci){ci.value='';ci.placeholder=effDir==='es'?'Écris le mot en français…':'Escribe la traducción en español…';}
+  const cr=$('#check-result');if(cr){cr.className='check-result';cr.innerHTML='';}
+  $$('#rate .rbtn').forEach(b=>b.classList.remove('suggest'));
+  if(!g&&$('#panel-flash').classList.contains('active'))setTimeout(()=>ci&&ci.focus(),0);
+  const isG=c.cat==='grammar';
+  const esFirst=effDir==='es'&&!isG; // ES→FR: muestras el significado, recuerdas el francés
+  const tag=$('#fc-tag');
+  tag.className='tag '+(isG?'g':(esFirst?'v':(c.g==='M'?'m':c.g==='F'?'f':'v')));
+  tag.textContent=isG?'gramática':(esFirst?'→ dilo en francés':(c.g==='M'?'masculin · le/un':c.g==='F'?'féminin · la/une':'verbe / expression'));
+  $('#fc-word').textContent=esFirst?c.en:c.w;
+  $('#fc-num').textContent=c.n?('#'+c.n):'';
+  $('#fc-num2').textContent=c.n?('#'+c.n):'';
+  $('#fc-article').textContent=(!isG&&!esFirst&&c.g)?(c.g==='M'?'un / le …':'une / la …'):'';
+  $('#fc-speak').style.display=esFirst?'none':''; // en ES→FR no hay nada que escuchar delante
+  $('#fc-trans').textContent=esFirst?c.w+(c.g?(c.g==='M'?' (le)':' (la)'):''):c.en;
+  $('#fc-ex').innerHTML=highlightWord(c.ex,c.w);
+  $('#flash-prog').style.width=Math.round(roundMastered/roundTarget*100)+'%';
+  const rounds=Math.max(1,Math.ceil(flashPool.length/ROUND));
+  $('#flash-counter').textContent=`Tanda ${roundNum+1}/${rounds} · dominadas ${roundMastered}/${roundTarget}`;
+  updateHUD();
+}
+function highlightWord(ex,w){
+  // resalta la primera palabra clave del ejemplo
+  const core=w.split(/[ '’]/)[0];
+  if(core.length<3)return esc(ex);
+  const re=new RegExp('('+core.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\w*)','i');
+  return esc(ex).replace(re,'<b>$1</b>');
+}
+function flipCard(){
+  const c=deck[idx];
+  flipped=!flipped;
+  $('#fcard').classList.toggle('flip',flipped);
+  if(flipped){$('#rate').classList.remove('hidden');cardState(c.id).seen=true;}
+  else $('#rate').classList.add('hidden');
+}
+$('#fcard').addEventListener('click',flipCard);
+$('#check-btn').onclick=()=>checkAnswer(false);
+$('#check-skip').onclick=()=>checkAnswer(true);
+$('#check-input').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();checkAnswer(false);}});
+// en gramática, los ejemplos son transformaciones "X → Y": lee solo el resultado (tras la flecha),
+// y si hay varias separadas por "/", léelas como lista limpia (rapidement, lentement, évidemment)
+function grammarSpeakText(ex){
+  return ex.split('/').map(seg=>{const p=seg.split('→');return p[p.length-1];}).join(', ').trim();
+}
+function speakCard(){const c=deck[0];speak(c.cat==='grammar'?grammarSpeakText(c.ex):c.w);}
+function speakPhrase(){const c=deck[0];speak(c.cat==='grammar'?grammarSpeakText(c.ex):c.ex);}
+
+/* --- comprobar la traducción escrita (recuerdo activo) --- */
+function lev(a,b){const m=a.length,n=b.length;if(!m)return n;if(!n)return m;const d=Array.from({length:m+1},(_,i)=>[i]);for(let j=1;j<=n;j++)d[0][j]=j;for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return d[m][n];}
+function normGloss(s){
+  let t=normFr(s);
+  t=t.replace(/^(l|el|la|los|las|un|una|unos|unas|le|les|the|to|a)\s+/,''); // artículo inicial
+  t=t.replace(/\s+(le|la|les|un|une)$/,'');                                   // artículo final (p.ej. "impot le")
+  return t.trim();
+}
+function expectedAnswers(c){return effDir==='es'?[c.w]:c.en.split('/').map(s=>s.trim()).filter(Boolean);}
+// strict=true (escribir en francés): solo se perdonan los acentos, no las erratas
+function matchAny(val,exp,strict){
+  const nv=normGloss(val);if(!nv)return false;
+  const vtok=nv.split(' ').filter(Boolean);
+  return exp.some(e=>{
+    const ne=normGloss(e);if(!ne)return false;
+    if(ne===nv)return true;
+    const maxLen=Math.max(ne.length,nv.length);
+    const tol=strict?(maxLen>=16?1:0):(maxLen>=8?2:1); // estricto: 0 erratas en palabras cortas
+    if(lev(ne,nv)<=tol)return true;
+    if(strict)return false;
+    const et=ne.split(' ').filter(Boolean); // solo en modo significado: acepta solape de palabra clave
+    return vtok.some(v=>v.length>=4&&et.some(t=>t===v||lev(t,v)<=1));
+  });
+}
+// aviso suave cuando aciertas pero te faltó un acento
+function accentHint(val,c){
+  if(effDir!=='es')return '';
+  const strip=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+  const u=val.trim().toLowerCase().replace(/^(l['’]|le\s|la\s|les\s|un\s|une\s)/,'').trim();
+  const t=c.w.toLowerCase();
+  if(strip(u)===strip(t)&&u!==t&&/[àâäéèêëîïôöùûüçœ]/.test(t))
+    return ' <span style="color:var(--amber)">· revisa el acento</span>';
+  return '';
+}
+function checkAnswer(skip){
+  const c=deck[idx];if(c.cat==='grammar')return;
+  const val=skip?'':$('#check-input').value.trim();
+  if(!skip&&!val){$('#check-input').focus();return;}
+  const ok=!skip&&matchAny(val,expectedAnswers(c),effDir==='es');
+  if(!flipped){flipped=true;$('#fcard').classList.add('flip');cardState(c.id).seen=true;$('#rate').classList.remove('hidden');}
+  S.stats.typed=S.stats.typed||{total:0,correct:0};
+  S.stats.typed.total++;if(ok)S.stats.typed.correct++;
+  const st=cardState(c.id);
+  if(ok)st.tok=(st.tok||0)+1;
+  else{st.tko=(st.tko||0)+1;st.hard=true;weakPhrase(c.w,'Traducción escrita',true);
+    logEvent('errores',{kind:'traduccion',q:(effDir==='es'?c.en:c.w),picked:val||'(no lo sé)',correct:(effDir==='es'?c.w:c.en)});}
+  save();updateHUD();
+  const res=$('#check-result');
+  const correctText=effDir==='es'?c.w+(c.g?(c.g==='M'?' (le)':' (la)'):''):c.en;
+  res.className='check-result show '+(ok?'good':'bad');
+  res.innerHTML=ok
+    ? `<b>✅ ¡Correcto!</b> «${esc(val)}» → ${esc(correctText)}${accentHint(val,c)}`
+    : `<b>${skip?'📖 Respuesta':'❌ Mal escrito'}</b>${val?` · tú: «${esc(val)}»`:''} · correcto: <b>${esc(correctText)}</b>`;
+  $('#check').style.display='none';
+  $$('#rate .rbtn').forEach(b=>b.classList.remove('suggest'));
+  const sb=document.querySelector(ok?'#rate .rbtn.easy':'#rate .rbtn.hard');if(sb)sb.classList.add('suggest');
+}
+
+/* --- motor de pronunciación reutilizable (tarjetas, diálogo, entrenar) --- */
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+let rec=null,recing=false,recToken=0;
+function renderPron(container,html){if(!container)return;container.className='pron show';container.innerHTML=html;}
+function startPron(target,container,micBtn,onDone){
+  if(!SR){renderPron(container,'<div class="heard">🎤 El reconocimiento de voz no está disponible en este navegador. Usa <b>Chrome</b> o <b>Edge</b> (en localhost funciona directamente).</div>');return;}
+  if(recing){try{rec.stop();}catch{}return;}
+  const token=++recToken;
+  rec=new SR();rec.lang='fr-FR';rec.interimResults=false;rec.maxAlternatives=3;
+  rec.onstart=()=>{recing=true;setMic(micBtn,true);renderPron(container,'<div class="heard">🎙️ Escuchando… di en voz alta y claro:<br><b>'+esc(target)+'</b></div>');};
+  rec.onerror=e=>{recing=false;setMic(micBtn,false);renderPron(container,'<div class="heard">⚠️ '+(e.error==='not-allowed'||e.error==='service-not-allowed'?'Permiso de micrófono denegado. Actívalo en el icono 🔒 de la barra de direcciones y reintenta.':'No te he oído bien. Inténtalo otra vez, más cerca del micro.')+'</div>');};
+  rec.onend=()=>{recing=false;setMic(micBtn,false);};
+  rec.onresult=e=>{if(token!==recToken)return;scorePron(target,[...e.results[0]].map(a=>a.transcript),container,onDone);};
+  try{rec.start();}catch{recing=false;setMic(micBtn,false);}
+}
+function setMic(btn,on){if(btn){btn.classList.toggle('rec',on);btn.textContent=on?'⏹ Detener':btn.dataset.label||'🎤 Practicar mi voz';}}
+function normFr(s){return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9\s]/g,' ').replace(/\s+/g,' ').trim();}
+function scorePron(target,alts,container,onDone){
+  const exp=normFr(target).split(' ').filter(Boolean);
+  let best={score:-1,heard:alts[0]||'',matched:exp.map(()=>false)};
+  alts.forEach(a=>{
+    const heard=new Set(normFr(a).split(' ').filter(Boolean));
+    const matched=exp.map(w=>heard.has(w));
+    const score=exp.length?matched.filter(Boolean).length/exp.length:0;
+    if(score>best.score)best={score,heard:a,matched};
+  });
+  const pct=Math.round(best.score*100);
+  const color=pct>=80?'var(--green)':pct>=50?'var(--amber)':'var(--red)';
+  const words=exp.map((w,i)=>`<span class="${best.matched[i]?'hit':'miss'}">${esc(w)}</span>`).join(' ');
+  const verdict=pct>=80?'Muy bien 👏':pct>=50?'Casi, sigue 💪':'A practicar 🔁';
+  renderPron(container,
+    `<div class="score"><div class="ring" style="background:conic-gradient(${color} ${pct}%,var(--bg2) 0)"><span>${pct}%</span></div>`+
+    `<div><b>${verdict}</b><div class="heard">Palabras del objetivo reconocidas (verde = bien):</div></div></div>`+
+    `<div class="words">${words}</div>`+
+    `<div class="heard">Te escuché: “${esc(best.heard||'—')}”</div>`+
+    `<div class="tip pron-tip" style="display:none"></div>`
+  );
+  S.stats.total++;if(best.score>=0.8)S.stats.correct++;addXP(best.score>=0.8?6:2);
+  weakPhrase(target,'',best.score<0.6); // <60% → a la cola de entrenamiento
+  logEvent('pron',{target,heard:best.heard,score:+best.score.toFixed(2)}); // → progreso/pron.jsonl
+  logDay();save();updateHUD();
+  claudePronTip(target,best.heard,container);
+  if(onDone)onDone(best.score,best.heard);
+}
+async function claudePronTip(target,heard,container){
+  const el=container&&container.querySelector('.pron-tip');if(!el)return;
+  try{
+    const tip=await callClaude([{role:'user',content:`Practico pronunciación francesa. Frase objetivo: "${target}". El reconocedor de voz fr-FR escuchó: "${heard}". En español y en 2 frases máximo: di qué sonidos franceses de esa frase son los más difíciles (nasales, r gutural, e muda, liaisons) y UN consejo concreto para clavar el acento. Muy breve, sin saludos.`}],200);
+    el.innerHTML='💬 '+mdLite(tip);el.style.display='block';
+  }catch(e){/* sin IA activa: análisis local solamente */}
+}
+function practiceCard(){
+  const c=deck[idx];
+  const target=(c.cat==='grammar'?c.w:c.ex)||c.w;
+  startPron(target,$('#pron'),$('#mic-btn'),null);
+}
+function rateCard(r){
+  if(!flipped||!deck.length)return;
+  const c=deck[0],st=cardState(c.id);
+  S.stats.total++;
+  if(r==='easy'){st.box=Math.min(st.box+1,INTERVALS.length-1);st.hard=false;st.ok++;S.stats.correct++;S.stats.streak++;addXP(10);}
+  else if(r==='ok'){st.box=Math.max(1,st.box);st.hard=false;S.stats.correct++;S.stats.streak++;addXP(5);}
+  else{st.box=0;st.hard=true;st.ko++;S.stats.streak=0;addXP(2);}
+  st.due=Date.now()+INTERVALS[st.box]*86400000;
+  if(r==='hard')st.due=Date.now()+60000;
+  S.stats.best=Math.max(S.stats.best,S.stats.streak);
+  // ronda de maestría: solo "Fácil" domina; Regular/Difícil vuelven al final de la tanda
+  if(r==='easy'){roundMastered++;deck.shift();}
+  else{roundFails++;deck.push(deck.shift());toast(r==='hard'?'La repetimos hasta que salga fácil 💪':'Vuelve más tarde en esta tanda');}
+  logDay();save();
+  idx=0;
+  if(deck.length===0)showRoundComplete();else showCard();
+}
+
+/* =========================================================
+   DESAFÍO
+   ========================================================= */
+let cQueue=[],cAnswered=false,cStreak=0;
+function initChallenge(){cQueue=shuffle([...HARDCODED_CHALLENGES]);cStreak=0;showChallenge();}
+function showChallenge(){
+  if(cQueue.length===0)cQueue=shuffle([...HARDCODED_CHALLENGES]);
+  const c=cQueue.pop();cAnswered=false;current=c;
+  $('#c-badge').textContent=c.type;
+  $('#c-q').innerHTML=esc(c.q).replace('_____','<span class="blank">_____</span>');
+  const opts=$('#c-opts');opts.innerHTML='';
+  const keys=['A','B','C','D'];
+  c.opts.forEach((o,i)=>{
+    const b=document.createElement('button');
+    b.className='opt';b.innerHTML=`<span class="key">${keys[i]}</span><span>${esc(o)}</span>`;
+    b.onclick=()=>answerChallenge(i,b,c);
+    opts.appendChild(b);
+  });
+  const fb=$('#c-fb');fb.className='fb';fb.innerHTML='';
+  $('#c-next').classList.remove('show');
+}
+let current=null;
+function answerChallenge(i,btn,c){
+  if(cAnswered)return;cAnswered=true;
+  S.stats.total++;
+  const ok=i===c.ans;
+  $$('#c-opts .opt')[c.ans].classList.add('correct');
+  if(!ok)btn.classList.add('wrong');
+  if(ok){cStreak++;S.stats.correct++;S.stats.streak++;S.stats.best=Math.max(S.stats.best,S.stats.streak);addXP(8);}
+  else{cStreak=0;S.stats.streak=0;addXP(1);}
+  weakChallenge(c,!ok); // fallo → a la cola de entrenamiento
+  if(!ok)logEvent('errores',{kind:'quiz',q:c.q,picked:c.opts[i],correct:c.opts[c.ans]});
+  $$('#c-opts .opt').forEach(b=>b.disabled=true);
+  const fb=$('#c-fb');
+  fb.innerHTML=`<strong>${ok?'✅ Correcto  ·  racha '+cStreak:'❌ Incorrecto'}</strong><div class="detail">${esc(c.exp)}</div>${c.tip?`<div class="tip">💡 ${esc(c.tip)}</div>`:''}`;
+  fb.className='fb show '+(ok?'good':'bad');
+  $('#c-next').classList.add('show');
+  logDay();save();updateHUD();
+}
+function nextChallenge(){showChallenge();}
+
+/* =========================================================
+   DIÁLOGO
+   ========================================================= */
+let curScene=0,dStep=0,dAnswered=false,dEnded=false;
+let dRes={picks:[],prons:[],log:[]}; // resultados de la escena en curso
+$('#d-chips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(b)loadScene(+b.dataset.s);});
+function loadScene(i){
+  curScene=i;dStep=0;dAnswered=false;dEnded=false;dRes={picks:[],prons:[],log:[]};
+  $$('#d-chips .chip').forEach(b=>b.classList.toggle('active',+b.dataset.s===i));
+  const s=SCENES[i];
+  $('#d-scene').innerHTML=`<strong>Escenario: ${esc(s.title)}</strong><br>${esc(s.scene)}`;
+  $('#d-msgs').innerHTML='';$('#d-fb').className='fb';$('#d-opts').innerHTML='';
+  $('#d-next').classList.remove('show');
+  showStep();
+}
+function showStep(){
+  const s=SCENES[curScene];
+  if(dStep>=s.steps.length){
+    const n=dRes.picks.length,ok=dRes.picks.filter(Boolean).length;
+    const pronAvg=dRes.prons.length?Math.round(dRes.prons.reduce((a,b)=>a+b,0)/dRes.prons.length*100):null;
+    const grade=Math.round((ok/Math.max(1,n))*(pronAvg!==null?0.6:1)*10+(pronAvg!==null?pronAvg/100*0.4*10:0));
+    const gcolor=grade>=8?'var(--green)':grade>=5?'var(--amber)':'var(--red)';
+    const wrong=dRes.log.filter(l=>!l.correct);
+    let html=`<div class="score"><div class="ring" style="background:conic-gradient(${gcolor} ${grade*10}%,var(--bg2) 0)"><span>${grade}/10</span></div>`+
+      `<div><b>🎯 Scène terminée — tu valoración</b><div class="heard">Respuestas: ${ok}/${n} correctas`+
+      (pronAvg!==null?` · Pronunciación media: <b>${pronAvg}%</b>`:' · Sin práctica de voz (usa 🎤 en cada réplica)')+`</div></div></div>`;
+    if(wrong.length){
+      html+=`<div class="heard" style="margin-top:.5rem"><b>Para corregir:</b></div>`+
+        wrong.map(l=>`<div class="heard">• Dijiste: “${esc(l.picked)}” → mejor: “<b>${esc(l.best)}</b>”</div>`).join('');
+      html+=`<div class="heard" style="margin-top:.3rem">Estas frases ya están en tu 🏋️ Entrenamiento.</div>`;
+    }
+    html+=`<div class="tip scene-eval" style="display:none"></div>`;
+    const fb=$('#d-fb');
+    fb.innerHTML=html;
+    fb.className='fb show '+(grade>=8?'good':grade>=5?'':'bad');
+    $('#d-opts').innerHTML='';
+    $('#d-next').textContent='Repetir escena ↺';$('#d-next').classList.add('show');
+    addXP(15);logDay();save();updateHUD();
+    logEvent('escenas',{title:s.title,ok,n,pronAvg,grade}); // → progreso/escenas.jsonl
+    claudeSceneEval(s,fb);
+    return;
+  }
+  const step=s.steps[dStep];dAnswered=false;
+  addBubble('ai',step.speaker,step.line,true);
+  const opts=$('#d-opts');opts.innerHTML='';
+  step.opts.forEach(o=>{
+    const b=document.createElement('button');
+    b.className='dopt';b.textContent=o.text;b.onclick=()=>pickOpt(o,b);
+    opts.appendChild(b);
+  });
+  $('#d-fb').className='fb';$('#d-fb').innerHTML='';$('#d-next').classList.remove('show');
+}
+function pickOpt(o,btn){
+  if(dAnswered)return;dAnswered=true;
+  $$('#d-opts .dopt').forEach(b=>{b.disabled=true;});btn.classList.add('picked');
+  addBubble('user','Tú (Phil)',o.text,true);
+  S.stats.total++;
+  if(o.correct){S.stats.correct++;S.stats.streak++;S.stats.best=Math.max(S.stats.best,S.stats.streak);addXP(6);}
+  else{S.stats.streak=0;addXP(1);}
+  const step=SCENES[curScene].steps[dStep];
+  const best=(step.opts.find(x=>x.correct)||o).text;
+  dRes.picks.push(!!o.correct);
+  dRes.log.push({speaker:step.speaker,line:step.line,picked:o.text,correct:!!o.correct,best,fb:o.fb});
+  weakPhrase(best,'Diálogo: '+SCENES[curScene].title,!o.correct); // fallo → a entrenar
+  if(!o.correct)logEvent('errores',{kind:'dialogo',line:step.line,picked:o.text,best});
+  const target=o.correct?o.text:best;
+  const fb=$('#d-fb');
+  fb.innerHTML=`<strong>${o.correct?'✅':'❌'}</strong> ${esc(o.fb)}`+
+    `<div class="say-row" style="justify-content:flex-start;margin-top:.7rem">`+
+    `<button class="speak" id="d-hear">🔊 Respuesta modelo</button>`+
+    `<button class="speak mic" id="d-mic" data-label="🎤 ${o.correct?'Ahora dilo en voz alta':'Di la respuesta correcta'}">🎤 ${o.correct?'Ahora dilo en voz alta':'Di la respuesta correcta'}</button>`+
+    `</div><div class="pron" id="d-pron"></div>`;
+  fb.className='fb show '+(o.correct?'good':'bad');
+  $('#d-hear').onclick=()=>speak(target);
+  $('#d-mic').onclick=function(){startPron(target,$('#d-pron'),this,s=>{dRes.prons.push(s);});};
+  dStep++;
+  $('#d-next').textContent=dStep<SCENES[curScene].steps.length?'Continuar →':'Ver mi valoración →';
+  $('#d-next').classList.add('show');
+  save();updateHUD();
+}
+function advanceDialogue(){
+  if(dStep>=SCENES[curScene].steps.length){
+    if(!dEnded){ // primero: mostrar la valoración de la escena
+      dEnded=true;
+      $('#d-fb').className='fb';$('#d-opts').innerHTML='';$('#d-next').classList.remove('show');
+      showStep();
+    }else{ // después: repetir escena
+      loadScene(curScene);
+    }
+  }
+  else{$('#d-fb').className='fb';$('#d-opts').innerHTML='';$('#d-next').classList.remove('show');showStep();}
+}
+async function claudeSceneEval(scene,fbEl){
+  const el=fbEl.querySelector('.scene-eval');if(!el)return;
+  try{
+    const transcript=dRes.log.map(l=>`${l.speaker}: ${l.line}\nAlex: ${l.picked}${l.correct?'':`  [eligió mal; la mejor era: ${l.best}]`}`).join('\n');
+    const pronAvg=dRes.prons.length?Math.round(dRes.prons.reduce((a,b)=>a+b,0)/dRes.prons.length*100)+'%':'sin datos';
+    const evalTxt=await callClaude([{role:'user',content:`Acabo de jugar la escena "${scene.title}" del examen. Transcripción:\n${transcript}\n\nPronunciación media (reconocedor fr-FR): ${pronAvg}.\n\nEn español, máx 5 líneas: 1) nota oral /10 razonada en una frase, 2) UN punto fuerte, 3) las correcciones concretas más importantes (gramática/registro) si las hay, 4) UN consejo para la próxima. Sin saludos, formato con guiones.`}],350);
+    el.innerHTML='🎓 <b>Evaluación del profe:</b><br>'+mdLite(evalTxt);el.style.display='block';
+  }catch(e){/* sin IA: la valoración local ya está visible */}
+}
+
+function addBubble(type,name,text,say){
+  const wrap=$('#d-msgs');
+  const d=document.createElement('div');d.className='msg '+type;
+  const sayBtn=(type==='ai'&&say)?`<span class="say" title="Escuchar" onclick="speak(${JSON.stringify(text).replace(/"/g,'&quot;')})">🔊</span>`:'';
+  d.innerHTML=`<div class="name">${esc(name)}</div><div class="bubble">${esc(text)}${sayBtn}</div>`;
+  wrap.appendChild(d);wrap.scrollTop=wrap.scrollHeight;
+}
+
+/* =========================================================
+   NIVELES — camino de aprendizaje por bloques
+   ========================================================= */
+const UNITS=[
+  {key:'1-50',title:'Negocios básicos',sub:'palabras 1–50'},
+  {key:'51-100',title:'Comercio y finanzas',sub:'palabras 51–100'},
+  {key:'101-145',title:'RRHH y verbos',sub:'palabras 101–145'},
+  {key:'146-175',title:'Expresiones',sub:'expresiones del examen'},
+  {key:'grammar',title:'Gramática',sub:'comparatif · COI · adverbes'},
+];
+const LEVELS=[
+  {n:1,ico:'👁️',nm:'Reconocer',desc:'francés → significado'},
+  {n:2,ico:'🇪🇸',nm:'Traducir',desc:'español → francés'},
+  {n:3,ico:'✏️',nm:'Completar',desc:'la frase con hueco'},
+  {n:4,ico:'🧩',nm:'Construir',desc:'ordena la frase'},
+  {n:5,ico:'🎤',nm:'Hablar',desc:'pronuncia la frase'},
+];
+const LV_PASS=80,LV_QUESTIONS=10;
+let lvCurrentIds=[]; // ids de la tanda actual (para marcar cobertura al acabar)
+// pool ordenado (fácil→difícil) de un bloque del camino, ESTABLE:
+// la tanda 1 son siempre las palabras 1–10, la 2 las 11–20, etc.
+function blockPool(node){
+  let pool=ALL.filter(c=>node.cats.includes(c.cat));
+  if(['build','pron','blank'].includes(node.type))pool=pool.filter(c=>c.ex);
+  if(node.type==='build')pool=pool.filter(c=>c.ex.split(' ').length<=(node.short?10:12));
+  return pool.sort((a,b)=>(diffScore(a)-diffScore(b))||((a.n||0)-(b.n||0))||a.w.localeCompare(b.w));
+}
+function blockTandas(node){const size=S.lvSize||10;const pool=blockPool(node);return {pool,size,tandas:Math.max(1,Math.ceil(pool.length/size))};}
+function chunkCovered(node,k){ // ¿está la tanda k completamente cubierta?
+  const {pool,size}=blockTandas(node);
+  const cov=new Set(S.covered[node.id]||[]);
+  const chunk=pool.slice(k*size,(k+1)*size);
+  return chunk.length>0&&chunk.every(c=>cov.has(c.id));
+}
+function nodeCovered(id){return S.covered[id]||(S.covered[id]=[]);}
+let lvUnit=null,lvNum=1,lvQueue=[],lvIdx=0,lvOk=0,lvMode='fixed',lvPoolCards=[];
+let lvTarget=0,lvMastered=0,lvFirstOk=0,lvPathIdx=0; // maestría: hasta acertar las 10 (los fallos vuelven)
+// Repaso mixto: dificultad creciente por tamaño de pool, todos los formatos mezclados
+const MIXED=[
+  {n:1,ico:'🌱',nm:'Básico',cats:['1-50']},
+  {n:2,ico:'📈',nm:'Comercio',cats:['1-50','51-100']},
+  {n:3,ico:'⚙️',nm:'Verbos+',cats:['1-50','51-100','101-145']},
+  {n:4,ico:'🌍',nm:'Todo',cats:['1-50','51-100','101-145','146-175']},
+  {n:5,ico:'👑',nm:'Maestro',cats:['1-50','51-100','101-145','146-175','grammar']},
+];
+function mixedType(c){
+  if(c.cat==='grammar')return 'cardfr';
+  const opts=['cardfr','cardes','blank','build','pron','pronword'];
+  let t=opts[Math.floor(Math.random()*opts.length)];
+  if(t==='build'&&c.ex.split(' ').length>12)t='blank';
+  if(t==='blank'){const core=c.w.split(/[ '’]/)[0].replace(/[.*+?^${}()|[\]\\]/g,'\\$&');if(!new RegExp(core,'i').test(c.ex))t='cardes';}
+  return t;
+}
+// cola del repaso mixto. El Maestro (m-all) garantiza TODAS las formas del examen:
+// reconocer (FR→ES), traducir (ES→FR), completar el hueco, construir la frase,
+// pronunciar la palabra, pronunciar la frase y quiz de opción.
+function buildMixedQueue(node){
+  const withEx=ALL.filter(c=>node.cats.includes(c.cat)&&c.ex);
+  const pool=shuffle([...withEx]);
+  const has=x=>q.some(it=>it.card===x);
+  const q=[];
+  if(node.id==='m-all'){
+    const take=(pick)=>{const c=pool.find(x=>!has(x)&&pick(x));return c;};
+    const canBlank=x=>{const core=x.w.split(/[ '’]/)[0].replace(/[.*+?^${}()|[\]\\]/g,'\\$&');return new RegExp(core,'i').test(x.ex);};
+    const plan=[
+      ['cardfr',()=>true],['cardes',()=>true],
+      ['blank',canBlank],['build',x=>x.ex.split(' ').length<=12],
+      ['pronword',()=>true],['pron',()=>true],
+    ];
+    plan.forEach(([f,pick])=>{const c=take(pick);if(c)q.push({card:c,type:f});});
+    // dos preguntas de quiz (opción múltiple), como los ejercicios de los documentos
+    shuffle([...HARDCODED_CHALLENGES]).slice(0,2).forEach(ch=>q.push({challenge:ch,type:'quiz'}));
+    // completa hasta 10 con formato aleatorio
+    for(const c of pool){if(q.length>=LV_QUESTIONS)break;if(!has(c))q.push({card:c,type:mixedType(c)});}
+    return shuffle(q).slice(0,LV_QUESTIONS);
+  }
+  return pool.slice(0,LV_QUESTIONS).map(c=>({card:c,type:mixedType(c)}));
+}
+function relaunchLevel(n){lvMode==='mixed'?startMixed(n):startLevel(lvUnit,n);}
+
+/* =========================================================
+   EL CAMINO — recorrido lineal, progresivo y acumulativo
+   FR→ES antes que ES→FR en cada tema; de bases a frases completas.
+   ========================================================= */
+const CONTENT_PATH=[
+  {id:'v1-fr',tier:'Bases · negocios',ico:'🌱',title:'Palabras 1–50 · Francés→Español',type:'cardfr',cats:['1-50']},
+  {id:'v1-es',tier:'Bases · negocios',ico:'✍️',title:'Palabras 1–50 · Español→Francés',type:'cardes',cats:['1-50']},
+  {id:'v2-fr',tier:'Comercio y finanzas',ico:'📈',title:'Palabras 51–100 · Francés→Español',type:'cardfr',cats:['51-100']},
+  {id:'v2-es',tier:'Comercio y finanzas',ico:'✍️',title:'Palabras 51–100 · Español→Francés',type:'cardes',cats:['51-100']},
+  {id:'v3-fr',tier:'Verbos y RRHH',ico:'⚙️',title:'Verbos · Francés→Español',type:'cardfr',cats:['101-145']},
+  {id:'v3-es',tier:'Verbos y RRHH',ico:'✍️',title:'Verbos · Español→Francés',type:'cardes',cats:['101-145']},
+  {id:'v4-fr',tier:'Expresiones',ico:'💬',title:'Expresiones · Francés→Español',type:'cardfr',cats:['146-175']},
+  {id:'v4-es',tier:'Expresiones',ico:'✍️',title:'Expresiones · Español→Francés',type:'cardes',cats:['146-175']},
+  {id:'g-fr',tier:'Gramática',ico:'📐',title:'Reglas de gramática · tarjeta',type:'cardfr',cats:['grammar']},
+  {id:'g-blank',tier:'Gramática',ico:'✏️',title:'Gramática · completar la frase',type:'blank',cats:['grammar']},
+  {id:'p-build1',tier:'Frases completas',ico:'🧩',title:'Construir frases (básicas)',type:'build',cats:['1-50','51-100'],short:true},
+  {id:'p-build2',tier:'Frases completas',ico:'🧩',title:'Construir frases (todas)',type:'build',cats:['1-50','51-100','101-145','146-175']},
+  {id:'p-pron',tier:'Frases completas',ico:'🎙️',title:'Pronunciar frases completas',type:'pron',cats:['1-50','51-100','101-145','146-175']},
+  {id:'m-basic',tier:'Maestría',ico:'🎲',title:'Repaso mixto · básico',type:'mix',cats:['1-50','51-100']},
+  {id:'m-all',tier:'Maestría',ico:'👑',title:'Repaso mixto · TODO',type:'mix',cats:['1-50','51-100','101-145','146-175','grammar']},
+];
+// inserta un PUNTO DE CONTROL (repaso de tus fallos) cada 5 niveles
+const PATH=[];
+CONTENT_PATH.forEach((n,k)=>{PATH.push(n);if((k+1)%5===0)PATH.push({id:'chk'+(k+1),tier:'⚑ Punto de control',ico:'🩹',title:'Repaso de tus fallos',type:'review'});});
+function contentNode(n){return !!(n.cats&&n.type!=='mix'&&n.type!=='review');}
+function pathDone(i){
+  const n=PATH[i];
+  if(contentNode(n)){ // los bloques SOLO están hechos si cubriste TODAS sus palabras
+    const pool=blockPool(n);
+    const cov=(S.covered[n.id]||[]).filter(id=>pool.some(c=>c.id===id)).length;
+    return pool.length>0&&cov>=pool.length;
+  }
+  const r=lvState(n.id)[1];return !!(r&&r.done);
+}
+function pathUnlocked(i){return i===0||pathDone(i-1);}
+function pathSub(t){return {cardfr:'Tarjeta: tradúcela al español y dila en francés',cardes:'Tarjeta: escríbela en francés y dila',pronword:'Escucha y pronúnciala tú (solo pasas si suena bien)',blank:'Completa la frase con la palabra correcta',build:'Ordena las palabras de la frase',pron:'Pronuncia la frase completa',mix:'Todos los formatos mezclados',review:'Repite todo lo que has fallado hasta aquí'}[t]||'';}
+function startPathNode(i,tandaK){
+  const node=PATH[i];
+  if(node.type==='review')return startReview(node,i);
+  lvMode='path';lvPathIdx=i;lvUnit=node.id;lvNum=1;lvIdx=0;lvOk=0;
+  lvPoolCards=ALL.filter(c=>node.cats.includes(c.cat)); // para los distractores
+  lvCurrentIds=[];
+  if(node.type==='mix'){
+    lvQueue=buildMixedQueue(node); // el Maestro/mixto no se divide: garantiza todas las formas
+  }else{
+    const {pool,size,tandas}=blockTandas(node);
+    if(tandaK==null){ // sin tanda concreta → la primera no cubierta del todo (o la 1ª si está todo hecho)
+      tandaK=0;
+      for(let k=0;k<tandas;k++){if(!chunkCovered(node,k)){tandaK=k;break;}if(k===tandas-1)tandaK=0;}
+    }
+    lvTandaIdx=tandaK;
+    const cards=pool.slice(tandaK*size,(tandaK+1)*size); // SIEMPRE las palabras fijas de esa tanda
+    lvCurrentIds=cards.map(c=>c.id);
+    lvQueue=cards.map(c=>({card:c,type:node.type}));
+  }
+  if(lvQueue.length<1){toast('Contenido insuficiente para este nivel');return;}
+  lvTarget=lvQueue.length;lvMastered=0;lvFirstOk=0;
+  $('#lv-map').style.display='none';$('#lv-play').style.display='';
+  renderLevelQ();
+}
+let lvTandaIdx=0;
+// PUNTO DE CONTROL: repasa TODO lo que has fallado (tarjetas difíciles, traducciones,
+// pronunciaciones flojas y quiz errados). Si tienes pocos fallos, se completa con repaso al azar.
+function startReview(node,i){
+  lvMode='path';lvPathIdx=i;lvUnit=node.id;lvNum=1;lvIdx=0;lvOk=0;lvPoolCards=ALL;
+  const items=[],seen=new Set();
+  // 1) tarjetas marcadas difíciles → tarjeta (traducir + decir)
+  ALL.forEach(c=>{const st=S.cards[c.id];if(st&&st.hard&&!seen.has(c.id)){seen.add(c.id);items.push({card:c,type:'cardfr'});}});
+  // 2) palabras/frases flojas registradas (voz, diálogos, traducciones)
+  Object.keys(S.weak.phrases||{}).forEach(text=>{
+    const card=ALL.find(c=>c.w===text);
+    if(card){if(!seen.has(card.id)){seen.add(card.id);items.push({card,type:'cardfr'});}}
+    else{const host=ALL.find(c=>c.ex===text);items.push({card:host||{id:'wk'+items.length,w:text,en:'frase que fallaste',ex:text,cat:'x'},type:'pron'});}
+  });
+  // 3) quiz fallados
+  Object.keys(S.weak.ch||{}).forEach(idx=>{const ch=HARDCODED_CHALLENGES[+idx];if(ch)items.push({challenge:ch,type:'quiz'});});
+  shuffle(items);
+  // si tienes pocos fallos, completa con tarjetas al azar para que el repaso valga la pena
+  if(items.length<6){
+    shuffle(ALL.filter(c=>!seen.has(c.id))).slice(0,6-items.length).forEach(c=>items.push({card:c,type:'cardfr'}));
+  }
+  lvQueue=items.slice(0,S.lvSize||10);
+  lvTarget=lvQueue.length;lvMastered=0;lvFirstOk=0;
+  $('#lv-map').style.display='none';$('#lv-play').style.display='';
+  renderLevelQ();
+}
+
+function lvState(unit){if(!S.levels[unit])S.levels[unit]={};return S.levels[unit];}
+function lvUnlocked(unit,n){if(n===1)return true;const prev=lvState(unit)[n-1];return !!(prev&&(prev.done||prev.pct>=LV_PASS));}
+function lvStars(pct){return pct>=95?'★★★':pct>=85?'★★☆':pct>=LV_PASS?'★☆☆':'';}
+
+function renderLevelMap(){
+  $('#lv-play').style.display='none';
+  const map=$('#lv-map');map.style.display='';map.innerHTML='';
+  const done=PATH.filter((n,i)=>pathDone(i)).length;
+  const nextI=PATH.findIndex((n,i)=>!pathDone(i));
+  const size=S.lvSize||10;
+  const hdr=document.createElement('div');hdr.className='card';hdr.style.marginBottom='1rem';
+  hdr.innerHTML=`<div style="display:flex;align-items:center;gap:.85rem">
+    <div class="ring" style="width:54px;height:54px;flex:none;background:conic-gradient(var(--blue) ${Math.round(done/PATH.length*100)}%,var(--bg2) 0)"><span>${done}/${PATH.length}</span></div>
+    <div style="flex:1"><b>Tu camino</b><div class="heard" style="color:var(--text2)">Cada bloque se hace en tandas hasta cubrirlo entero. Supéralo para desbloquear el siguiente.</div></div>
+  </div>
+  <div class="dir-seg" style="margin:.8rem 0 0">
+    <span class="dir-label">Tanda de</span>
+    <button data-size="10" class="${size===10?'active':''}">10</button>
+    <button data-size="5" class="${size===5?'active':''}">5</button>
+  </div>`;
+  map.appendChild(hdr);
+  hdr.querySelectorAll('button[data-size]').forEach(b=>b.onclick=()=>{S.lvSize=+b.dataset.size;save();renderLevelMap();});
+  let lastTier=null;
+  PATH.forEach((n,i)=>{
+    if(n.tier!==lastTier){lastTier=n.tier;const h=document.createElement('div');h.className='path-tier';h.textContent=n.tier;map.appendChild(h);}
+    const rec=lvState(n.id)[1],unlocked=pathUnlocked(i),isNext=i===nextI,isDone=pathDone(i);
+    if(contentNode(n)){
+      // el bloque se DIVIDE en niveles: 50 palabras = 5 tandas de 10 = 10 tandas de 5
+      const {pool,size:sz,tandas}=blockTandas(n);
+      const covSet=new Set(S.covered[n.id]||[]);
+      const covN=pool.filter(c=>covSet.has(c.id)).length;
+      // cabecera del bloque
+      const h=document.createElement('div');h.className='path-block-h';
+      h.innerHTML=`<span class="pico">${unlocked?n.ico:'🔒'}</span><span class="pbt">${esc(n.title)}</span>`+
+        `<span class="pbst">${isDone?lvStars(rec?rec.pct:100)+' completo':`${covN}/${pool.length} palabras`}</span>`;
+      map.appendChild(h);
+      // una tanda = un nivel
+      for(let k=0;k<tandas;k++){
+        const chunk=pool.slice(k*sz,(k+1)*sz);
+        const tDone=chunk.every(c=>covSet.has(c.id));
+        const tUnlocked=unlocked&&(k===0||chunkCovered(n,k-1));
+        const tNext=isNext&&tUnlocked&&!tDone&&(k===0||chunkCovered(n,k-1));
+        const b=document.createElement('button');
+        b.className='path-node sub'+(tDone?' done':'')+(tNext?' next':'');
+        b.disabled=!tUnlocked;
+        const a=k*sz+1,z=Math.min((k+1)*sz,pool.length);
+        b.innerHTML=`<span class="pico">${tUnlocked?(tDone?'✅':'📗'):'🔒'}</span>`+
+          `<span class="pmain"><span class="pt">Tanda ${k+1} de ${tandas} · palabras ${a}–${z}</span><span class="psub">${esc(pathSub(n.type))}</span></span>`+
+          `<span class="pst">${tDone?'✓':(tUnlocked?'▶':'')}</span>`;
+        if(tUnlocked)b.onclick=()=>startPathNode(i,k);
+        map.appendChild(b);
+      }
+    }else{
+      const pst=isDone?lvStars(rec?rec.pct:100):(unlocked?'▶':'');
+      const b=document.createElement('button');
+      b.className='path-node'+(isDone?' done':'')+(isNext?' next':'');
+      b.disabled=!unlocked;
+      b.innerHTML=`<span class="pico">${unlocked?n.ico:'🔒'}</span>`+
+        `<span class="pmain"><span class="pt">${esc(n.title)}</span><span class="psub">${esc(pathSub(n.type))}</span></span>`+
+        `<span class="pst">${pst}</span>`;
+      if(unlocked)b.onclick=()=>startPathNode(i);
+      map.appendChild(b);
+    }
+  });
+}
+function lvPool(unit){return ALL.filter(c=>c.cat===unit&&c.ex);}
+function lvDistract(pool,card,field,n){
+  return shuffle(pool.filter(c=>c!==card)).slice(0,n).map(c=>c[field]);
+}
+function startLevel(unit,n){
+  lvMode='fixed';lvUnit=unit;lvNum=n;lvIdx=0;lvOk=0;
+  lvPoolCards=lvPool(unit);
+  let cards=shuffle([...lvPoolCards]).slice(0,LV_QUESTIONS);
+  if(n===4)cards=shuffle(lvPoolCards.filter(c=>c.ex.split(' ').length<=12)).slice(0,LV_QUESTIONS); // frases manejables
+  if(cards.length<4){toast('Bloque demasiado pequeño para este nivel');return;}
+  lvQueue=cards.map(c=>({card:c}));
+  lvTarget=lvQueue.length;lvMastered=0;lvFirstOk=0;
+  $('#lv-map').style.display='none';$('#lv-play').style.display='';
+  renderLevelQ();
+}
+function startMixed(n){
+  lvMode='mixed';lvUnit='mixed';lvNum=n;lvIdx=0;lvOk=0;
+  const cats=MIXED[n-1].cats;
+  lvPoolCards=ALL.filter(c=>cats.includes(c.cat)&&c.ex);
+  const cards=shuffle([...lvPoolCards]).slice(0,LV_QUESTIONS);
+  if(cards.length<4){toast('Muy pocas tarjetas para este nivel');return;}
+  lvQueue=cards.map(c=>({card:c,type:mixedType(c)}));
+  lvTarget=lvQueue.length;lvMastered=0;lvFirstOk=0;
+  $('#lv-map').style.display='none';$('#lv-play').style.display='';
+  renderLevelQ();
+}
+function quitLevel(){renderLevelMap();}
+// salida de emergencia: si una tarjeta "no se deja" (micro roto, no valida…), sáltala
+// para poder acabar el nivel. Cuenta como resuelta pero se registra como pendiente (vuelve en repasos).
+function lvSkip(){
+  if($('#lv-play').style.display==='none')return;
+  if(lvMastered>=lvTarget||lvIdx>=lvQueue.length)return;
+  if(!confirm('¿Saltar esta? Contará para terminar el nivel, pero quedará marcada como pendiente y volverá a salir en los repasos.'))return;
+  const it=lvQueue[lvIdx];
+  it.retried=true;                 // no cuenta como acierto "a la primera"
+  lvMastered++;                    // permite completar el nivel
+  if(it.card&&it.card.id){cardState(it.card.id).hard=true;weakPhrase(it.card.w,'Saltada en el camino',true);}
+  else if(it.challenge){weakChallenge(it.challenge,true);}
+  toast('Saltada — volverá en tus repasos 🔁');
+  lvIdx++;save();updateHUD();renderLevelQ();
+}
+function lvNext(ok){
+  const it=lvQueue[lvIdx];
+  if(ok){lvMastered++;lvOk++;if(!it.retried)lvFirstOk++;}
+  else{it.retried=true;lvQueue.push({...it});toast('Esa vuelve a salir hasta que la aciertes 💪');} // reaparece al final
+  lvIdx++;save();
+  renderLevelQ();
+}
+function renderLevelQ(){
+  $('#lv-prog').style.width=Math.round(lvMastered/Math.max(1,lvTarget)*100)+'%';
+  $('#lv-counter').textContent=`${lvMastered} / ${lvTarget} ✓`;
+  if(lvMastered>=lvTarget||lvIdx>=lvQueue.length)return lvEnd();
+  const it=lvQueue[lvIdx];
+  if(it.type==='quiz')return lvQ_quiz(it.challenge);
+  const c=it.card;
+  const type=it.type||'cardfr';
+  if(type==='cardfr'||type==='rec')lvQ_card(c,'fr');
+  else if(type==='cardes'||type==='es')lvQ_card(c,'es');
+  else if(type==='blank')lvQ_blank(c);
+  else if(type==='build')lvQ_build(c);
+  else if(type==='pronword')lvQ_pronword(c);
+  else lvQ_pron(c);
+}
+// TARJETA (vocab/gramática): sin opciones — tradúcela escribiendo Y dila en voz alta.
+// Solo se domina si aciertas la traducción Y pronuncias bien (≥60%).
+function lvQ_card(c,dir){
+  const g=c.cat==='grammar';
+  const promptBig=g?c.w:(dir==='fr'?c.w:c.en);
+  const promptSub=g?'':(dir==='fr'?(c.g?(c.g==='M'?'le / un …':'la / une …'):''):'→ escríbela y dila en francés');
+  const sayTarget=g?grammarSpeakText(c.ex):c.w; // lo que se pronuncia (siempre francés)
+  const answerHTML=g
+    ? `${esc(c.en)}<br><span style="color:var(--text3);font-size:.9rem">${esc(c.ex)}</span>`
+    : (dir==='fr'?esc(c.en):esc(c.w)+(c.g?(c.g==='M'?' (le)':' (la)'):''))+`<br><span style="color:var(--text3);font-size:.9rem">${esc(c.ex||'')}</span>`;
+  const needTrans=!g;                 // la gramática no se teclea
+  const expForCard=g?[]:(dir==='fr'?c.en.split('/').map(s=>s.trim()).filter(Boolean):[c.w]);
+  const strict=dir==='es';
+  let transOK=!needTrans, sayOK=!SR, revealed=false;
+  $('#lv-area').innerHTML=`<div class="card">
+    <span class="badge">${g?'Gramática 🎴':(dir==='fr'?'Tarjeta · Francés → Español 🎴':'Tarjeta · Español → Francés 🎴')}</span>
+    <div class="q" style="text-align:center;font-size:1.7rem">${esc(promptBig)}</div>
+    ${promptSub?`<div class="heard" style="text-align:center;color:var(--text3);margin:-.3rem 0 .6rem">${esc(promptSub)}</div>`:''}
+    ${needTrans?`<div class="check" style="margin-top:.5rem"><input id="cd-input" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="${dir==='fr'?'Traduce al español…':'Escríbela en francés…'}"><button class="btn primary" id="cd-check">Comprobar</button><button class="btn" id="cd-skip">No lo sé</button></div>`:''}
+    <div class="say-row" style="justify-content:center;margin-top:.4rem">
+      <button class="speak" id="cd-hear">🔊 Escuchar</button>
+      <button class="speak mic" id="cd-mic" data-label="🎤 Dila">🎤 Dila</button>
+    </div>
+    <div class="pron" id="cd-pron"></div>
+    <div class="fb" id="cd-fb"></div>
+    <div id="cd-reveal" style="display:none;text-align:center;margin-top:.7rem;font-family:var(--font-display);font-size:1.15rem"></div>
+    <div class="heard" id="cd-status" style="text-align:center;margin-top:.6rem"></div>
+    <div class="hint" id="cd-hint" style="margin:.5rem 0 0">Puntúate abajo — solo <b>Fácil</b> la da por dominada ↓</div>
+    <div class="rate hidden" id="cd-rate" style="margin-top:.6rem">
+      <button class="rbtn hard" id="cd-hard">😰 Difícil<small>vuelve a salir</small></button>
+      <button class="rbtn ok" id="cd-ok">🤔 Regular<small>vuelve a salir</small></button>
+      <button class="rbtn easy" id="cd-easy">✅ Fácil<small>dominada ✓</small></button>
+    </div>
+  </div>`;
+  function reveal(){if(revealed)return;revealed=true;$('#cd-reveal').style.display='block';$('#cd-reveal').innerHTML=answerHTML;$('#cd-rate').classList.remove('hidden');$('#cd-hint').style.display='none';}
+  function status(){
+    if(!needTrans&&!SR){$('#cd-status').innerHTML='';return;}
+    const t=needTrans?(transOK?'✅ traducción':'⬜ traducción'):'';
+    const s=SR?(sayOK?'✅ pronunciación':'⬜ pronunciación 🎤'):'';
+    $('#cd-status').innerHTML=`${t} &nbsp; ${s}`;
+  }
+  $('#cd-hear').onclick=()=>speak(sayTarget);
+  $('#cd-mic').onclick=function(){startPron(sayTarget,$('#cd-pron'),this,sc=>{if(sc>=0.6)sayOK=true;status();});};
+  if(needTrans){
+    const doCheck=()=>{
+      const val=$('#cd-input').value.trim();if(!val)return;
+      const ok=matchAny(val,expForCard,strict);
+      if(ok)transOK=true;
+      const fb=$('#cd-fb');fb.className='fb show '+(ok?'good':'bad');
+      fb.innerHTML=ok?`<b>✅ Traducción correcta</b>`:`<b>❌ No exacto</b> · correcto: <b>${esc(dir==='fr'?c.en:c.w)}</b>`;
+      if(!ok)logEvent('errores',{kind:'camino-trad',q:promptBig,picked:val,correct:(dir==='fr'?c.en:c.w)});
+      reveal();status();
+    };
+    $('#cd-check').onclick=doCheck;
+    $('#cd-skip').onclick=()=>{reveal();status();};
+    $('#cd-input').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();doCheck();}});
+    setTimeout(()=>{const i=$('#cd-input');if(i)i.focus();},0);
+  }else{reveal();}
+  // puntuación: SOLO "Fácil" la da por dominada; Regular/Difícil vuelven a salir (y se registran)
+  function rate(level){
+    const st=cardState(c.id);
+    if(level==='easy'){st.box=Math.min((st.box||0)+1,INTERVALS.length-1);st.hard=false;st.ok=(st.ok||0)+1;st.due=Date.now()+INTERVALS[st.box]*86400000;weakPhrase(c.w,'',false);save();lvNext(true);}
+    else if(level==='ok'){st.hard=false;st.due=Date.now()+86400000;save();lvNext(false);}
+    else{st.box=0;st.hard=true;st.ko=(st.ko||0)+1;st.due=Date.now()+60000;weakPhrase(c.w,'Camino: difícil',true);save();lvNext(false);}
+  }
+  $('#cd-easy').onclick=()=>rate('easy');
+  $('#cd-ok').onclick=()=>rate('ok');
+  $('#cd-hard').onclick=()=>rate('hard');
+  status();
+}
+// quiz de un desafío (para el repaso de fallos)
+function lvQ_quiz(ch){
+  const keys=['A','B','C','D'];
+  $('#lv-area').innerHTML=`<div class="card">
+    <span class="badge">${esc(ch.type)}</span>
+    <div class="q">${esc(ch.q).replace('_____','<span class="blank">_____</span>')}</div>
+    <div class="opts" id="lv-opts"></div>
+    <div class="fb" id="lv-fb"></div>
+    <button class="nextbtn" id="lv-nextbtn">Siguiente →</button>
+  </div>`;
+  let done=false;
+  ch.opts.forEach((o,i)=>{
+    const b=document.createElement('button');
+    b.className='opt';b.innerHTML=`<span class="key">${keys[i]}</span><span>${esc(o)}</span>`;
+    b.onclick=()=>{
+      if(done)return;done=true;
+      const ok=i===ch.ans;
+      $$('#lv-opts .opt').forEach((x,xi)=>{x.disabled=true;if(xi===ch.ans)x.classList.add('correct');});
+      if(!ok)b.classList.add('wrong');
+      weakChallenge(ch,!ok); // acierto → sale de tus fallos
+      const fb=$('#lv-fb');fb.className='fb show '+(ok?'good':'bad');
+      fb.innerHTML=`<strong>${ok?'✅ Correcto':'❌ Incorrecto'}</strong><div class="detail">${esc(ch.exp)}</div>`;
+      const nb=$('#lv-nextbtn');nb.classList.add('show');nb.onclick=()=>lvNext(ok);
+    };
+    $('#lv-opts').appendChild(b);
+  });
+}
+function lvEnd(){
+  const pct=Math.round(lvFirstOk/Math.max(1,lvTarget)*100); // aciertos a la primera (calidad)
+  let unitKey,levelKey,label,primaryFn,primaryTxt,extra='',blockLine='';
+  if(lvMode==='path'){
+    const node=PATH[lvPathIdx];
+    unitKey=node.id;levelKey=1;label='Camino: '+node.title;
+    if(node.type==='mix'||node.type==='review'){
+      // el mixto/repaso es una sola tanda: completa el nivel
+      markLevelDone(unitKey,levelKey,pct,true);
+      const hasNext=lvPathIdx+1<PATH.length;
+      primaryTxt=hasNext?'Siguiente nivel →':'Al camino 🛤️';
+      primaryFn=hasNext?`startPathNode(${lvPathIdx+1})`:'renderLevelMap()';
+      extra=`<button class="btn" onclick="startPathNode(${lvPathIdx})">Repetir ↺</button>`;
+    }else{
+      // BLOQUE por tandas: marca las palabras de esta tanda como cubiertas
+      const cov=nodeCovered(node.id);
+      lvCurrentIds.forEach(id=>{if(!cov.includes(id))cov.push(id);});
+      const pool=blockPool(node);const total=pool.length;
+      const done=pool.filter(c=>cov.includes(c.id)).length;
+      const blockDone=done>=total;
+      markLevelDone(unitKey,levelKey,pct,blockDone);
+      blockLine=`<div class="heard" style="color:var(--text2)">Bloque cubierto: <b>${done}/${total}</b> palabras</div>`;
+      if(blockDone){
+        const hasNext=lvPathIdx+1<PATH.length;
+        primaryTxt=hasNext?'Siguiente nivel →':'Al camino 🛤️';
+        primaryFn=hasNext?`startPathNode(${lvPathIdx+1})`:'renderLevelMap()';
+        extra=`<button class="btn" onclick="startPathNode(${lvPathIdx})">Repasar bloque ↺</button>`;
+      }else{
+        primaryTxt='Siguiente tanda →';
+        primaryFn=`startPathNode(${lvPathIdx})`;
+        extra=`<button class="btn" onclick="renderLevelMap()">Al camino 🛤️</button>`;
+      }
+    }
+  }else{
+    unitKey=lvUnit;levelKey=lvNum;
+    label=lvMode==='mixed'?`Mixto ${MIXED[lvNum-1].nm}`:`Nivel ${lvNum} (${lvUnit})`;
+    const hasNext=lvNum<5;
+    markLevelDone(unitKey,levelKey,pct,true);
+    primaryTxt=hasNext?'Siguiente nivel →':'Al camino 🛤️';
+    primaryFn=hasNext?`relaunchLevel(${lvNum+1})`:'renderLevelMap()';
+    extra=`<button class="btn" onclick="relaunchLevel(${lvNum})">Repetir ↺</button>`;
+  }
+  addXP(25);logDay();save();updateHUD();
+  logEvent('escenas',{title:label,ok:lvFirstOk,n:lvTarget,pronAvg:null,grade:Math.round(pct/10)});
+  const color=pct>=85?'var(--green)':pct>=60?'var(--amber)':'var(--blue)';
+  const retries=Math.max(0,lvQueue.length-lvTarget);
+  $('#lv-area').innerHTML=`<div class="card" style="text-align:center">
+    <div class="score" style="justify-content:center"><div class="ring" style="background:conic-gradient(${color} ${pct}%,var(--bg2) 0)"><span>${pct}%</span></div></div>
+    <div class="q" style="margin:.6rem 0">🏆 ¡${lvTarget}/${lvTarget} dominadas! ${lvStars(pct)}</div>
+    <div class="heard" style="color:var(--text2)">Aciertos a la primera: <b>${pct}%</b>${retries?` · ${retries} repeticiones`:(pct>=90?' · ¡sin fallos! 🔥':'')}</div>
+    ${blockLine}
+    <div style="display:flex;gap:.6rem;justify-content:center;margin-top:1.2rem;flex-wrap:wrap">
+      ${extra}
+      <button class="btn primary" onclick="${primaryFn}">${primaryTxt}</button>
+    </div>
+  </div>`;
+}
+function markLevelDone(unitKey,levelKey,pct,done){
+  const st=lvState(unitKey);
+  const prev=st[levelKey]||{};
+  st[levelKey]={pct:Math.max(pct,prev.pct||0),done:done||prev.done||false};
+}
+/* N1/N2: elegir entre 4 */
+function lvQ_choice(c,qf,af,label,speakOpt){
+  const opts=shuffle([c[af],...lvDistract(lvPoolCards,c,af,3)]);
+  const keys=['A','B','C','D'];
+  $('#lv-area').innerHTML=`<div class="card">
+    <span class="badge">${label}</span>
+    <div class="q" style="text-align:center;font-size:1.6rem">${esc(c[qf])}</div>
+    <div class="opts" id="lv-opts"></div>
+    <div class="fb" id="lv-fb"></div>
+    <button class="nextbtn" id="lv-nextbtn">Siguiente →</button>
+  </div>`;
+  let done=false;
+  opts.forEach((o,i)=>{
+    const b=document.createElement('button');
+    b.className='opt';b.innerHTML=`<span class="key">${keys[i]}</span><span>${esc(o)}</span>`;
+    b.onclick=()=>{
+      if(done)return;done=true;
+      const ok=o===c[af];
+      $$('#lv-opts .opt').forEach((x,xi)=>{x.disabled=true;if(opts[xi]===c[af])x.classList.add('correct');});
+      if(!ok)b.classList.add('wrong');
+      if(ok)addXP(5);else{weakPhrase(c.w,'Nivel '+lvNum,true);logEvent('errores',{kind:'nivel'+lvNum,q:c[qf],picked:o,correct:c[af]});}
+      if(speakOpt)speak(c.w);
+      const fb=$('#lv-fb');
+      fb.innerHTML=`<strong>${ok?'✅':'❌'} ${esc(c.w)}</strong><div class="detail">${esc(c.ex||'')}</div>`;
+      fb.className='fb show '+(ok?'good':'bad');
+      const nb=$('#lv-nextbtn');nb.classList.add('show');nb.onclick=()=>lvNext(ok);
+    };
+    $('#lv-opts').appendChild(b);
+  });
+}
+/* N3: frase con hueco */
+function lvQ_blank(c){
+  const core=c.w.split(/[ '’]/)[0];
+  const re=new RegExp('('+core.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\w*)','i');
+  const m=c.ex.match(re);
+  if(!m)return lvQ_choice(c,'en','w','Dilo en francés',true); // fallback si la palabra no está en el ejemplo
+  const blanked=c.ex.replace(re,'_____');
+  const answer=m[1];
+  const opts=shuffle([answer,...lvDistract(lvPoolCards,c,'w',3).map(w=>w.split(/[ ]/)[0])]);
+  const keys=['A','B','C','D'];
+  $('#lv-area').innerHTML=`<div class="card">
+    <span class="badge">Completa la frase</span>
+    <div class="q">${esc(blanked).replace('_____','<span class="blank">_____</span>')}</div>
+    <div class="heard" style="color:var(--text2);margin:-.4rem 0 .8rem">(${esc(c.en)})</div>
+    <div class="opts" id="lv-opts"></div>
+    <div class="fb" id="lv-fb"></div>
+    <button class="nextbtn" id="lv-nextbtn">Siguiente →</button>
+  </div>`;
+  let done=false;
+  opts.forEach((o,i)=>{
+    const b=document.createElement('button');
+    b.className='opt';b.innerHTML=`<span class="key">${keys[i]}</span><span>${esc(o)}</span>`;
+    b.onclick=()=>{
+      if(done)return;done=true;
+      const ok=o===answer;
+      $$('#lv-opts .opt').forEach((x,xi)=>{x.disabled=true;if(opts[xi]===answer)x.classList.add('correct');});
+      if(!ok){b.classList.add('wrong');weakPhrase(c.ex,'Completar',true);logEvent('errores',{kind:'nivel3',q:blanked,picked:o,correct:answer});}
+      else addXP(5);
+      speak(c.ex);
+      const fb=$('#lv-fb');
+      fb.innerHTML=`<strong>${ok?'✅':'❌'}</strong> ${esc(c.ex)}`;
+      fb.className='fb show '+(ok?'good':'bad');
+      const nb=$('#lv-nextbtn');nb.classList.add('show');nb.onclick=()=>lvNext(ok);
+    };
+    $('#lv-opts').appendChild(b);
+  });
+}
+/* N4: construir la frase tocando palabras */
+function lvQ_build(c){
+  const tokens=c.ex.split(' ').filter(Boolean);
+  const pool=shuffle(tokens.map((t,i)=>({t,i})));
+  let line=[];
+  $('#lv-area').innerHTML=`<div class="card">
+    <span class="badge">Construye la frase 🧩</span>
+    <div class="build-target">${esc(c.en)} <button class="speak" style="margin-left:.4rem" onclick="speak(${JSON.stringify(c.ex).replace(/"/g,'&quot;')})">🔊</button></div>
+    <div class="build-line" id="lv-line"></div>
+    <div class="build-pool" id="lv-pool"></div>
+    <div class="fb" id="lv-fb"></div>
+    <div style="display:flex;gap:.6rem;margin-top:1rem">
+      <button class="btn" id="lv-clear">Borrar</button>
+      <button class="btn primary" id="lv-check" style="flex:1">Comprobar</button>
+    </div>
+    <button class="nextbtn" id="lv-nextbtn">Siguiente →</button>
+  </div>`;
+  const lineEl=$('#lv-line'),poolEl=$('#lv-pool');
+  function paint(){
+    lineEl.innerHTML='';poolEl.innerHTML='';
+    line.forEach((tok,li)=>{
+      const b=document.createElement('button');b.className='wchip';b.textContent=tok.t;
+      b.onclick=()=>{line.splice(li,1);paint();};
+      lineEl.appendChild(b);
+    });
+    pool.forEach(tok=>{
+      const used=line.includes(tok);
+      const b=document.createElement('button');b.className='wchip'+(used?' ghost':'');b.textContent=tok.t;
+      b.onclick=()=>{if(!used){line.push(tok);paint();}};
+      poolEl.appendChild(b);
+    });
+  }
+  paint();
+  $('#lv-clear').onclick=()=>{line=[];paint();};
+  let done=false;
+  $('#lv-check').onclick=()=>{
+    if(done)return;done=true;
+    const ok=line.map(x=>x.t).join(' ')===tokens.join(' ');
+    if(ok){addXP(7);speak(c.ex);}
+    else{weakPhrase(c.ex,'Construir',true);logEvent('errores',{kind:'nivel4',q:c.en,picked:line.map(x=>x.t).join(' '),correct:c.ex});}
+    const fb=$('#lv-fb');
+    fb.innerHTML=`<strong>${ok?'✅ Parfait !':'❌ Casi.'}</strong><div class="detail">${esc(c.ex)}</div>`;
+    fb.className='fb show '+(ok?'good':'bad');
+    const nb=$('#lv-nextbtn');nb.classList.add('show');nb.onclick=()=>lvNext(ok);
+  };
+}
+/* N5: pronunciar la frase */
+function lvQ_pron(c){
+  $('#lv-area').innerHTML=`<div class="card">
+    <span class="badge">Pronuncia 🎤</span>
+    <div class="q" style="font-size:1.2rem">“${esc(c.ex)}”</div>
+    <div class="heard" style="color:var(--text2);margin:-.4rem 0 .8rem">${esc(c.en)}</div>
+    <div class="say-row" style="justify-content:flex-start">
+      <button class="speak" onclick="speak(${JSON.stringify(c.ex).replace(/"/g,'&quot;')})">🔊 Modelo</button>
+      <button class="speak mic" id="lv-mic" data-label="🎤 Ahora tú">🎤 Ahora tú</button>
+    </div>
+    <div class="pron" id="lv-pron"></div>
+    <button class="nextbtn" id="lv-nextbtn">Siguiente →</button>
+  </div>`;
+  let bestScore=-1;
+  $('#lv-mic').onclick=function(){startPron(c.ex,$('#lv-pron'),this,s=>{
+    bestScore=Math.max(bestScore,s);
+    const nb=$('#lv-nextbtn');nb.classList.add('show');
+    nb.textContent=bestScore>=0.6?'Siguiente →':'Siguiente (cuenta como fallo) →';
+    nb.onclick=()=>lvNext(bestScore>=0.6);
+  });};
+}
+// pronunciar SOLO la palabra (niveles de base); solo pasa si suena bien
+function lvQ_pronword(c){
+  $('#lv-area').innerHTML=`<div class="card">
+    <span class="badge">Pronuncia la palabra 🎤</span>
+    <div class="q" style="font-size:1.7rem;text-align:center">${esc(c.w)}</div>
+    <div class="heard" style="color:var(--text2);text-align:center;margin:-.3rem 0 .9rem">${esc(c.en)}</div>
+    <div class="say-row" style="justify-content:center">
+      <button class="speak" onclick="speak(${JSON.stringify(c.w).replace(/"/g,'&quot;')})">🔊 Escuchar</button>
+      <button class="speak mic" id="lv-mic" data-label="🎤 Ahora tú">🎤 Ahora tú</button>
+    </div>
+    <div class="pron" id="lv-pron"></div>
+    <button class="nextbtn" id="lv-nextbtn">Siguiente →</button>
+  </div>`;
+  let bestScore=-1;
+  $('#lv-mic').onclick=function(){startPron(c.w,$('#lv-pron'),this,s=>{
+    bestScore=Math.max(bestScore,s);
+    const nb=$('#lv-nextbtn');nb.classList.add('show');
+    nb.textContent=bestScore>=0.6?'Siguiente →':'Repite hasta que suene bien →';
+    nb.onclick=()=>lvNext(bestScore>=0.6); // si no suena bien, no pasa: vuelve a salir
+  });};
+}
+
+/* =========================================================
+   ENTRENAMIENTO ADAPTATIVO (estilo Duolingo)
+   ========================================================= */
+let tQueue=[],tIdx=0,tOk=0,tTotal=0,tDone=true;
+function initTraining(){
+  if(tDone||!tQueue.length){tQueue=buildTraining();tIdx=0;tOk=0;tTotal=tQueue.length;tDone=false;}
+  renderTrain();
+}
+function buildTraining(){
+  const items=[];
+  // 1) tarjetas difíciles / falladas
+  const hardCards=shuffle(ALL.filter(c=>{const st=S.cards[c.id];return st&&st.hard;})).slice(0,4);
+  hardCards.forEach((c,i)=>items.push({kind:i%2===0?'pron':'flash',card:c}));
+  // 2) frases flojas de voz / diálogos
+  const weakPh=Object.entries(S.weak.phrases).sort((a,b)=>b[1].fails-a[1].fails).slice(0,3);
+  weakPh.forEach(([text,v])=>items.push({kind:'pron',text,hint:v.hint}));
+  // 3) quiz fallados
+  Object.keys(S.weak.ch).slice(0,3).forEach(i=>{const ch=HARDCODED_CHALLENGES[+i];if(ch)items.push({kind:'quiz',ch});});
+  // 4) relleno hasta 10 con vocab aleatorio y algún quiz
+  const pool=shuffle([...VOCAB]);
+  while(items.length<8&&pool.length){const c=pool.pop();items.push({kind:Math.random()<0.5?'pron':'flash',card:c});}
+  shuffle([...HARDCODED_CHALLENGES]).slice(0,2).forEach(ch=>{if(items.length<10&&!items.some(it=>it.ch===ch))items.push({kind:'quiz',ch});});
+  return shuffle(items).slice(0,10);
+}
+function renderTrain(){
+  const area=$('#t-area');
+  $('#t-prog').style.width=Math.round(tIdx/Math.max(1,tQueue.length)*100)+'%';
+  $('#t-counter').textContent=tIdx<tQueue.length?`${tIdx+1} / ${tQueue.length}`:'✔';
+  if(tIdx>=tQueue.length){ // fin de sesión
+    tDone=true;
+    const pct=tTotal?Math.round(tOk/tQueue.length*100):0;
+    const color=pct>=80?'var(--green)':pct>=50?'var(--amber)':'var(--red)';
+    const msg=pct>=80?'Excelente sesión. Mañana otra y esto está hecho 💪':pct>=50?'Buen trabajo — lo fallado volverá a salir.':'Sesión dura. Repite ahora: la repetición es el truco.';
+    area.innerHTML=`<div class="card" style="text-align:center">
+      <div class="score" style="justify-content:center"><div class="ring" style="background:conic-gradient(${color} ${pct}%,var(--bg2) 0)"><span>${pct}%</span></div></div>
+      <div class="q" style="margin:.6rem 0">Sesión completada</div>
+      <div class="heard" style="color:var(--text2)">${msg}</div>
+      <button class="nextbtn show" style="margin-top:1.2rem" onclick="tDone=true;initTraining()">Nueva sesión 🏋️</button>
+    </div>`;
+    addXP(20);logDay();save();updateHUD();
+    return;
+  }
+  const it=tQueue[tIdx];
+  if(it.kind==='flash')renderTFlash(it);
+  else if(it.kind==='quiz')renderTQuiz(it);
+  else renderTPron(it);
+}
+function tNext(ok,it){
+  if(ok)tOk++;
+  else if(!it.retried){it.retried=true;tQueue.push({...it,retried:true});} // vuelve a salir
+  tIdx++;save();updateHUD();renderTrain();
+}
+function renderTFlash(it){
+  const c=it.card;
+  $('#t-area').innerHTML=`<div class="card">
+    <span class="badge">Tarjeta ¿la sabes?</span>
+    <div class="q" style="text-align:center;font-size:1.8rem">${esc(c.w)}</div>
+    <div id="t-reveal" style="display:none;text-align:center">
+      <div class="trans" style="margin-bottom:.4rem">${esc(c.en)}</div>
+      <div class="example" style="margin:0 auto .8rem">${esc(c.ex||'')}</div>
+      <div class="say-row"><button class="speak" onclick="speak(TQ())">🔊 Escuchar</button></div>
+    </div>
+    <button class="nextbtn show" id="t-show">Ver respuesta</button>
+    <div class="rate" id="t-rate" style="display:none;margin-top:1rem">
+      <button class="rbtn hard" id="t-bad">😰 Fallé<small>volverá a salir</small></button>
+      <button class="rbtn easy" id="t-good" style="grid-column:span 2">✅ La sabía<small>+8 XP</small></button>
+    </div>
+  </div>`;
+  window.TQ=()=>c.ex||c.w;
+  $('#t-show').onclick=()=>{$('#t-reveal').style.display='block';$('#t-show').style.display='none';$('#t-rate').style.display='grid';};
+  $('#t-bad').onclick=()=>{const st=cardState(c.id);st.hard=true;st.box=0;tNext(false,it);};
+  $('#t-good').onclick=()=>{const st=cardState(c.id);st.hard=false;st.box=Math.min(st.box+1,INTERVALS.length-1);st.due=Date.now()+INTERVALS[st.box]*86400000;addXP(8);tNext(true,it);};
+}
+function renderTQuiz(it){
+  const c=it.ch,keys=['A','B','C','D'];
+  $('#t-area').innerHTML=`<div class="card">
+    <span class="badge">${esc(c.type)}</span>
+    <div class="q">${esc(c.q).replace('_____','<span class="blank">_____</span>')}</div>
+    <div class="opts" id="t-opts"></div>
+    <div class="fb" id="t-fb"></div>
+    <button class="nextbtn" id="t-nextbtn">Siguiente →</button>
+  </div>`;
+  let answered=false;
+  c.opts.forEach((o,i)=>{
+    const b=document.createElement('button');
+    b.className='opt';b.innerHTML=`<span class="key">${keys[i]}</span><span>${esc(o)}</span>`;
+    b.onclick=()=>{
+      if(answered)return;answered=true;
+      const ok=i===c.ans;
+      $$('#t-opts .opt')[c.ans].classList.add('correct');
+      if(!ok)b.classList.add('wrong');
+      $$('#t-opts .opt').forEach(x=>x.disabled=true);
+      weakChallenge(c,!ok);
+      if(ok)addXP(8);
+      const fb=$('#t-fb');
+      fb.innerHTML=`<strong>${ok?'✅ Correcto':'❌ Incorrecto'}</strong><div class="detail">${esc(c.exp)}</div>`;
+      fb.className='fb show '+(ok?'good':'bad');
+      const nb=$('#t-nextbtn');nb.classList.add('show');nb.onclick=()=>tNext(ok,it);
+    };
+    $('#t-opts').appendChild(b);
+  });
+}
+function renderTPron(it){
+  const text=it.text||((it.card.cat==='grammar'?it.card.w:it.card.ex)||it.card.w);
+  const hint=it.hint||(it.card?it.card.en:'');
+  $('#t-area').innerHTML=`<div class="card">
+    <span class="badge">Pronunciación 🎤</span>
+    <div class="q" style="font-size:1.25rem">“${esc(text)}”</div>
+    ${hint?`<div class="heard" style="color:var(--text2);margin:-.5rem 0 .8rem">${esc(hint)}</div>`:''}
+    <div class="say-row" style="justify-content:flex-start">
+      <button class="speak" id="t-hear">🔊 Escuchar modelo</button>
+      <button class="speak mic" id="t-mic" data-label="🎤 Ahora tú">🎤 Ahora tú</button>
+    </div>
+    <div class="pron" id="t-pron"></div>
+    <button class="nextbtn" id="t-nextbtn">Siguiente →</button>
+  </div>`;
+  let bestScore=-1;
+  $('#t-hear').onclick=()=>speak(text);
+  $('#t-mic').onclick=function(){startPron(text,$('#t-pron'),this,s=>{
+    bestScore=Math.max(bestScore,s);
+    const nb=$('#t-nextbtn');nb.classList.add('show');nb.onclick=()=>tNext(bestScore>=0.6,it);
+    nb.textContent=bestScore>=0.6?'Siguiente →':'Siguiente (volverá a salir) →';
+  });};
+}
+
+/* =========================================================
+   EXAMEN (IA)
+   ========================================================= */
+let examHistory=[],examMode=null,timerInt=null;
+$('#starters').addEventListener('click',e=>{const b=e.target.closest('.starter');if(b)startExam(b.dataset.ex);});
+$('#exam-input').addEventListener('input',function(){this.style.height='auto';this.style.height=this.scrollHeight+'px';});
+$('#exam-input').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendExam();}});
+$('#exam-mic').addEventListener('click',function(){ // dictado: hablas y se escribe
+  if(!SR){toast('Dictado no disponible — usa Chrome o Edge');return;}
+  if(recing){try{rec.stop();}catch{}return;}
+  const btn=this;
+  rec=new SR();rec.lang='fr-FR';rec.interimResults=false;rec.maxAlternatives=1;
+  rec.onstart=()=>{recing=true;btn.classList.add('rec');btn.textContent='⏹';};
+  rec.onend=()=>{recing=false;btn.classList.remove('rec');btn.textContent='🎤';};
+  rec.onerror=()=>{recing=false;btn.classList.remove('rec');btn.textContent='🎤';toast('No te he oído — reintenta');};
+  rec.onresult=e=>{
+    const t=e.results[0][0].transcript;
+    const inp=$('#exam-input');
+    inp.value=(inp.value?inp.value+' ':'')+t;
+    inp.dispatchEvent(new Event('input'));inp.focus();
+  };
+  try{rec.start();}catch{recing=false;}
+});
+
+async function callClaude(messages,maxTokens=800,opts={}){
+  const body={model:opts.model||S.model||'claude-sonnet-5',max_tokens:maxTokens,system:opts.system||SYSTEM,messages};
+  // 1) clave local → llamada directa al navegador
+  if(S.apiKey){
+    const r=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','x-api-key':S.apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+      body:JSON.stringify(body)
+    });
+    const d=await r.json();
+    if(d.error)throw new Error(d.error.message||'Error de API');
+    return d.content[0].text;
+  }
+  // 2) proxy del servidor local
+  const r=await fetch('/api/claude',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+  const d=await r.json();
+  if(d.error)throw new Error(d.error.message||'Error del proxy');
+  return d.content[0].text;
+}
+/* =========================================================
+   LLAMADA — conversación libre por voz
+   Modelo: Sonnet (el mejor equilibrio velocidad/calidad para conversar)
+   ========================================================= */
+const CALL_MODEL='claude-sonnet-5';
+const CALL_SYSTEM=`Eres Denise, una amiga francesa nativa charlando POR TELÉFONO con Alex, un estudiante español de francés B1 (negocios). Conversación libre, natural y amistosa: cualquier tema (su día, viajes, trabajo, aficiones…).
+
+REGLAS:
+- Habla en francés FÁCIL (nivel B1): frases cortas, vocabulario común. 1 a 3 frases por turno, y termina casi siempre con una pregunta para que él siga hablando.
+- Lo que dice Alex llega por reconocimiento de voz: puede haber errores de transcripción; interpreta con buena fe.
+- Si Alex comete errores de francés (gramática, géneros, vocabulario, registro), corrígelos BREVEMENTE en español, sin sermonear. Ignora errores de puntuación/mayúsculas (es voz).
+- Responde SIEMPRE con este JSON exacto y nada más:
+{"correccion":"(en español, máx 2 líneas: «Dijiste ‘X’ → mejor ‘Y’ porque…»; null si no hubo errores)","respuesta":"(tu réplica en francés fácil)"}`;
+
+let callHistory=[],callOn=false;
+const CALL_OPENERS=[
+  "Allô ? Bonjour Alex ! Ça me fait plaisir de t'entendre. Comment ça va aujourd'hui ?",
+  "Allô, salut Alex ! Quoi de neuf ? Raconte-moi ta journée.",
+  "Bonjour Alex ! Alors, qu'est-ce que tu as fait ce week-end ?",
+  "Allô Alex ! Dis-moi, qu'est-ce que tu aimes faire quand tu as du temps libre ?"
+];
+function callParse(text){ // extrae el JSON {correccion,respuesta} de la respuesta del modelo
+  try{return JSON.parse(text.replace(/```json|```/g,'').trim());}
+  catch{ const m=text.match(/\{[\s\S]*\}/); if(m){try{return JSON.parse(m[0]);}catch{}} return null; }
+}
+function callState(msg,cls){const el=$('#call-state');if(el)el.textContent=msg;const m=$('#call-mic');if(m)m.className='callmic'+(cls?' '+cls:'');}
+function addCallMsg(type,who,text){const c=$('#call-chat');const d=document.createElement('div');d.className='cmsg '+type;d.innerHTML=`<div class="who">${esc(who)}</div>${esc(text)}`;c.appendChild(d);c.scrollTop=c.scrollHeight;}
+function addCallCorr(text){const c=$('#call-chat');const d=document.createElement('div');d.className='corr';d.innerHTML='📝 <b>Corrección:</b> '+esc(text);c.appendChild(d);c.scrollTop=c.scrollHeight;}
+function callThinking(on){
+  const c=$('#call-chat');const ex=document.getElementById('call-typing');
+  if(on){if(ex)return;const d=document.createElement('div');d.id='call-typing';d.className='typing';d.innerHTML='<span class="dot"></span><span class="dot"></span><span class="dot"></span>';c.appendChild(d);c.scrollTop=c.scrollHeight;}
+  else if(ex)ex.remove();
+}
+function callBegin(){
+  callOn=true;callHistory=[];
+  $('#call-start').style.display='none';
+  const chat=$('#call-chat');chat.classList.add('on');chat.innerHTML='';
+  $('#call-controls').style.display='block';
+  const opener=CALL_OPENERS[Math.floor(Math.random()*CALL_OPENERS.length)];
+  callHistory.push({role:'assistant',content:JSON.stringify({correccion:null,respuesta:opener})});
+  addCallMsg('ai','Denise 📞',opener);
+  callState('Hablando…','speaking');
+  speak(opener,()=>{if(callOn)callListen();});
+}
+function callHangup(){
+  callOn=false;
+  stopSpeak();if(recing&&rec){try{rec.stop();}catch{}}
+  $('#call-controls').style.display='none';
+  $('#call-start').style.display='';
+  $('#call-chat').classList.remove('on');
+  logEvent('escenas',{title:'Llamada libre',ok:callHistory.filter(m=>m.role==='user').length,n:0,pronAvg:null,grade:null});
+}
+function callListen(){
+  if(!callOn)return;
+  if(!SR){callState('Micrófono no disponible — usa Chrome o Edge','');return;}
+  if(recing)return;
+  rec=new SR();rec.lang='fr-FR';rec.interimResults=false;rec.maxAlternatives=1;
+  rec.onstart=()=>{recing=true;callState('Te escucho… habla 🎙️','listening');};
+  rec.onend=()=>{recing=false;if(callOn&&!curAudio)callState('Pulsa el micro para hablar','');};
+  rec.onerror=e=>{recing=false;callState(e.error==='no-speech'?'No te he oído — pulsa el micro y repite':'Micro: '+e.error,'');};
+  rec.onresult=e=>{callSend(e.results[0][0].transcript);};
+  try{rec.start();}catch{recing=false;}
+}
+async function callSend(text){
+  if(!callOn||!text.trim())return;
+  addCallMsg('user','Tú',text);
+  callHistory.push({role:'user',content:text});
+  callState('Pensando…','thinking');callThinking(true);
+  try{
+    const raw=await callClaude(callHistory.slice(-16),400,{model:CALL_MODEL,system:CALL_SYSTEM});
+    callThinking(false);
+    if(!callOn)return; // colgó mientras pensaba
+    let corr=null,reply=raw;
+    const j=callParse(raw);
+    if(j&&j.respuesta){corr=(j.correccion&&j.correccion!=='null')?j.correccion:null;reply=j.respuesta;}
+    if(corr){addCallCorr(corr);logEvent('errores',{kind:'conversacion',q:text,picked:text,correct:corr});}
+    callHistory.push({role:'assistant',content:raw});
+    addCallMsg('ai','Denise 📞',reply);
+    callState('Hablando… (pulsa el micro para interrumpir)','speaking');
+    speak(reply,()=>{if(callOn)callListen();});
+  }catch(err){
+    callThinking(false);
+    callState('Sin conexión con la IA — arranca server.py desde la terminal. ('+err.message+')','');
+  }
+}
+$('#call-begin').onclick=callBegin;
+$('#call-end').onclick=callHangup;
+$('#call-mic').onclick=()=>{
+  if(!callOn)return;
+  if(curAudio){stopSpeak();callListen();return;} // interrumpir a Denise y hablar tú
+  if(recing){try{rec.stop();}catch{}callState('Pulsa el micro para hablar','');return;}
+  callListen();
+};
+
+function startExam(mode){
+  examMode=mode;examHistory=[];
+  $('#starters').style.display='none';$('#exam-note').style.display='none';
+  $('#chat').classList.add('on');$('#inrow').classList.add('on');
+  $('#chat').innerHTML='';
+  if(mode==='vocab_blitz')startTimer(5*60);
+  typing(true);
+  callClaude([{role:'user',content:EXAM_PROMPTS[mode]}],1000)
+    .then(t=>{typing(false);addChat('ai','Examinateur',t);examHistory.push({role:'assistant',content:t});})
+    .catch(err=>{typing(false);addChat('ai','⚠️ Sin conexión con Claude',
+      'No se pudo conectar: '+err.message+'\n\nActiva la IA de una de estas formas:\n• Arranca el servidor con tu clave:  ANTHROPIC_API_KEY=sk-… python3 server.py\n• O pega tu clave en Ajustes ⚙️ (arriba a la derecha).');});
+}
+function typing(on){
+  const c=$('#chat');const ex=$('#c-typing');
+  if(on){if(ex)return;const d=document.createElement('div');d.id='c-typing';d.className='typing';d.innerHTML='<span class="dot"></span><span class="dot"></span><span class="dot"></span>';c.appendChild(d);c.scrollTop=c.scrollHeight;}
+  else if(ex)ex.remove();
+}
+function addChat(type,who,text){
+  const c=$('#chat');const d=document.createElement('div');d.className='cmsg '+type;
+  d.innerHTML=`<div class="who">${esc(who)}</div>${type==='ai'?mdLite(text):esc(text)}`;
+  c.appendChild(d);c.scrollTop=c.scrollHeight;
+}
+async function sendExam(){
+  const input=$('#exam-input');const text=input.value.trim();if(!text)return;
+  input.value='';input.style.height='auto';
+  const btn=$('#exam-send');btn.disabled=true;
+  addChat('user','Alex',text);examHistory.push({role:'user',content:text});
+  typing(true);
+  try{
+    const msgs=[{role:'user',content:EXAM_PROMPTS[examMode]},...examHistory];
+    const reply=await callClaude(msgs.slice(-20),900);
+    typing(false);addChat('ai','Examinateur',reply);examHistory.push({role:'assistant',content:reply});
+    addXP(3);logDay();save();
+  }catch(err){typing(false);addChat('ai','⚠️ Error',err.message);}
+  btn.disabled=false;input.focus();
+}
+function startTimer(sec){
+  const bar=$('#timerbar');bar.classList.add('on');bar.classList.remove('warn');
+  let left=sec;render();
+  clearInterval(timerInt);
+  timerInt=setInterval(()=>{left--;render();if(left<=0){clearInterval(timerInt);toast('⏱️ Temps écoulé !');addChat('ai','⏱️','Le temps est écoulé ! Demande ton score final.');}},1000);
+  function render(){const m=Math.floor(left/60),s=left%60;$('#timer').textContent=m+':'+String(s).padStart(2,'0');bar.classList.toggle('warn',left<=30);}
+}
+function quitExam(){
+  clearInterval(timerInt);
+  $('#timerbar').classList.remove('on');
+  $('#chat').classList.remove('on');$('#inrow').classList.remove('on');
+  $('#starters').style.display='';$('#exam-note').style.display='';
+}
+
+/* =========================================================
+   PROGRESO
+   ========================================================= */
+function renderProgress(){
+  $('#p-xp').textContent=S.stats.xp;
+  $('#p-streak').textContent=S.stats.streak;
+  $('#p-best').textContent=S.stats.best;
+  $('#p-acc').textContent=S.stats.total?Math.round(S.stats.correct/S.stats.total*100)+'%':'—';
+  const mastered=ALL.filter(c=>{const st=S.cards[c.id];return st&&st.box>=3;}).length;
+  $('#p-mastered').textContent=mastered;
+  // mastery por bloque
+  const blocks=[['1-50','Palabras 1–50'],['51-100','Palabras 51–100'],['101-145','Verbos'],['146-175','Expresiones'],['grammar','Gramática']];
+  const m=$('#mastery');m.innerHTML='';
+  blocks.forEach(([cat,label])=>{
+    const cards=ALL.filter(c=>c.cat===cat);
+    const done=cards.filter(c=>{const st=S.cards[c.id];return st&&st.box>=3;}).length;
+    const pct=cards.length?Math.round(done/cards.length*100):0;
+    const row=document.createElement('div');row.className='mrow';
+    row.innerHTML=`<div class="mlabel">${label}</div><div class="mbar"><i style="width:${pct}%"></i></div><div class="mval">${pct}%</div>`;
+    m.appendChild(row);
+  });
+  // autoevaluación escrita
+  const tp=S.stats.typed||{total:0,correct:0};
+  const tpct=tp.total?Math.round(tp.correct/tp.total*100):0;
+  const tcolor=tpct>=70?'var(--green)':tpct>=40?'var(--amber)':'var(--red)';
+  const unknown=ALL.filter(c=>{const st=S.cards[c.id];return st&&(st.tko||0)>(st.tok||0);});
+  const known=ALL.filter(c=>{const st=S.cards[c.id];return st&&(st.tok||0)>0&&(st.tok||0)>=(st.tko||0);}).length;
+  let th=`<div class="score"><div class="ring" style="background:conic-gradient(${tcolor} ${tpct}%,var(--bg2) 0)"><span>${tpct}%</span></div>`+
+    `<div><b>${tp.correct}/${tp.total} traducciones correctas</b><div class="heard">Sabidas de memoria: <b>${known}</b> · por reforzar: <b>${unknown.length}</b></div></div></div>`;
+  if(unknown.length){
+    th+=`<div class="heard" style="margin-top:.7rem"><b>Aún no las clavas (te salieron mal al escribir):</b></div>`+
+      `<div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.45rem">`+
+      unknown.slice(0,24).map(c=>`<span class="wchip" style="cursor:default;border-bottom-width:1px">${esc(c.w)}</span>`).join('')+
+      (unknown.length>24?`<span class="heard">+${unknown.length-24} más</span>`:'')+`</div>`;
+  }else if(!tp.total){
+    th+=`<div class="heard" style="margin-top:.5rem">Aún no has escrito ninguna traducción. Ve a <b>Tarjetas</b> y usa el recuadro de abajo: escribes el significado y te lo compruebo.</div>`;
+  }else{
+    th+=`<div class="heard" style="margin-top:.5rem">👏 No tienes palabras pendientes de reforzar. ¡Sigue así!</div>`;
+  }
+  $('#typed-card').innerHTML=th;
+
+  // semana
+  const w=$('#week');w.innerHTML='';
+  const names=['D','L','M','X','J','V','S'];
+  const days=[];for(let i=6;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);days.push(d);}
+  const max=Math.max(1,...days.map(d=>S.stats.days[keyOf(d)]||0));
+  days.forEach(d=>{
+    const c=S.stats.days[keyOf(d)]||0;const h=Math.round(c/max*70);
+    const el=document.createElement('div');el.className='day';
+    el.innerHTML=`<div class="bar ${c?'has':''}" style="height:${Math.max(4,h)}px" title="${c} actividades"></div><div class="dl">${names[d.getDay()]}</div>`;
+    w.appendChild(el);
+  });
+}
+function keyOf(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+function resetAll(){
+  if(!confirm('¿Seguro que quieres borrar todo tu progreso? No se puede deshacer.'))return;
+  S=defaultState();applyTheme();save();updateHUD();renderProgress();{const ac=$('#all-count');if(ac)ac.textContent='('+ALL.length+')';}
+setFilter('due');toast('Progreso reiniciado');
+}
+
+/* =========================================================
+   TEMA + AJUSTES
+   ========================================================= */
+/* velocidad de voz: clic en la píldora del header para ciclar */
+const SPEEDS=[[0.6,'🐢 0.6×'],[0.75,'0.75×'],[0.9,'0.9×'],[1.0,'1.0×']];
+function renderSpeed(){
+  const s=SPEEDS.find(x=>Math.abs(x[0]-(S.voiceRate||0.9))<0.01)||SPEEDS[2];
+  $('#speed-val').textContent=s[1].replace('🐢 ','');
+  $('#speed-pill').firstChild.textContent=(S.voiceRate<=0.65?'🐢':'🔊');
+}
+$('#speed-pill').onclick=()=>{
+  const i=SPEEDS.findIndex(x=>Math.abs(x[0]-(S.voiceRate||0.9))<0.01);
+  S.voiceRate=SPEEDS[(i+1)%SPEEDS.length][0];
+  renderSpeed();save();
+  speak('Le marché international'); // muestra de la nueva velocidad
+};
+
+function applyTheme(){document.documentElement.setAttribute('data-theme',S.theme);$('#theme-btn').textContent=S.theme==='dark'?'☀️':'🌙';}
+$('#theme-btn').onclick=()=>{S.theme=S.theme==='dark'?'light':'dark';applyTheme();save();};
+function openSettings(){
+  $('#set-key').value=S.apiKey||'';
+  $('#set-model').value=S.model||'claude-sonnet-5';
+  const r=S.voiceRate||0.9,p=S.voicePitch||1;
+  $('#set-rate').value=r;$('#rate-val').textContent=r.toFixed(2)+'×';
+  $('#set-pitch').value=p;$('#pitch-val').textContent=p.toFixed(2);
+  populateVoiceSelect();
+  $('#overlay').classList.add('on');
+}
+function closeSettings(){$('#overlay').classList.remove('on');}
+function applyVoiceFields(){
+  const v=$('#set-voice').value;
+  S.voice=v;
+  S.voiceURI=v.startsWith('sys:')?v.slice(4):'';
+  S.voiceRate=parseFloat($('#set-rate').value);
+  S.voicePitch=parseFloat($('#set-pitch').value);
+  neuralOK=true; // reintenta la neuronal al cambiar ajustes
+}
+function saveSettings(){S.apiKey=$('#set-key').value.trim();S.model=$('#set-model').value;applyVoiceFields();save();closeSettings();toast('Ajustes guardados');}
+function testVoice(){applyVoiceFields();speak('Bonjour ! Je vais vous aider à améliorer votre prononciation française.');}
+$('#settings-btn').onclick=openSettings;
+$('#overlay').addEventListener('click',e=>{if(e.target===$('#overlay'))closeSettings();});
+
+/* =========================================================
+   ATAJOS DE TECLADO
+   ========================================================= */
+document.addEventListener('keydown',e=>{
+  if($('#overlay').classList.contains('on')){if(e.key==='Escape')closeSettings();return;}
+  const active=document.activeElement;
+  if(active&&(active.tagName==='TEXTAREA'||active.tagName==='INPUT'))return;
+  const flashOn=$('#panel-flash').classList.contains('active');
+  if(flashOn){
+    if(e.code==='Space'){e.preventDefault();flipCard();}
+    else if(e.key==='1'&&flipped)rateCard('hard');
+    else if(e.key==='2'&&flipped)rateCard('ok');
+    else if(e.key==='3'&&flipped)rateCard('easy');
+    else if(e.key.toLowerCase()==='s'){e.preventDefault();speakCard();}
+  }
+  const chOn=$('#panel-challenge').classList.contains('active');
+  if(chOn&&!cAnswered&&['a','b','c','d'].includes(e.key.toLowerCase())){
+    const i='abcd'.indexOf(e.key.toLowerCase());const btns=$$('#c-opts .opt');if(btns[i])btns[i].click();
+  }
+});
+
+/* =========================================================
+   INIT
+   ========================================================= */
+
+// migración v3: VOCAB completo del Excel (175) — remapea el progreso a los nuevos ids
+const VOCAB_MIG={"v32":"v33","v33":"v34","v34":"v35","v35":"v36","v36":"v37","v37":"v38","v38":"v39","v39":"v40","v40":"v41","v41":"v42","v42":"v43","v43":"v44","v44":"v45","v45":"v46","v46":"v47","v47":"v48","v48":"v49","v49":"v50","v50":"v51","v51":"v52","v52":"v53","v53":"v54","v54":"v55","v55":"v57","v56":"v58","v57":"v59","v58":"v60","v59":"v61","v60":"v62","v61":"v63","v62":"v64","v63":"v65","v64":"v67","v65":"v68","v66":"v69","v67":"v70","v68":"v71","v69":"v73","v70":"v74","v71":"v75","v72":"v76","v73":"v77","v74":"v78","v75":"v79","v76":"v81","v77":"v82","v78":"v83","v79":"v84","v80":"v85","v81":"v86","v82":"v87","v83":"v88","v84":"v89","v85":"v90","v86":"v91","v87":"v93","v88":"v94","v89":"v95","v90":"v96","v91":"v99","v92":"v101","v93":"v102","v94":"v103","v95":"v104","v96":"v105","v97":"v106","v98":"v107","v99":"v108","v100":"v109","v101":"v113","v102":"v115","v103":"v116","v104":"v118","v105":"v119","v106":"v121","v107":"v122","v108":"v124","v109":"v125","v110":"v126","v111":"v128","v112":"v130","v113":"v131","v114":"v132","v115":"v133","v116":"v136","v117":"v138","v118":"v139","v119":"v140","v120":"v141","v121":"v144","v122":"v145","v123":"v146","v124":"v147","v125":"v149","v126":"v152","v127":"v156","v128":"v157","v129":"v158","v130":"v159","v131":"v161","v132":"v162","v133":"v163","v134":"v164","v135":"v166","v136":"v172","v137":"v173","v138":"v174","v139":"v175"};
+if(!S.vocabV3){
+  const nc={};
+  for(const [id,st] of Object.entries(S.cards||{}))nc[VOCAB_MIG[id]||id]=st;
+  S.cards=nc;S.vocabV3=true;save();
+}
+// migración: fuerza la voz de mujer natural (Vivienne) una sola vez
+if(!S.voiceV2){S.voice='denise';S.voiceV2=true;save();}
+// migración: las voces multilingües leían "Marketing/Budget…" en inglés → voz francesa pura
+if(!S.voiceV3){if(S.voice==='vivienne')S.voice='denise';if(S.voice==='remy')S.voice='henri';S.voiceV3=true;save();}
+applyTheme();
+renderSpeed();
+renderDir();
+{const ac=$('#all-count');if(ac)ac.textContent='('+ALL.length+')';}
+setFilter('due');
+updateHUD();
+
+/* ============ PWA / voz horneada / foco en el Camino ============ */
+// Índice de audios neuronales pre-generados (offline). var → sin TDZ para speak().
+var AUDIO_MAP=null;
+fetch('audio/manifest.json').then(r=>r.ok?r.json():null).then(m=>{if(m&&m.files)AUDIO_MAP=m.files;}).catch(()=>{});
+// Service worker: instalable + funciona sin conexión (avión/metro).
+if('serviceWorker'in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('sw.js').catch(()=>{});});}
+// App enfocada en el Camino: aterriza ahí al abrir.
+try{switchTab('levels');}catch(e){}
+</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+# --- Privado / no necesario para la web estática (NO se publica) ---
+progreso/
+material/
+documentos/
+build/
+.tts-cache/
+.claude/
+server.py
+CONTEXT.md
+rebuild_vocab.js
+Arrancar Francés.command
+.venv/
+.DS_Store
+**/.DS_Store
+
+# La web publicada = index.html + audio/ + icons/ + manifest.webmanifest + sw.js + LEEME.md
