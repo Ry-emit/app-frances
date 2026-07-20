@@ -2700,7 +2700,6 @@ const gate=document.getElementById('auth-gate');
 const $id=id=>document.getElementById(id);
 const showGate=()=>{if(gate)gate.style.display='flex';};
 const hideGate=()=>{if(gate)gate.style.display='none';};
-const debounce=(fn,ms)=>{let t;return(...a)=>{clearTimeout(t);t=setTimeout(()=>fn(...a),ms);};};
 function msg(text,ok){const m=$id('ag-msg');if(!m)return;m.textContent=text||'';m.style.display=text?'block':'none';m.style.color=ok?'#16a34a':'#dc2626';}
 
 if(!CLOUD_ENABLED){
@@ -2732,7 +2731,15 @@ if(!CLOUD_ENABLED){
       if(error)return undefined;
       return data?data.state:null; // null = fila aún no existe
     };
-    const enableSync=()=>{window.FRB1.onLocalSave=debounce(pushNow,1500);};
+    // Guarda en cuanto sea posible: al progresar (con un pequeño margen para agrupar
+    // varios cambios seguidos) y SIEMPRE al salir de la app / cambiar de pestaña,
+    // para no perder progreso si cierras justo después de acertar algo.
+    let pendingPush=false,pushTimer=null;
+    const schedulePush=()=>{pendingPush=true;clearTimeout(pushTimer);pushTimer=setTimeout(()=>{pendingPush=false;pushNow();},600);};
+    const flushPush=()=>{if(pendingPush){clearTimeout(pushTimer);pendingPush=false;pushNow();}};
+    document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')flushPush();});
+    window.addEventListener('pagehide',flushPush);
+    const enableSync=()=>{window.FRB1.onLocalSave=schedulePush;};
 
     const setAccountUI=email=>{
       const row=$id('account-row');const em=$id('account-email');
@@ -2740,22 +2747,31 @@ if(!CLOUD_ENABLED){
     };
 
     async function onAuthed(isNewSignup){
-      const hadAccount=!!localStorage.getItem('frB1_account');
-      localStorage.setItem('frB1_account','1');
-      if(isNewSignup&&hadAccount){
+      const {data:{user}}=await supa.auth.getUser();
+      const uid=user&&user.id;
+      // Marca de "esta cuenta ya está sincronizada en este dispositivo": una vez
+      // hecho el primer pull, el local manda (nunca más se sobrescribe con la nube
+      // en este dispositivo), y solo se empuja hacia la nube. Así, si el envío de
+      // un guardado anterior no llegó a completarse (p. ej. cerraste la app justo
+      // después), NO se pierde: no lo pisamos con una copia vieja del servidor.
+      const deviceUid=localStorage.getItem('frB1_account_uid');
+      const sameDeviceAccount=uid&&deviceUid===uid;
+      if(isNewSignup&&deviceUid&&!sameDeviceAccount){
         // Cuenta nueva en un dispositivo ya usado por otra persona → empieza limpio.
         window.FRB1.loadState({});
         await pushNow();
-      }else if(isNewSignup){
-        // Primera cuenta de este dispositivo (el dueño) → conserva el progreso ya existente.
+      }else if(isNewSignup||sameDeviceAccount){
+        // Primera cuenta de este dispositivo, o ya sincronizada antes → el local manda.
         await pushNow();
       }else{
+        // Primera vez que ESTE dispositivo ve esta cuenta (login en un dispositivo nuevo) → trae la nube.
         const remote=await pull();
         if(remote&&typeof remote==='object')window.FRB1.loadState(remote);
         else{window.FRB1.loadState(window.FRB1.getState());await pushNow();}
       }
+      if(uid)localStorage.setItem('frB1_account_uid',uid);
+      localStorage.setItem('frB1_account','1');
       enableSync();
-      const {data:{user}}=await supa.auth.getUser();
       setAccountUI(user&&user.email);
       msg('');hideGate();
     }
@@ -2798,6 +2814,7 @@ if(!CLOUD_ENABLED){
       window.FRB1.onLocalSave=null;
       try{await supa.auth.signOut();}catch(e){}
       localStorage.removeItem('frB1_account');
+      localStorage.removeItem('frB1_account_uid');
       window.FRB1.loadState({});
       const row=$id('account-row');if(row)row.style.display='none';
       $id('ag-email').value='';$id('ag-pass').value='';msg('');
