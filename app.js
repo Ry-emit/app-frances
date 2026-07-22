@@ -819,6 +819,7 @@ function renderStudy(main){
     </div>
     ${ruleNote}
     <div class="card">${body}</div>
+    <button class="btn btn-outline" data-action="guardar-ya" style="margin-top:.4rem">Guardar</button>
   `;
   const input = $('#answer-input');
   if(input){
@@ -972,6 +973,7 @@ function onBodyClick(e){
     case 'otra-tanda': handleOtraTanda(); break;
     case 'fase-hecha': finishPhaseFromSession(); break;
     case 'terminar-dia': closeDay(); break;
+    case 'guardar-ya': save(); toast('Progreso guardado. Ya puedes salir tranquilo.'); break;
     case 'repasar-mas': repasarMas(); break;
     case 'audio': speak(el.dataset.text); break;
     case 'settings-open': openSettings(); break;
@@ -1025,6 +1027,18 @@ function boot(){
   VIEW = {screen:'home'};
   document.body.addEventListener('click', onBodyClick);
   document.body.addEventListener('change', onBodyChange);
+  // Si la app está abierta en otra pestaña y guarda algo ahí, no lo pisamos
+  // silenciosamente al volver a esta: recargamos el estado más reciente.
+  window.addEventListener('storage', e=>{
+    if(e.key === STORE_KEY && e.newValue){
+      S = load();
+      render();
+    }
+  });
+  // Guardado extra al salir/minimizar, por si acaso (ya se guarda tras cada
+  // respuesta, pero esto es un cinturón de seguridad más).
+  document.addEventListener('visibilitychange', ()=>{ if(document.visibilityState==='hidden') save(); });
+  window.addEventListener('pagehide', save);
   render();
   if('serviceWorker' in navigator){
     let swRefreshing = false;
