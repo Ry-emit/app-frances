@@ -1,31 +1,27 @@
-/* Service worker — Français B1 (Camino)
-   - Precarga el shell + TODOS los audios neuronales en la instalación
-     (una vez, con conexión) para que funcione 100% offline después.
-   - HTML: network-first (para recibir actualizaciones); cae a caché sin conexión.
-   - Audio/iconos/fuentes: cache-first (instantáneo y offline).
-   Sube el número de versión para forzar recarga de caché al publicar cambios. */
-const CACHE = 'fr-b1-camino-v2';
+/* Service worker — Plan de francés, 20 días.
+   Precarga el shell para que funcione offline. HTML: network-first (recibe
+   actualizaciones); cae a caché sin conexión. El resto: cache-first.
+   Sube el número de versión para forzar la actualización al publicar. */
+const CACHE = 'planfr20-v1';
 const SHELL = [
   './',
   './index.html',
+  './styles.css',
+  './app.js',
   './manifest.webmanifest',
   './icons/icon-192.png',
   './icons/icon-512.png',
-  './audio/manifest.json',
+  './data/vocab-175.js',
+  './data/reglas-ortografia.js',
+  './data/gramatica.js',
+  './data/plan-20-dias.js',
+  './data/presentacion.js'
 ];
 
 self.addEventListener('install', (e) => {
   e.waitUntil((async () => {
     const c = await caches.open(CACHE);
-    // Shell crítico: debe entrar sí o sí.
     await c.addAll(SHELL);
-    // Audios: mejor esfuerzo (si alguno falla, no rompe la instalación).
-    try {
-      const res = await fetch('./audio/manifest.json', { cache: 'no-cache' });
-      const m = await res.json();
-      const files = Object.values(m.files || {}).map((f) => './audio/' + f);
-      await Promise.allSettled(files.map((u) => c.add(u)));
-    } catch (_) { /* sin conexión en la instalación: se cachearán al reproducirse */ }
     self.skipWaiting();
   })());
 });
@@ -40,10 +36,9 @@ self.addEventListener('activate', (e) => {
 
 self.addEventListener('fetch', (e) => {
   const req = e.request;
-  if (req.method !== 'GET') return; // no interceptamos POST (p. ej. /api/log)
+  if (req.method !== 'GET') return;
   const url = new URL(req.url);
 
-  // HTML / navegación → network-first, con caché de respaldo offline.
   const isNav = req.mode === 'navigate' ||
     (url.origin === location.origin && (url.pathname.endsWith('/') || url.pathname.endsWith('/index.html')));
   if (isNav) {
@@ -60,7 +55,6 @@ self.addEventListener('fetch', (e) => {
     return;
   }
 
-  // Resto (audio, iconos, fuentes) → cache-first, y guarda lo nuevo.
   e.respondWith((async () => {
     const hit = await caches.match(req);
     if (hit) return hit;
