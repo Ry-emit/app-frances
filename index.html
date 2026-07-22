@@ -565,7 +565,7 @@ main{flex:1;width:100%;max-width:920px;margin:0 auto;padding:1.4rem 1.1rem 4rem}
 <section class="panel" id="panel-levels">
   <div class="head">
     <h1>El <i>camino</i></h1>
-    <p>De las bases a frases completas, paso a paso. Cada tema: primero ves francés y lo traduces, luego lo produces en francés, y lo pronuncias. Todos los niveles están disponibles desde el principio — empieza por donde quieras y repite cuando quieras.</p>
+    <p>De las bases a frases completas, paso a paso. Cada tema: primero ves francés y lo traduces, luego lo produces en francés, y lo pronuncias. Supera un nivel para desbloquear el siguiente — y repítelo cuando quieras.</p>
   </div>
   <div id="lv-map"></div>
   <div id="lv-play" style="display:none">
@@ -642,7 +642,7 @@ main{flex:1;width:100%;max-width:920px;margin:0 auto;padding:1.4rem 1.1rem 4rem}
 <section class="panel" id="panel-progress">
   <div class="head">
     <h1>Tu <i>progreso</i></h1>
-    <p>Se guarda en tu cuenta, en la nube. Constancia > intensidad.</p>
+    <p>Todo se guarda en tu navegador. Constancia > intensidad.</p>
   </div>
   <div class="grid4">
     <div class="stat blue"><div class="v" id="p-xp">0</div><div class="l">XP total</div></div>
@@ -660,32 +660,12 @@ main{flex:1;width:100%;max-width:920px;margin:0 auto;padding:1.4rem 1.1rem 4rem}
   <div class="section-t">Actividad (últimos 7 días)</div>
   <div class="card"><div class="week" id="week"></div></div>
 
-  <div id="account-row" style="margin-top:1.3rem;display:none;align-items:center;gap:.6rem;flex-wrap:wrap">
-    <span style="font-size:.85rem;color:var(--text2)">Sesión: <b id="account-email">—</b></span>
-    <button id="logout-btn" class="dangerbtn" style="margin-left:auto">Cerrar sesión</button>
-  </div>
-
   <div style="margin-top:1.3rem;display:flex;justify-content:flex-end">
     <button class="dangerbtn" onclick="resetAll()">Reiniciar todo el progreso</button>
   </div>
 </section>
 
 </main>
-
-<!-- ====== Pantalla de acceso (cuentas en la nube) ====== -->
-<div id="auth-gate" style="position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:1.2rem;background:var(--bg2,#0f1220)">
-  <div style="width:100%;max-width:370px;background:var(--surface,#fff);border:1px solid var(--border,#e5e7eb);border-radius:18px;box-shadow:0 12px 44px rgba(0,0,0,.28);padding:1.7rem 1.5rem;font-family:var(--font-ui,system-ui)">
-    <div style="text-align:center;font-size:2.1rem">🇫🇷</div>
-    <h2 style="text-align:center;margin:.25rem 0 .15rem;color:var(--text,#111)">Français B1</h2>
-    <p id="ag-sub" style="text-align:center;color:var(--text3,#888);font-size:.85rem;margin:0 0 1.15rem">Entra o crea tu cuenta para guardar tu progreso</p>
-    <input id="ag-email" type="email" autocomplete="email" inputmode="email" placeholder="Tu email" style="width:100%;box-sizing:border-box;padding:.72rem .8rem;margin-bottom:.6rem;border:1px solid var(--border,#ccc);border-radius:11px;font-size:1rem;background:var(--bg2,#fff);color:var(--text,#111)">
-    <input id="ag-pass" type="password" autocomplete="current-password" placeholder="Contraseña (mín. 6 caracteres)" style="width:100%;box-sizing:border-box;padding:.72rem .8rem;margin-bottom:.6rem;border:1px solid var(--border,#ccc);border-radius:11px;font-size:1rem;background:var(--bg2,#fff);color:var(--text,#111)">
-    <div id="ag-msg" style="display:none;font-size:.82rem;margin-bottom:.6rem"></div>
-    <button id="ag-login" style="width:100%;padding:.78rem;border:0;border-radius:11px;background:var(--blue,#2563eb);color:#fff;font-size:1rem;font-weight:600;cursor:pointer;margin-bottom:.5rem">Entrar</button>
-    <button id="ag-signup" style="width:100%;padding:.78rem;border:1px solid var(--border,#ccc);border-radius:11px;background:transparent;color:var(--text,#333);font-size:.95rem;cursor:pointer">Crear cuenta nueva</button>
-    <p style="text-align:center;color:var(--text3,#999);font-size:.72rem;margin:.95rem 0 0">Tu progreso es privado: solo tú, con tu cuenta, puedes verlo.</p>
-  </div>
-</div>
 
 <!-- settings modal -->
 <div class="overlay" id="overlay">
@@ -1035,7 +1015,7 @@ function weakChallenge(c,fail){
   const i=HARDCODED_CHALLENGES.indexOf(c);if(i<0)return;
   if(fail)S.weak.ch[i]=(S.weak.ch[i]||0)+1;else delete S.weak.ch[i];
 }
-function save(){localStorage.setItem(STORE,JSON.stringify(S));if(window.FRB1&&window.FRB1.onLocalSave)window.FRB1.onLocalSave();}
+function save(){localStorage.setItem(STORE,JSON.stringify(S));}
 function cardState(id){if(!S.cards[id])S.cards[id]={box:0,due:0,hard:false,seen:false,ok:0,ko:0};return S.cards[id];}
 function today(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
 function logDay(){const t=today();S.stats.days[t]=(S.stats.days[t]||0)+1;}
@@ -1700,7 +1680,7 @@ function pathDone(i){
   }
   const r=lvState(n.id)[1];return !!(r&&r.done);
 }
-function pathUnlocked(i){return true;} // todo el camino desbloqueado desde el principio
+function pathUnlocked(i){return i===0||pathDone(i-1);}
 function pathSub(t){return {cardfr:'Tarjeta: tradúcela al español y dila en francés',cardes:'Tarjeta: escríbela en francés y dila',pronword:'Escucha y pronúnciala tú (solo pasas si suena bien)',blank:'Completa la frase con la palabra correcta',build:'Ordena las palabras de la frase',pron:'Pronuncia la frase completa',mix:'Todos los formatos mezclados',review:'Repite todo lo que has fallado hasta aquí'}[t]||'';}
 function startPathNode(i,tandaK){
   const node=PATH[i];
@@ -1766,7 +1746,7 @@ function renderLevelMap(){
   const hdr=document.createElement('div');hdr.className='card';hdr.style.marginBottom='1rem';
   hdr.innerHTML=`<div style="display:flex;align-items:center;gap:.85rem">
     <div class="ring" style="width:54px;height:54px;flex:none;background:conic-gradient(var(--blue) ${Math.round(done/PATH.length*100)}%,var(--bg2) 0)"><span>${done}/${PATH.length}</span></div>
-    <div style="flex:1"><b>Tu camino</b><div class="heard" style="color:var(--text2)">Cada bloque se hace en tandas. Todo está disponible: elige cualquier nivel cuando quieras.</div></div>
+    <div style="flex:1"><b>Tu camino</b><div class="heard" style="color:var(--text2)">Cada bloque se hace en tandas hasta cubrirlo entero. Supéralo para desbloquear el siguiente.</div></div>
   </div>
   <div class="dir-seg" style="margin:.8rem 0 0">
     <span class="dir-label">Tanda de</span>
@@ -1793,7 +1773,7 @@ function renderLevelMap(){
       for(let k=0;k<tandas;k++){
         const chunk=pool.slice(k*sz,(k+1)*sz);
         const tDone=chunk.every(c=>covSet.has(c.id));
-        const tUnlocked=true; // todas las tandas desbloqueadas
+        const tUnlocked=unlocked&&(k===0||chunkCovered(n,k-1));
         const tNext=isNext&&tUnlocked&&!tDone&&(k===0||chunkCovered(n,k-1));
         const b=document.createElement('button');
         b.className='path-node sub'+(tDone?' done':'')+(tNext?' next':'');
@@ -2658,185 +2638,9 @@ updateHUD();
 var AUDIO_MAP=null;
 fetch('audio/manifest.json').then(r=>r.ok?r.json():null).then(m=>{if(m&&m.files)AUDIO_MAP=m.files;}).catch(()=>{});
 // Service worker: instalable + funciona sin conexión (avión/metro).
-// Auto-actualización: en cuanto haya una versión nueva publicada, se activa sola
-// y recarga la página una vez — sin tener que borrar caché ni reinstalar a mano.
-if('serviceWorker'in navigator){
-  let swRefreshing=false;
-  navigator.serviceWorker.addEventListener('controllerchange',()=>{
-    if(swRefreshing)return;swRefreshing=true;location.reload();
-  });
-  window.addEventListener('load',()=>{
-    navigator.serviceWorker.register('sw.js').then(reg=>{
-      reg.update().catch(()=>{}); // comprueba si hay versión nueva nada más abrir
-      document.addEventListener('visibilitychange',()=>{
-        if(document.visibilityState==='visible')reg.update().catch(()=>{});
-      });
-    }).catch(()=>{});
-  });
-}
+if('serviceWorker'in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('sw.js').catch(()=>{});});}
 // App enfocada en el Camino: aterriza ahí al abrir.
 try{switchTab('levels');}catch(e){}
-
-/* =========================================================
-   PUENTE PARA CUENTAS EN LA NUBE
-   El módulo de auth (más abajo) usa estas funciones para
-   cargar/guardar el estado del usuario. Si no hay Supabase
-   configurado, nada de esto se usa y la app va 100% local.
-   ========================================================= */
-window.FRB1={
-  getState(){return S;},
-  loadState(obj){
-    S=(obj&&Object.keys(obj).length)
-      ? {...defaultState(),...obj,weak:{phrases:{},ch:{},...(obj.weak||{})},levels:obj.levels||{},covered:obj.covered||{},stats:{...defaultState().stats,...(obj.stats||{})}}
-      : defaultState();
-    localStorage.setItem(STORE,JSON.stringify(S));
-    try{applyTheme();}catch(e){}
-    try{updateHUD();}catch(e){}
-    try{renderLevelMap();}catch(e){}
-    try{if($('#panel-progress')&&$('#panel-progress').classList.contains('active'))renderProgress();}catch(e){}
-    {const ac=$('#all-count');if(ac)ac.textContent='('+ALL.length+')';}
-  },
-  onLocalSave:null
-};
-</script>
-
-<!-- =========================================================
-     CUENTAS EN LA NUBE (Supabase) — módulo de autenticación
-     Rellena SUPA_URL y SUPA_KEY con los datos de tu proyecto.
-     Mientras estén sin rellenar, la app funciona en modo local
-     (sin cuentas), exactamente como antes.
-     ========================================================= -->
-<script type="module">
-const SUPA_URL='https://gnfivppcfftfpunwhfyb.supabase.co';
-const SUPA_KEY='sb_publishable_SuwgaLqlK3UhgbBsWmmTrQ_o5Y8zQ4Q';
-const CLOUD_ENABLED=/^https:\/\/.+\.supabase\.co/.test(SUPA_URL)&&SUPA_KEY.length>20;
-
-const gate=document.getElementById('auth-gate');
-const $id=id=>document.getElementById(id);
-const showGate=()=>{if(gate)gate.style.display='flex';};
-const hideGate=()=>{if(gate)gate.style.display='none';};
-function msg(text,ok){const m=$id('ag-msg');if(!m)return;m.textContent=text||'';m.style.display=text?'block':'none';m.style.color=ok?'#16a34a':'#dc2626';}
-
-if(!CLOUD_ENABLED){
-  // Sin Supabase configurado → modo local, sin pantalla de acceso.
-  hideGate();
-}else{
-  let supa=null;
-  try{
-    const {createClient}=await import('https://esm.sh/@supabase/supabase-js@2');
-    supa=createClient(SUPA_URL,SUPA_KEY,{auth:{persistSession:true,autoRefreshToken:true}});
-  }catch(err){
-    // Sin conexión y librería no cacheada aún.
-    if(localStorage.getItem('frB1_account')){hideGate();/* modo offline con el progreso local */}
-    else{msg('Necesitas conexión a internet para entrar la primera vez.');}
-  }
-
-  if(supa){
-    const pushNow=async()=>{
-      try{
-        const {data:{user}}=await supa.auth.getUser();
-        if(!user)return;
-        await supa.from('progress').upsert({user_id:user.id,state:window.FRB1.getState(),updated_at:new Date().toISOString()});
-      }catch(e){/* se reintenta en el próximo guardado */}
-    };
-    const pull=async()=>{
-      const {data:{user}}=await supa.auth.getUser();
-      if(!user)return undefined;
-      const {data,error}=await supa.from('progress').select('state').eq('user_id',user.id).maybeSingle();
-      if(error)return undefined;
-      return data?data.state:null; // null = fila aún no existe
-    };
-    // Guarda en cuanto sea posible: al progresar (con un pequeño margen para agrupar
-    // varios cambios seguidos) y SIEMPRE al salir de la app / cambiar de pestaña,
-    // para no perder progreso si cierras justo después de acertar algo.
-    let pendingPush=false,pushTimer=null;
-    const schedulePush=()=>{pendingPush=true;clearTimeout(pushTimer);pushTimer=setTimeout(()=>{pendingPush=false;pushNow();},600);};
-    const flushPush=()=>{if(pendingPush){clearTimeout(pushTimer);pendingPush=false;pushNow();}};
-    document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')flushPush();});
-    window.addEventListener('pagehide',flushPush);
-    const enableSync=()=>{window.FRB1.onLocalSave=schedulePush;};
-
-    const setAccountUI=email=>{
-      const row=$id('account-row');const em=$id('account-email');
-      if(row)row.style.display='flex';if(em)em.textContent=email||'';
-    };
-
-    async function onAuthed(isNewSignup){
-      const {data:{user}}=await supa.auth.getUser();
-      const uid=user&&user.id;
-      // Marca de "esta cuenta ya está sincronizada en este dispositivo": una vez
-      // hecho el primer pull, el local manda (nunca más se sobrescribe con la nube
-      // en este dispositivo), y solo se empuja hacia la nube. Así, si el envío de
-      // un guardado anterior no llegó a completarse (p. ej. cerraste la app justo
-      // después), NO se pierde: no lo pisamos con una copia vieja del servidor.
-      const deviceUid=localStorage.getItem('frB1_account_uid');
-      const sameDeviceAccount=uid&&deviceUid===uid;
-      if(isNewSignup&&deviceUid&&!sameDeviceAccount){
-        // Cuenta nueva en un dispositivo ya usado por otra persona → empieza limpio.
-        window.FRB1.loadState({});
-        await pushNow();
-      }else if(isNewSignup||sameDeviceAccount){
-        // Primera cuenta de este dispositivo, o ya sincronizada antes → el local manda.
-        await pushNow();
-      }else{
-        // Primera vez que ESTE dispositivo ve esta cuenta (login en un dispositivo nuevo) → trae la nube.
-        const remote=await pull();
-        if(remote&&typeof remote==='object')window.FRB1.loadState(remote);
-        else{window.FRB1.loadState(window.FRB1.getState());await pushNow();}
-      }
-      if(uid)localStorage.setItem('frB1_account_uid',uid);
-      localStorage.setItem('frB1_account','1');
-      enableSync();
-      setAccountUI(user&&user.email);
-      msg('');hideGate();
-    }
-
-    // ¿Ya había sesión iniciada? (vuelve directo, incluso sin escribir nada)
-    try{
-      const {data:{session}}=await supa.auth.getSession();
-      if(session){await onAuthed(false);}else{showGate();}
-    }catch(e){
-      if(localStorage.getItem('frB1_account'))hideGate();else showGate();
-    }
-
-    // Botones de la pantalla de acceso
-    const email=()=>($id('ag-email').value||'').trim();
-    const pass=()=>$id('ag-pass').value||'';
-    const busy=on=>{['ag-login','ag-signup'].forEach(id=>{const b=$id(id);if(b)b.disabled=on;});};
-
-    $id('ag-login').onclick=async()=>{
-      if(!email()||!pass()){msg('Escribe tu email y contraseña.');return;}
-      busy(true);msg('Entrando…',true);
-      const {error}=await supa.auth.signInWithPassword({email:email(),password:pass()});
-      busy(false);
-      if(error){msg('No se pudo entrar: '+error.message);return;}
-      await onAuthed(false);
-    };
-    $id('ag-signup').onclick=async()=>{
-      if(!email()||pass().length<6){msg('Email válido y contraseña de al menos 6 caracteres.');return;}
-      busy(true);msg('Creando tu cuenta…',true);
-      const {data,error}=await supa.auth.signUp({email:email(),password:pass()});
-      busy(false);
-      if(error){msg('No se pudo crear la cuenta: '+error.message);return;}
-      if(!data.session){msg('Cuenta creada. Revisa tu email para confirmarla y luego pulsa Entrar.',true);return;}
-      await onAuthed(true);
-    };
-    $id('ag-pass').addEventListener('keydown',e=>{if(e.key==='Enter')$id('ag-login').click();});
-
-    // Cerrar sesión (botón del panel Progreso)
-    const lo=$id('logout-btn');
-    if(lo)lo.onclick=async()=>{
-      window.FRB1.onLocalSave=null;
-      try{await supa.auth.signOut();}catch(e){}
-      localStorage.removeItem('frB1_account');
-      localStorage.removeItem('frB1_account_uid');
-      window.FRB1.loadState({});
-      const row=$id('account-row');if(row)row.style.display='none';
-      $id('ag-email').value='';$id('ag-pass').value='';msg('');
-      showGate();
-    };
-  }
-}
 </script>
 </body>
 </html>
