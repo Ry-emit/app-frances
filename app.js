@@ -788,10 +788,10 @@ function renderStudy(main){
       const ops = diffChars(StudyUI.typed, meta.target);
       const spans = ops.map(o=>{
         if(o.type==='ins') return `<span class="diff-missing">_</span>`;
-        if(o.type==='match') return `<span>${esc(o.ch)}</span>`;
+        if(o.type==='match') return `<span class="diff-ok">${esc(o.ch)}</span>`;
         return `<span class="diff-bad">${esc(o.ch)}</span>`;
       }).join('');
-      answerHtml = `<div class="row"${v==='ok'?' style="color:var(--green);font-weight:700"':''}><b>Tu respuesta</b> <span class="diff-line">${spans}</span></div>`;
+      answerHtml = `<div class="row"><b>Tu respuesta</b> <span class="diff-line">${spans}</span></div>`;
     }
     body = `
       <div class="prompt-es">${esc(meta.prompt)}</div>
