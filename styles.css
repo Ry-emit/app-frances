@@ -140,6 +140,9 @@ input.answer.right{border-color:var(--green)}
 .reveal .verdict.tagO{color:var(--amber)}
 .reveal .verdict.tagL{color:var(--red)}
 .reveal .target{font-size:1.35rem;font-weight:800;margin-bottom:.5rem}
+.diff-line{font-size:1.15rem;font-weight:700;letter-spacing:.02em}
+.diff-bad{color:var(--red);text-decoration:underline;text-decoration-thickness:2px}
+.diff-missing{color:var(--red);font-weight:800}
 .reveal .row{display:flex;gap:.5rem;align-items:flex-start;margin-bottom:.4rem;font-size:.95rem}
 .reveal .row b{white-space:nowrap;color:var(--text3);font-weight:700}
 .audio-btn{

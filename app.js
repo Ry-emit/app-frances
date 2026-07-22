@@ -94,7 +94,7 @@ function defaultState(){
     session: null,  // {kind, ruleId, tandas:[[ids]], tanda:[ids], tandaTotal, tandaMastered:[], doneCount, totalCount, moreTandas:[[ids]], scoredIds:[]}
     pileHistory: [],
     examen: null,
-    betOn: true,
+    betOn: false, // desactivada por defecto: ir directo al resultado, sin el paso de "¿qué tan seguro estás?"
     stats: { errO:0, errL:0, betSW:0, betSR:0 },
     seeded: false
   };
@@ -162,6 +162,38 @@ function classify(id, typedRaw){
   if(a2 === b2) return {verdict:'O'};           // solo difieren en acentos
   if(levenshtein(a2,b2) <= 2) return {verdict:'O'}; // muy cerca: sabia la palabra, fallo de ortografia
   return {verdict:'L'};                          // no la sabia
+}
+
+// Compara letra a letra lo escrito contra la respuesta correcta, para poder
+// señalar EXACTAMENTE en qué letras falló (no solo decir "incorrecto").
+// Devuelve una lista de operaciones sobre TU texto: 'match' (letra bien),
+// 'sub'/'del' (letra que escribiste mal o de más) e 'ins' (letra que falta
+// y que no llegaste a escribir).
+function diffChars(typedRaw, target){
+  const a = String(typedRaw||''), b = String(target||'');
+  const m = a.length, n = b.length;
+  const dp = Array.from({length:m+1}, ()=>new Array(n+1).fill(0));
+  for(let i=0;i<=m;i++) dp[i][0]=i;
+  for(let j=0;j<=n;j++) dp[0][j]=j;
+  for(let i=1;i<=m;i++){
+    for(let j=1;j<=n;j++){
+      if(a[i-1].toLowerCase()===b[j-1].toLowerCase()) dp[i][j]=dp[i-1][j-1];
+      else dp[i][j]=1+Math.min(dp[i-1][j-1], dp[i-1][j], dp[i][j-1]);
+    }
+  }
+  let i=m, j=n; const ops=[];
+  while(i>0 || j>0){
+    if(i>0 && j>0 && a[i-1].toLowerCase()===b[j-1].toLowerCase() && dp[i][j]===dp[i-1][j-1]){
+      ops.unshift({type:'match', ch:a[i-1]}); i--; j--;
+    } else if(i>0 && j>0 && dp[i][j]===dp[i-1][j-1]+1){
+      ops.unshift({type:'sub', ch:a[i-1]}); i--; j--;
+    } else if(i>0 && dp[i][j]===dp[i-1][j]+1){
+      ops.unshift({type:'del', ch:a[i-1]}); i--;
+    } else {
+      ops.unshift({type:'ins', ch:b[j-1]}); j--;
+    }
+  }
+  return ops;
 }
 
 /* =========================================================
@@ -337,7 +369,7 @@ function resolveAnswer(typedOrNull, betChoice, forcedNoSe){
   sess.tanda.shift();
   if(exact){ sess.tandaMastered.push(id); sess.doneCount++; }
   else sess.tanda.push(id);
-  StudyUI = {phase:'reveal', verdict, exact, id, betChoice: betChoice||null, target: targetFor(id)};
+  StudyUI = {phase:'reveal', verdict, exact, id, betChoice: betChoice||null, target: targetFor(id), typed: forcedNoSe ? null : typedOrNull};
   save();
   render();
 }
@@ -751,11 +783,22 @@ function renderStudy(main){
     const verdictLabel = v==='ok' ? '&#10003; Correcto' : (v==='O' ? '[O] Correcto, cuidado con la ortografía' : '[L] No te salió');
     const verdictClass = v==='ok' ? 'ok' : (v==='O' ? 'tagO' : 'tagL');
     const showBetWarn = StudyUI.betChoice==='seguro' && v==='L';
+    let answerHtml = '';
+    if(StudyUI.typed){
+      const ops = diffChars(StudyUI.typed, meta.target);
+      const spans = ops.map(o=>{
+        if(o.type==='ins') return `<span class="diff-missing">_</span>`;
+        if(o.type==='match') return `<span>${esc(o.ch)}</span>`;
+        return `<span class="diff-bad">${esc(o.ch)}</span>`;
+      }).join('');
+      answerHtml = `<div class="row"${v==='ok'?' style="color:var(--green);font-weight:700"':''}><b>Tu respuesta</b> <span class="diff-line">${spans}</span></div>`;
+    }
     body = `
       <div class="prompt-es">${esc(meta.prompt)}</div>
       ${meta.sub ? `<div class="prompt-en">${esc(meta.sub)}</div>` : ''}
       <div class="reveal">
         <div class="verdict ${verdictClass}">${verdictLabel}</div>
+        ${answerHtml}
         ${showBetWarn ? `<div class="row" style="color:var(--red);font-weight:700">Creías saberlo — esto es lo que te haría fallar.</div>` : ''}
         <div class="target">${esc(meta.target)} <button class="audio-btn" data-action="audio" data-text="${esc(meta.target)}">&#128266;</button></div>
         ${meta.suena ? `<div class="row"><b>Suena</b> ${esc(meta.suena)}</div>` : ''}
