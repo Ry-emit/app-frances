@@ -115,18 +115,25 @@ function load(){
 function save(){ try{ localStorage.setItem(STORE_KEY, JSON.stringify(S)); }catch(e){} }
 
 function seedIfNeeded(){
-  if(S.seeded) return;
+  let changed = !S.seeded;
+  // Siembra las palabras/gramática que falten. Se ejecuta siempre, para que el
+  // contenido nuevo (p. ej. tarjetas de gramática añadidas después) también
+  // llegue a quien ya tenía progreso guardado, sin borrar lo suyo.
   VOCAB.forEach(v=>{
     const id = 'v'+v.id;
+    if(S.cards[id]) return;
     const pile = v.triage==='S' ? 'S' : (v.triage==='P' ? 'G' : 'K'); // O y L -> DUDOSO
     S.cards[id] = { pile, streak:0, due:0, seen:0, ok:0, ko:0, koO:0, koL:0, hard:false, spellWeak:false, box:0 };
+    changed = true;
   });
   GRAMMAR.forEach((g,i)=>{
     const id = 'g'+i;
+    if(S.cards[id]) return;
     S.cards[id] = { pile:'K', streak:0, due:0, seen:0, ok:0, ko:0, koO:0, koL:0, hard:false, spellWeak:false, box:0 };
+    changed = true;
   });
   S.seeded = true;
-  save();
+  if(changed) save();
 }
 
 /* =========================================================
@@ -417,9 +424,17 @@ function finishPhaseFromSession(){
    EL DÍA GUIADO (run): fases en orden + repaso final + candado 80%
    ========================================================= */
 function RUN_ACTIVE(){ return !!S.run; }
+// Cada día se estudia SIEMPRE Vocabulario y Gramática (además de lo que ese día
+// traiga en el plan: ortografía, oral, etc.). Así ninguna de las dos se queda sin
+// tocar ningún día, y a lo largo del plan se cubren las 175 palabras y toda la
+// gramática (comparatif/superlatif, COD y COI).
+const FASE_VOCAB = {t:'Vocabulario', txt:'Tus palabras de hoy (salen primero las más urgentes). Escríbelas en francés.', to:'estudiar'};
+const FASE_GRAM  = {t:'Gramática', txt:'Las normas gramaticales: comparatif/superlatif, COD y COI. Escríbelas.', to:null};
 function dayTasks(day){
   const d = CAMINO[day-1];
-  return d ? d.tareas : [];
+  const base = d ? d.tareas : [];
+  const resto = base.filter(t=>{ const k = phaseKind(t); return k!=='vocab' && k!=='gram'; });
+  return [FASE_VOCAB, FASE_GRAM, ...resto];
 }
 function totalSteps(day){ return dayTasks(day).length + 1; } // +1 = Repaso final
 function isRepasoStep(day, step){ return step === dayTasks(day).length; }
@@ -629,7 +644,7 @@ function renderDayDetail(main){
   const day = VIEW.day || (S.run ? S.run.day : S.planDay);
   const d = CAMINO[day-1];
   if(!d){ VIEW={screen:'home'}; return render(); }
-  const tareas = d.tareas;
+  const tareas = dayTasks(day); // incluye Vocabulario + Gramática cada día
   const activeRun = S.run && S.run.day===day ? S.run : null;
   const stats = activeRun ? dayStats() : null;
   const rows = tareas.map((t,i)=>{
